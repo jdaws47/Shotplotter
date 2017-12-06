@@ -6,6 +6,10 @@
 //  Copyright © 2017 District196. All rights reserved.
 //
 
+enum LineType: Int {
+    case Base = -1
+}
+
 struct Pos { //Just a utility structure to hold position
     var x: Int
     var y: Int
@@ -14,7 +18,6 @@ struct Pos { //Just a utility structure to hold position
 struct Line {
     var StartPos: Pos
     var EndPos: Pos
-    
 }
 
 struct Player {
