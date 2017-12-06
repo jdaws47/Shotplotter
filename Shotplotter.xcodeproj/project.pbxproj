@@ -11,6 +11,11 @@
 		70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */; };
 		70CC0CAE1FD85CE500909DBD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAD1FD85CE500909DBD /* GameViewController.swift */; };
 		70CC0CB01FD85CF700909DBD /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */; };
+		70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CB11FD8610000909DBD /* customDataTypes.swift */; };
+		70CC0CB71FD862CA00909DBD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CB61FD862CA00909DBD /* MainView.swift */; };
+		70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CB81FD862F900909DBD /* MatchView.swift */; };
+		70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBA1FD862FD00909DBD /* GameView.swift */; };
+		70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBC1FD8630400909DBD /* RotationView.swift */; };
 		9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB481FD70E850034A279 /* AppDelegate.swift */; };
 		9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB4A1FD70E850034A279 /* ViewController.swift */; };
 		9928FB4E1FD70E850034A279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9928FB4C1FD70E850034A279 /* Main.storyboard */; };
@@ -42,6 +47,11 @@
 		70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		70CC0CAD1FD85CE500909DBD /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
+		70CC0CB11FD8610000909DBD /* customDataTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customDataTypes.swift; sourceTree = "<group>"; };
+		70CC0CB61FD862CA00909DBD /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		70CC0CB81FD862F900909DBD /* MatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		70CC0CBA1FD862FD00909DBD /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		70CC0CBC1FD8630400909DBD /* RotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
 		9928FB451FD70E850034A279 /* Shotplotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shotplotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9928FB481FD70E850034A279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9928FB4A1FD70E850034A279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +92,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70CC0CB31FD8625A00909DBD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				70CC0CA91FD85C7000909DBD /* MainViewController.swift */,
+				70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */,
+				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
+				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		70CC0CBE1FD8630B00909DBD /* Data Holders */ = {
+			isa = PBXGroup;
+			children = (
+				70CC0CB61FD862CA00909DBD /* MainView.swift */,
+				70CC0CB81FD862F900909DBD /* MatchView.swift */,
+				70CC0CBA1FD862FD00909DBD /* GameView.swift */,
+				70CC0CBC1FD8630400909DBD /* RotationView.swift */,
+			);
+			name = "Data Holders";
+			sourceTree = "<group>";
+		};
 		9928FB3C1FD70E850034A279 = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +139,10 @@
 			children = (
 				9928FB481FD70E850034A279 /* AppDelegate.swift */,
 				9928FB4A1FD70E850034A279 /* ViewController.swift */,
+				70CC0CBE1FD8630B00909DBD /* Data Holders */,
 				9928FB4C1FD70E850034A279 /* Main.storyboard */,
-				70CC0CA91FD85C7000909DBD /* MainViewController.swift */,
-				70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */,
-				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
-				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
+				70CC0CB11FD8610000909DBD /* customDataTypes.swift */,
+				70CC0CB31FD8625A00909DBD /* ViewControllers */,
 				9928FB4F1FD70E850034A279 /* Assets.xcassets */,
 				9928FB511FD70E850034A279 /* LaunchScreen.storyboard */,
 				9928FB541FD70E850034A279 /* Info.plist */,
@@ -272,9 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CC0CAE1FD85CE500909DBD /* GameViewController.swift in Sources */,
+				70CC0CB71FD862CA00909DBD /* MainView.swift in Sources */,
 				70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */,
 				70CC0CB01FD85CF700909DBD /* RotationViewController.swift in Sources */,
+				70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */,
+				70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */,
+				70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */,
 				70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */,
+				70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */,
 				9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */,
 				9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */,
 			);
