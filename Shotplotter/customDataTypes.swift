@@ -32,8 +32,16 @@ struct Line {
     var rotationID: Int
 }
 
-struct Player {
+class Player {
     var shots = [AnyHashable:Line]()
     var color: UIColor
     var number: Int
+    init(_number: Int, _color: UIColor) {
+        number = _number
+        color = _color
+    }
+}
+
+class PlayerSpot : UIButton {
+    
 }
