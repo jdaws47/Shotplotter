@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class MatchView {
+    var games = [AnyHashable: GameView]()
+    var players = [AnyHashable: Player]()
+    var dateCreated: NSDate
+    var dateEdited: NSDate
+    var datePlayed: NSDate
+    var opponentName: String
+    
+    init() {
+        dateCreated = NSDate.init()
+        opponentName = ""
+        dateEdited = NSDate.init()
+        datePlayed = NSDate.init()
+    }
+}
