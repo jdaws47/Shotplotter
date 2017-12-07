@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Foundation
 
-enum LineType: Int {
-    case Base = -1
+enum SortingMode: Int {
+    case alphaOpponent = 0
+    case dateEdit,dateCreated,datePlayed
 }
 
 struct Pos { //Just a utility structure to hold position
@@ -18,20 +20,20 @@ struct Pos { //Just a utility structure to hold position
 }
 
 struct Line {
-    var StartPos: Pos
-    var EndPos: Pos
-    var Tip: Bool = false
-    var Slide: Bool = false
+    var startPos: Pos
+    var endPos: Pos
+    var tip: Bool = false
+    var slide: Bool = false
     var A: Bool = false
-    var Roll: Bool = false
-    var Hit: Bool = false
-    var Color: UIColor
-    var DidScore: Bool = false
+    var roll: Bool = false
+    var hit: Bool = false
+    var color: UIColor
+    var didScore: Bool = false
     var rotationID: Int
 }
 
 struct Player {
-    var Shots = [AnyHashable:Line]()
-    var Color: UIColor
-    var Number: Int
+    var shots = [AnyHashable:Line]()
+    var color: UIColor
+    var number: Int
 }
