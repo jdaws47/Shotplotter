@@ -16,6 +16,8 @@ class RotationView {
     
     
     init() { //Make a proper initializer with arguments
-        gameNum = -1
+        rotationID = -1
+        viewMode = 0
+        hasSelected = false
     }
 }
