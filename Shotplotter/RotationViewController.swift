@@ -21,7 +21,12 @@ class RotationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {         //Not working
+        self.data = RotationView()
+        super.init(coder: aDecoder)
     }
+    
+    /*required init?(coder aDecoder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }*/
 }

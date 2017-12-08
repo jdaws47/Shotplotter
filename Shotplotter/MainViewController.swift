@@ -21,12 +21,12 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*init(frame: CGRect) {         //Not working
-        super.init(coder: frame)
-        data = MainView()
-    }*/
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {         //Not working
+        self.data = MainView()
+        super.init(coder: aDecoder)
     }
+    
+    /*required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }*/
 }
