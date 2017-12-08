@@ -9,6 +9,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    var data: MainView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -17,5 +19,14 @@ class MainViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*init(frame: CGRect) {         //Not working
+        super.init(coder: frame)
+        data = MainView()
+    }*/
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
