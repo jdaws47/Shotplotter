@@ -7,5 +7,11 @@
 //
 
 class GameView {
+    var rotations = [AnyHashable: RotationView]()
+    var activePlayers = [AnyHashable: Player]()
+    var gameNum: Int
     
+    init() { //Make a proper initializer with arguments
+        gameNum = -1
+    }
 }

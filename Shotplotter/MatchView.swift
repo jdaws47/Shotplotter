@@ -16,7 +16,7 @@ class MatchView {
     var datePlayed: NSDate
     var opponentName: String
     
-    init() {
+    init() { //Make a proper initializer with arguments
         dateCreated = NSDate.init()
         opponentName = ""
         dateEdited = NSDate.init()

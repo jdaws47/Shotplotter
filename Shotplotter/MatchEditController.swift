@@ -1,14 +1,14 @@
 //
-//  MatchViewController.swift
+//  MatchEditController.swift
 //  Shotplotter
 //
-//  Created by Zelle Mandez on 12/6/17.
+//  Created by Zelle Mandez on 12/8/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
 
 import UIKit
 
-class MatchViewController: UIViewController {
+class MatchEditController: UIViewController {
     var data: MatchView
     
     override func viewDidLoad() {
@@ -25,9 +25,8 @@ class MatchViewController: UIViewController {
         self.data = MatchView()
         super.init(coder: aDecoder)
     }
-
-/*required init?(coder aDecoder: NSCoder) {
- fatalError("init(coder:) has not been implemented")
- }*/
-
+    
+    /*required init?(coder aDecoder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }*/
 }
