@@ -21,7 +21,7 @@ class RotationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    required init?(coder aDecoder: NSCoder) {         //Not working
+    required init?(coder aDecoder: NSCoder) {
         self.data = RotationView()
         super.init(coder: aDecoder)
     }
