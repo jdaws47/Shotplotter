@@ -1,15 +1,15 @@
 //
-//  MatchViewController.swift
+//  GameEditController.swift
 //  Shotplotter
 //
-//  Created by Zelle Mandez on 12/6/17.
+//  Created by Zelle Mandez on 12/11/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
 
 import UIKit
 
-class MatchViewController: UIViewController {
-    var data: MatchView
+class GameEditController: UIViewController {
+    var data: GameView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,11 @@ class MatchViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = MatchView()
+        self.data = GameView()
         super.init(coder: aDecoder)
     }
-
-/*required init?(coder aDecoder: NSCoder) {
- fatalError("init(coder:) has not been implemented")
- }*/
-
+    
+    /*required init?(coder aDecoder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }*/
 }

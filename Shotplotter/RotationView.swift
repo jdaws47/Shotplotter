@@ -12,12 +12,17 @@ class RotationView {
     var rotationID: Int
     var viewMode: Int //0 - Standard, all lines. 1 - Scoring only. 2 = ???. 3 = ???
     var hasSelected: Bool                                //^ Idea: Weighted noise field based on where the lines end
-    //INSTANCE VARIABLES NOT COMPLETE. FINISH THIS FIRST.
+    var selected: PlayerSpot?
+    var nextDraws: Bool
+    var tipSelect, slideSelect, aSelect, rollSelect: Bool
     
     
     init() { //Make a proper initializer with arguments
         rotationID = -1
         viewMode = 0
         hasSelected = false
+        selected = nil
+        nextDraws = false
+        tipSelect = false; slideSelect = false; aSelect = false; rollSelect = false
     }
 }
