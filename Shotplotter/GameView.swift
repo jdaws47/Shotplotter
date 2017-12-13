@@ -7,11 +7,17 @@
 //
 
 class GameView {
-    var rotations = [AnyHashable: RotationView]()
-    var activePlayers = [AnyHashable: Player]()
+    var rotations = [RotationView]()
+    var players = [Player]()
+    var activePlayers = [Player]()
     var gameNum: Int
     
-    init() { //Make a proper initializer with arguments
-        gameNum = -1
+    init(_gameNum: Int, _players: [Player]) { //Make a proper initializer with arguments
+        gameNum = _gameNum
+        players = _players
+    }
+    
+    func addRotation() {
+        rotations.append(RotationView(ID: rotations.count, GameNum: gameNum, _players: players, _activePlayers: activePlayers))
     }
 }
