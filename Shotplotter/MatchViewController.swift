@@ -10,6 +10,7 @@ import UIKit
 
 class MatchViewController: UIViewController {
     var data: MatchView
+    @IBOutlet weak var backToMain: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,10 @@ class MatchViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         self.data = MatchView()
         super.init(coder: aDecoder)
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
 /*required init?(coder aDecoder: NSCoder) {
