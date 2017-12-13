@@ -10,6 +10,10 @@ import UIKit
 
 class MatchEditController: UIViewController {
     var data: MatchView
+
+    //MARK: Protocols
+    @IBOutlet weak var numberOfPlayersLabel: UILabel!
+    @IBOutlet weak var playerStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +26,17 @@ class MatchEditController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = MatchView()
+        data = MatchView()
         super.init(coder: aDecoder)
     }
     
     /*required init?(coder aDecoder: NSCoder) {
      fatalError("init(coder:) has not been implemented")
      }*/
+    
+    
+    
+    @IBAction func adjustPlayerNumber(_ sender: Any) {
+        numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
+    }
 }
