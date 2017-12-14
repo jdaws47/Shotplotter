@@ -200,6 +200,15 @@
                                     <segue destination="pjS-34-rk7" kind="show" id="W6u-Zt-Jlz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="003-UZ-o9J">
+                                <rect key="frame" x="748" y="64" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="EDIT"/>
+                                <connections>
+                                    <segue destination="deq-F3-NKg" kind="show" id="ASU-B1-ILX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -477,7 +486,7 @@
         <!--Active Players Overlay-->
         <scene sceneID="bZT-qa-n49">
             <objects>
-                <viewController title="Active Players Overlay" id="9Dy-qG-syk" sceneMemberID="viewController">
+                <viewController title="Active Players Overlay" id="9Dy-qG-syk" customClass="GameEditController" customModule="Shotplotter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZQ3-gJ-wRr"/>
                         <viewControllerLayoutGuide type="bottom" id="8N8-0K-Hod"/>
@@ -514,6 +523,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VQZ-ng-2jB"/>
+        <segue reference="FbO-bD-JX4"/>
+        <segue reference="eDT-Sc-2VC"/>
     </inferredMetricsTieBreakers>
 </document>
