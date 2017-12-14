@@ -9,7 +9,7 @@
 import UIKit
 
 class MatchEditController: UIViewController {
-    var data: MatchView
+    var data: MatchView?
 
     //MARK: Protocols
     @IBOutlet weak var numberOfPlayersLabel: UILabel!

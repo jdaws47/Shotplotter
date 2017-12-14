@@ -9,7 +9,7 @@
 import UIKit
 
 class GameEditController: UIViewController {
-    var data: GameView
+    var data: GameView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class GameEditController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = GameView()
+        //self.data = GameView()
         super.init(coder: aDecoder)
     }
     
