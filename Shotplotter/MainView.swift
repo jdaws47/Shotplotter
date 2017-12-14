@@ -7,7 +7,7 @@
 //
 
 class MainView {
-    var matches = [AnyHashable: MatchView]()
+    var matches = [MatchView]()
     var sortMode: SortingMode
     var search: String
     var isSearching: Bool
@@ -16,5 +16,9 @@ class MainView {
         sortMode = SortingMode.alphaOpponent
         search = ""
         isSearching = false
+    }
+    
+    func addMatch() {
+        matches.append(MatchView())
     }
 }

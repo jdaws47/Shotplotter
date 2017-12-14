@@ -23,7 +23,8 @@ class MatchViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = MatchView()
+        self.data = MatchView()                 //REPLACE THIS
+        data.opponentName = "POTATO SCHOOL OF EXCELLENCE"
         super.init(coder: aDecoder)
     }
     
@@ -31,6 +32,17 @@ class MatchViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func toMatchEdit(_ sender: Any) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MatchToMEdit" {
+            if let destination = segue.destination as? MatchEditController {
+                destination.data = self.data
+            }
+        }
+    }
 /*required init?(coder aDecoder: NSCoder) {
  fatalError("init(coder:) has not been implemented")
  }*/
