@@ -14,6 +14,8 @@ class MatchEditController: UIViewController {
     //MARK: Protocols
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var playerStepper: UIStepper!
+    @IBOutlet weak var backButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,4 +41,9 @@ class MatchEditController: UIViewController {
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
     }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
 }

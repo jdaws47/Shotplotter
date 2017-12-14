@@ -10,7 +10,7 @@ import UIKit
 
 class MatchViewController: UIViewController {
     var data: MatchView
-    @IBOutlet weak var backToMain: UIBarButtonItem!
+    @IBOutlet weak var backToMain: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

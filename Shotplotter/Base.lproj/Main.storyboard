@@ -48,10 +48,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <state key="normal" title="+"/>
+                                                <connections>
+                                                    <segue destination="deq-F3-NKg" kind="show" id="ept-OE-4WN"/>
+                                                </connections>
                                             </button>
-                                            <connections>
-                                                <segue destination="deq-F3-NKg" kind="show" id="eDT-Sc-2VC"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -167,10 +167,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="&lt; Back"/>
+                                                <connections>
+                                                    <action selector="goBack:" destination="vYv-gp-kO7" eventType="touchUpInside" id="9BP-Bm-I6u"/>
+                                                </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="goBack:" destination="vYv-gp-kO7" id="rPp-V1-ikX"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="qGs-lS-TBG">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TgP-rt-i5l">
@@ -203,14 +203,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="EDIT"/>
                                 <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" id="ASU-B1-ILX"/>
+                                    <segue destination="deq-F3-NKg" kind="show" id="1n5-Bx-CB3"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="backToMain" destination="pN5-be-RDN" id="WbZ-11-iGd"/>
+                        <outlet property="backToMain" destination="YGQ-AH-Sft" id="Hy8-a3-b1r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qta-34-lAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,6 +258,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
+                                                    <action selector="goBack:" destination="deq-F3-NKg" eventType="touchUpInside" id="Uhb-Tz-D5m"/>
                                                     <segue destination="vYv-gp-kO7" kind="show" id="TjW-Y1-5oE"/>
                                                 </connections>
                                             </button>
@@ -297,6 +298,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="AeG-zV-DTp" id="7FA-qX-FWp"/>
                         <outlet property="numberOfPlayersLabel" destination="OFF-PJ-WKb" id="H4X-RN-cuS"/>
                         <outlet property="playerStepper" destination="8KM-Ls-mgh" id="S9y-cl-GSn"/>
                     </connections>
@@ -328,7 +330,7 @@
                                         <rect key="frame" x="0.0" y="44" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D3E-yu-Asw" id="gdx-d8-yT3">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -336,7 +338,7 @@
                                         <rect key="frame" x="0.0" y="88" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCe-UI-OyK" id="MlI-jI-lEw">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -520,7 +522,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FbO-bD-JX4"/>
-        <segue reference="eDT-Sc-2VC"/>
+        <segue reference="ept-OE-4WN"/>
+        <segue reference="TjW-Y1-5oE"/>
     </inferredMetricsTieBreakers>
 </document>
