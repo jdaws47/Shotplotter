@@ -10,6 +10,7 @@ import UIKit
 
 class RotationViewController: UIViewController {
     var data: RotationView?
+    @IBOutlet weak var goToGame: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,11 @@ class RotationViewController: UIViewController {
         //self.data = RotationView()
         super.init(coder: aDecoder)
     }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     /*required init?(coder aDecoder: NSCoder) {
      fatalError("init(coder:) has not been implemented")

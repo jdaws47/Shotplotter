@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     var data: GameView?
+    @IBOutlet weak var goToMatch: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,11 @@ class GameViewController: UIViewController {
         //self.data = GameView()
         super.init(coder: aDecoder)
     }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
 
 /*required init?(coder aDecoder: NSCoder) {
  fatalError("init(coder:) has not been implemented")
