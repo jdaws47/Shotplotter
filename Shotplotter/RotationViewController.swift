@@ -9,7 +9,7 @@
 import UIKit
 
 class RotationViewController: UIViewController {
-    var data: RotationView
+    var data: RotationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class RotationViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = RotationView()
+        //self.data = RotationView()
         super.init(coder: aDecoder)
     }
     
