@@ -206,7 +206,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="EDIT"/>
                                 <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" id="1n5-Bx-CB3"/>
+                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="1n5-Bx-CB3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -302,6 +302,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="AeG-zV-DTp" id="7FA-qX-FWp"/>
+                        <outlet property="nameOfOpponent" destination="kIy-AF-unu" id="N3N-Qh-jih"/>
                         <outlet property="numberOfPlayersLabel" destination="OFF-PJ-WKb" id="H4X-RN-cuS"/>
                         <outlet property="playerStepper" destination="8KM-Ls-mgh" id="S9y-cl-GSn"/>
                     </connections>
@@ -531,7 +532,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ept-OE-4WN"/>
         <segue reference="TjW-Y1-5oE"/>
+        <segue reference="1n5-Bx-CB3"/>
     </inferredMetricsTieBreakers>
 </document>

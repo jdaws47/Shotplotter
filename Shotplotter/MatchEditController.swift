@@ -15,9 +15,11 @@ class MatchEditController: UIViewController {
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var playerStepper: UIStepper!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nameOfOpponent: UITextField!
     
     
     override func viewDidLoad() {
+        nameOfOpponent.text = data?.opponentName
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
