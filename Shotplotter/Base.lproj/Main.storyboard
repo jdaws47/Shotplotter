@@ -48,9 +48,6 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <state key="normal" title="+"/>
-                                                <connections>
-                                                    <segue destination="deq-F3-NKg" kind="show" id="ept-OE-4WN"/>
-                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -206,7 +203,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="EDIT"/>
                                 <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="1n5-Bx-CB3"/>
+                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -214,6 +211,8 @@
                     </view>
                     <connections>
                         <outlet property="backToMain" destination="YGQ-AH-Sft" id="Hy8-a3-b1r"/>
+                        <outlet property="editButton" destination="003-UZ-o9J" id="fpM-na-Lga"/>
+                        <segue destination="deq-F3-NKg" kind="show" identifier="first" id="qBm-KL-PuZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qta-34-lAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,6 +532,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TjW-Y1-5oE"/>
-        <segue reference="1n5-Bx-CB3"/>
+        <segue reference="qBm-KL-PuZ"/>
     </inferredMetricsTieBreakers>
 </document>

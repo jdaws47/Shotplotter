@@ -11,10 +11,20 @@ import UIKit
 class MatchViewController: UIViewController {
     var data: MatchView
     @IBOutlet weak var backToMain: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(data.firstView) {
+            self.performSegue(withIdentifier: "first", sender: self)
+            data.firstView = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,10 +42,6 @@ class MatchViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func toMatchEdit(_ sender: Any) {
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MatchToMEdit" {
             if let destination = segue.destination as? MatchEditController {
@@ -43,10 +49,9 @@ class MatchViewController: UIViewController {
             }
         }
     }
-/*required init?(coder aDecoder: NSCoder) {
+
+    /*required init?(coder aDecoder: NSCoder) {
  fatalError("init(coder:) has not been implemented")
  }*/
-    
-    
 
 }
