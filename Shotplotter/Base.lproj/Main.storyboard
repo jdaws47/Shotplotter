@@ -48,9 +48,6 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <state key="normal" title="+"/>
-                                                <connections>
-                                                    <segue destination="deq-F3-NKg" kind="show" id="ept-OE-4WN"/>
-                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -206,7 +203,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="EDIT"/>
                                 <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="1n5-Bx-CB3"/>
+                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
                                 </connections>
                             </button>
                         </subviews>

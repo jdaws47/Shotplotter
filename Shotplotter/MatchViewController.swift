@@ -38,10 +38,6 @@ class MatchViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func toMatchEdit(_ sender: Any) {
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MatchToMEdit" {
             if let destination = segue.destination as? MatchEditController {
@@ -49,10 +45,9 @@ class MatchViewController: UIViewController {
             }
         }
     }
-/*required init?(coder aDecoder: NSCoder) {
+
+    /*required init?(coder aDecoder: NSCoder) {
  fatalError("init(coder:) has not been implemented")
  }*/
-    
-    
 
 }
