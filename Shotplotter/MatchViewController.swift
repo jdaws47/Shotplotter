@@ -11,14 +11,22 @@ import UIKit
 class MatchViewController: UIViewController {
     var data: MatchView
     @IBOutlet weak var backToMain: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var titleBox: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if data.firstView {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(data.firstView) {
             data.firstView = false
-            //show
+            self.performSegue(withIdentifier: "first", sender: self)
+        } else {
+            titleBox.title = data.opponentName
         }
     }
     
@@ -39,7 +47,7 @@ class MatchViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MatchToMEdit" {
+        if (segue.identifier == "MatchToMEdit" || segue.identifier == "first") {
             if let destination = segue.destination as? MatchEditController {
                 destination.data = self.data
             }

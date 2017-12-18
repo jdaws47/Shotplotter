@@ -211,6 +211,8 @@
                     </view>
                     <connections>
                         <outlet property="backToMain" destination="YGQ-AH-Sft" id="Hy8-a3-b1r"/>
+                        <outlet property="editButton" destination="003-UZ-o9J" id="fpM-na-Lga"/>
+                        <segue destination="deq-F3-NKg" kind="show" identifier="first" id="qBm-KL-PuZ"/>
                         <outlet property="titleBox" destination="Mzx-Ab-pFq" id="uL4-wQ-VUF"/>
                     </connections>
                 </viewController>
@@ -533,7 +535,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FbO-bD-JX4"/>
-        <segue reference="ept-OE-4WN"/>
+        <segue reference="TjW-Y1-5oE"/>
+        <segue reference="qBm-KL-PuZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,6 +24,11 @@ class MatchEditController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        nameOfOpponent.text = data?.opponentName
+        super.viewDidAppear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,7 +55,5 @@ class MatchEditController: UIViewController {
 
     @IBAction func oppNameChanged(_ sender: Any) {
         data?.opponentName = nameOfOpponent.text!
-        print ("Dat shit were changed boi")
-        print (data?.opponentName)
     }
 }
