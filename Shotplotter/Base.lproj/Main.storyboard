@@ -194,7 +194,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="temp forward button"/>
                                 <connections>
-                                    <segue destination="pjS-34-rk7" kind="show" id="W6u-Zt-Jlz"/>
+                                    <segue destination="pjS-34-rk7" kind="show" identifier="MatchToGame" id="W6u-Zt-Jlz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="003-UZ-o9J">
@@ -212,8 +212,8 @@
                     <connections>
                         <outlet property="backToMain" destination="YGQ-AH-Sft" id="Hy8-a3-b1r"/>
                         <outlet property="editButton" destination="003-UZ-o9J" id="fpM-na-Lga"/>
-                        <segue destination="deq-F3-NKg" kind="show" identifier="first" id="qBm-KL-PuZ"/>
                         <outlet property="titleBox" destination="Mzx-Ab-pFq" id="uL4-wQ-VUF"/>
+                        <segue destination="deq-F3-NKg" kind="show" identifier="first" id="qBm-KL-PuZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qta-34-lAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -380,7 +380,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="temp forward button"/>
                                 <connections>
-                                    <segue destination="pIQ-8Y-aoa" kind="show" id="8EE-KG-fyM"/>
+                                    <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="8EE-KG-fyM"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-vM-Hl5">
@@ -535,7 +535,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TjW-Y1-5oE"/>
-        <segue reference="qBm-KL-PuZ"/>
+        <segue reference="FbO-bD-JX4"/>
+        <segue reference="Cah-Jw-5EU"/>
     </inferredMetricsTieBreakers>
 </document>

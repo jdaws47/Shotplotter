@@ -24,7 +24,7 @@ class MatchViewController: UIViewController {
         super.viewDidAppear(animated)
         if(data.firstView) {
             data.firstView = false
-            self.performSegue(withIdentifier: "first", sender: self)
+            self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
         } else {
             titleBox.title = data.opponentName
         }
@@ -47,7 +47,7 @@ class MatchViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "MatchToMEdit" || segue.identifier == "first") {
+        if (segue.identifier == "MatchToMEdit") {
             if let destination = segue.destination as? MatchEditController {
                 destination.data = self.data
             }
