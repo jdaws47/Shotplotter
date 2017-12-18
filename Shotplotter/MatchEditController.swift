@@ -48,4 +48,9 @@ class MatchEditController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func oppNameChanged(_ sender: Any) {
+        data?.opponentName = nameOfOpponent.text!
+        print ("Dat shit were changed boi")
+        print (data?.opponentName)
+    }
 }

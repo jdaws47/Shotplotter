@@ -11,10 +11,15 @@ import UIKit
 class MatchViewController: UIViewController {
     var data: MatchView
     @IBOutlet weak var backToMain: UIButton!
+    @IBOutlet weak var titleBox: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if data.firstView {
+            data.firstView = false
+            //show
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,6 +30,7 @@ class MatchViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         self.data = MatchView()                 //REPLACE THIS
         data.opponentName = "POTATO SCHOOL OF EXCELLENCE"
+        
         super.init(coder: aDecoder)
     }
     
