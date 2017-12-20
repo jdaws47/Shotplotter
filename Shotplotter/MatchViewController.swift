@@ -26,7 +26,7 @@ class MatchViewController: UIViewController {
             data.firstView = false
             self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
         } else {
-            titleBox.title = data.opponentName
+            titleBox.title = "Match vs. " + data.opponentName
         }
     }
     
