@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -169,17 +170,20 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="qGs-lS-TBG">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TgP-rt-i5l">
-                                                <rect key="frame" x="974" y="7" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                <state key="normal" title="+"/>
-                                            </button>
-                                            <connections>
-                                                <action selector="toMatchEdit:" destination="vYv-gp-kO7" id="KVF-rT-QnD"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="5SI-Mb-dmz"/>
+                                            <barButtonItem style="plain" id="A3v-hi-qNz">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
+                                                    <rect key="frame" x="921.5" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Edit"/>
+                                                    <connections>
+                                                        <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -195,15 +199,6 @@
                                 <state key="normal" title="temp forward button"/>
                                 <connections>
                                     <segue destination="pjS-34-rk7" kind="show" identifier="MatchToGame" id="W6u-Zt-Jlz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="003-UZ-o9J">
-                                <rect key="frame" x="748" y="64" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="EDIT"/>
-                                <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -329,7 +324,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -337,7 +332,7 @@
                                         <rect key="frame" x="0.0" y="44" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D3E-yu-Asw" id="gdx-d8-yT3">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -345,7 +340,7 @@
                                         <rect key="frame" x="0.0" y="88" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCe-UI-OyK" id="MlI-jI-lEw">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -535,7 +530,7 @@
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qBm-KL-PuZ"/>
         <segue reference="FbO-bD-JX4"/>
-        <segue reference="Cah-Jw-5EU"/>
     </inferredMetricsTieBreakers>
 </document>
