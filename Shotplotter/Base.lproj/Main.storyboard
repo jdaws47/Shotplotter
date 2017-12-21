@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -199,17 +200,20 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="qGs-lS-TBG">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TgP-rt-i5l">
-                                                <rect key="frame" x="974" y="7" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                <state key="normal" title="+"/>
-                                            </button>
-                                            <connections>
-                                                <action selector="toMatchEdit:" destination="vYv-gp-kO7" id="KVF-rT-QnD"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="add" id="5SI-Mb-dmz"/>
+                                            <barButtonItem style="plain" id="A3v-hi-qNz">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
+                                                    <rect key="frame" x="921.5" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Edit"/>
+                                                    <connections>
+                                                        <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -234,16 +238,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="temp forward button"/>
                                 <connections>
-                                    <segue destination="pjS-34-rk7" kind="show" id="W6u-Zt-Jlz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="003-UZ-o9J">
-                                <rect key="frame" x="748" y="64" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="EDIT"/>
-                                <connections>
-                                    <segue destination="deq-F3-NKg" kind="show" identifier="MatchToMEdit" id="Cah-Jw-5EU"/>
+                                    <segue destination="pjS-34-rk7" kind="show" identifier="MatchToGame" id="W6u-Zt-Jlz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -276,6 +271,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="oppNameChanged:" destination="deq-F3-NKg" eventType="editingChanged" id="cDb-9j-CgT"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AuW-JF-zyV">
                                 <rect key="frame" x="580" y="131" width="424" height="167"/>
@@ -415,7 +413,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="temp forward button"/>
                                 <connections>
-                                    <segue destination="pIQ-8Y-aoa" kind="show" id="8EE-KG-fyM"/>
+                                    <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="8EE-KG-fyM"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-vM-Hl5">

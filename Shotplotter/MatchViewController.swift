@@ -12,6 +12,7 @@ class MatchViewController: UIViewController {
     var data: MatchView
     @IBOutlet weak var backToMain: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var titleBox: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class MatchViewController: UIViewController {
         if(data.firstView) {
             self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
             data.firstView = false
+            self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
+        } else {
+            titleBox.title = "Match vs. " + data.opponentName
         }
     }
     
@@ -43,7 +47,7 @@ class MatchViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MatchToMEdit" {
+        if (segue.identifier == "MatchToMEdit") {
             if let destination = segue.destination as? MatchEditController {
                 destination.data = self.data
             }
