@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     var data: MainView?
+    var cells: [GlobalTableViewCell]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,13 @@ class MainViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MainView()
+        cells = [GlobalTableViewCell]()
         super.init(coder: aDecoder)
     }
     
     /*required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }*/
+    
+    
 }

@@ -22,7 +22,7 @@ class MatchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if(data.firstView) {
-            self.performSegue(withIdentifier: "first", sender: self)
+            self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
             data.firstView = false
         }
     }
@@ -34,7 +34,7 @@ class MatchViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MatchView()                 //REPLACE THIS
-        data.opponentName = "POTATO SCHOOL OF EXCELLENCE"
+        data.opponentName = "Match vs. [Opponent]"
         super.init(coder: aDecoder)
     }
     

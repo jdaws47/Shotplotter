@@ -18,6 +18,7 @@
 		70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBA1FD862FD00909DBD /* GameView.swift */; };
 		70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBC1FD8630400909DBD /* RotationView.swift */; };
 		70CD82781FDEF58C00CBEBDC /* GameEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD82771FDEF58C00CBEBDC /* GameEditController.swift */; };
+		99240DEB1FEAD934000ADB80 /* globalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99240DEA1FEAD934000ADB80 /* globalTableViewCell.swift */; };
 		9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB481FD70E850034A279 /* AppDelegate.swift */; };
 		9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB4A1FD70E850034A279 /* ViewController.swift */; };
 		9928FB4E1FD70E850034A279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9928FB4C1FD70E850034A279 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		9928FB531FD70E850034A279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9928FB511FD70E850034A279 /* LaunchScreen.storyboard */; };
 		9928FB5E1FD70E850034A279 /* ShotplotterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB5D1FD70E850034A279 /* ShotplotterTests.swift */; };
 		9928FB691FD70E850034A279 /* ShotplotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB681FD70E850034A279 /* ShotplotterUITests.swift */; };
+		998676931FE835B70012800D /* playerTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998676921FE835B70012800D /* playerTableController.swift */; };
 		99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,7 @@
 		70CC0CBA1FD862FD00909DBD /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		70CC0CBC1FD8630400909DBD /* RotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
 		70CD82771FDEF58C00CBEBDC /* GameEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEditController.swift; sourceTree = "<group>"; };
+		99240DEA1FEAD934000ADB80 /* globalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = globalTableViewCell.swift; path = ../globalTableViewCell.swift; sourceTree = "<group>"; };
 		9928FB451FD70E850034A279 /* Shotplotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shotplotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9928FB481FD70E850034A279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9928FB4A1FD70E850034A279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		9928FB641FD70E850034A279 /* ShotplotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShotplotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9928FB681FD70E850034A279 /* ShotplotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotplotterUITests.swift; sourceTree = "<group>"; };
 		9928FB6A1FD70E850034A279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		998676921FE835B70012800D /* playerTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playerTableController.swift; sourceTree = "<group>"; };
 		99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Volleyball Court.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,11 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				70CC0CA91FD85C7000909DBD /* MainViewController.swift */,
-				7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */,
-				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
+				99240DEA1FEAD934000ADB80 /* globalTableViewCell.swift */,
 				70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */,
+				7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */,
 				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
+				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
+				998676921FE835B70012800D /* playerTableController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 				70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */,
 				9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */,
 				9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */,
+				998676931FE835B70012800D /* playerTableController.swift in Sources */,
+				99240DEB1FEAD934000ADB80 /* globalTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
