@@ -106,13 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				70CC0CA91FD85C7000909DBD /* MainViewController.swift */,
-				99240DEA1FEAD934000ADB80 /* globalTableViewCell.swift */,
 				70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */,
 				7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */,
 				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
 				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
 				998676921FE835B70012800D /* playerTableController.swift */,
+				99240DEA1FEAD934000ADB80 /* globalTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

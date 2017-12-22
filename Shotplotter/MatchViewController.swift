@@ -14,6 +14,7 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var titleBox: UINavigationItem!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,7 +24,6 @@ class MatchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if(data.firstView) {
-            self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
             data.firstView = false
             self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
         } else {
@@ -38,7 +38,7 @@ class MatchViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MatchView()                 //REPLACE THIS
-        data.opponentName = "Match vs. [Opponent]"
+        data.opponentName = ""
         super.init(coder: aDecoder)
     }
     
