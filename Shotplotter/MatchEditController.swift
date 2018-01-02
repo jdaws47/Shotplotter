@@ -16,6 +16,7 @@ class MatchEditController: UIViewController {
     @IBOutlet weak var playerStepper: UIStepper!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nameOfOpponent: UITextField!
+    @IBOutlet weak var calendarWidget: UIDatePicker!
     
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class MatchEditController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
+        calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
         super.viewDidAppear(animated)
     }
     
@@ -39,21 +41,23 @@ class MatchEditController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    /*required init?(coder aDecoder: NSCoder) {
-     fatalError("init(coder:) has not been implemented")
-     }*/
-    
-    
-    
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
     }
     
     @IBAction func goBack(_ sender: Any) {
+        data?.datePlayed = calendarWidget.date as NSDate
+        data?.dateEdited = NSDate.init()
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func oppNameChanged(_ sender: Any) {
         data?.opponentName = nameOfOpponent.text!
     }
+    
+    
+    
+    /*required init?(coder aDecoder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }*/
 }
