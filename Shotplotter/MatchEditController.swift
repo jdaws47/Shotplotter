@@ -37,13 +37,7 @@ class MatchEditController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         data = MatchView()
         super.init(coder: aDecoder)
-    }
-    
-    /*required init?(coder aDecoder: NSCoder) {
-     fatalError("init(coder:) has not been implemented")
-     }*/
-    
-    
+    }  
     
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
