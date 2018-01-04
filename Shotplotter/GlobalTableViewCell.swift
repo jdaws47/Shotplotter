@@ -9,12 +9,10 @@
 import UIKit
 
 class GlobalTableViewCell: UITableViewCell {
-    var data: MainView?
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var date: UILabel!
     
     init(pName: String, pDate: String, coder aDecoder: NSCoder) {
-        self.data = MainView()
         opponentName.text = pName
         date.text = pDate
         super.init(coder: aDecoder)!

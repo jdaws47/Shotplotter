@@ -22,13 +22,16 @@ class MatchViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if(data.firstView) {
             data.firstView = false
             self.performSegue(withIdentifier: "MatchToMEdit", sender: self)
-        } else {
-            titleBox.title = "Match vs. " + data.opponentName
         }
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        titleBox.title = "Match vs. " + data.opponentName
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {

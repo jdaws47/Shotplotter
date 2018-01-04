@@ -25,10 +25,10 @@ class MatchEditController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
         calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
