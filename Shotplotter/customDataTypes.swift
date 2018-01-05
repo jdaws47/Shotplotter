@@ -45,3 +45,5 @@ class Player {
 class PlayerSpot : UIButton {
     
 }
+
+let playerColors = [UIColor.blue,UIColor.red,UIColor.yellow]
