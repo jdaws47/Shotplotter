@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MatchViewController: UIViewController {
+class MatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var data: MatchView
+    var passedMatch = -1
+    var localTableView: UITableView
     @IBOutlet weak var backToMain: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var titleBox: UINavigationItem!
@@ -42,6 +44,7 @@ class MatchViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         self.data = MatchView()                 //REPLACE THIS
         data.opponentName = ""
+        localTableView = UITableView()
         super.init(coder: aDecoder)
     }
     
@@ -54,6 +57,36 @@ class MatchViewController: UIViewController {
             if let destination = segue.destination as? MatchEditController {
                 destination.data = self.data
             }
+        } else if (segue.identifier == "MatchToGame") {
+            if let destination = segue.destination as? GameViewController {
+                destination.data = (self.data.games[passedMatch])
+            }
         }
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MatchTableViewCell", for: indexPath) as! MatchTableViewCell
+        
+        // Fetches the appropriate meal for the data source layout.
+        let game = data.games[indexPath.row]
+        
+        //cell.opponentName.text = game.opponentName
+        //cell.date.text = game.dateCreated.description
+        
+        localTableView = tableView
+        return cell
+    }
+    
+    /*override func numberOfSections(in tableView: UITableView) -> Int {
+     return 1
+     }*/
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (data.games.count)
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        passedMatch = indexPath.row
+        self.performSegue(withIdentifier: "MainToMatch", sender: self)
     }
 }
