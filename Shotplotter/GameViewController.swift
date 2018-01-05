@@ -30,9 +30,4 @@ class GameViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
-
-/*required init?(coder aDecoder: NSCoder) {
- fatalError("init(coder:) has not been implemented")
- }*/
 }

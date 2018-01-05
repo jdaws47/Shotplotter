@@ -25,8 +25,4 @@ class GameEditController: UIViewController {
         //self.data = GameView()
         super.init(coder: aDecoder)
     }
-    
-    /*required init?(coder aDecoder: NSCoder) {
-     fatalError("init(coder:) has not been implemented")
-     }*/
 }
