@@ -46,7 +46,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         cell.opponentName.text = match?.opponentName
         cell.date.text = match?.dateCreated.description
         
-        
+        localTableView = tableView
         return cell
     }
     
