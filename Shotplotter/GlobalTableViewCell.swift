@@ -8,6 +8,8 @@
 
 import UIKit
 
+//THIS IS THE CELL DATA THAT ALL CELLS IN THE MAINVIEW TABLE WILL USE
+
 class GlobalTableViewCell: UITableViewCell {
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var date: UILabel!
@@ -21,4 +23,6 @@ class GlobalTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    
 }

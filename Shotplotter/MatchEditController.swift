@@ -37,7 +37,6 @@ class MatchEditController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        data = MatchView()
         super.init(coder: aDecoder)
     }  
     

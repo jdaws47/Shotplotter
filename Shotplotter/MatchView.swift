@@ -26,8 +26,8 @@ class MatchView {
         firstView = true
     }
     
-    func addGame() {
-        games.append(GameView(_gameNum:games.count, _players:players))
+    public func addGame() {
+        games.append(GameView(_gameNum:games.count + 1, _players:players))
     }
     
     func playerNumShift(newNum: Int) {
