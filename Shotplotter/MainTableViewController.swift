@@ -11,7 +11,7 @@ import UIKit
 class MainTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var data: MainView?
     var passedMatch = -1
-    var localTableView: UITableView?
+    private var localTableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,6 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //loadSample()
         self.localTableView?.reloadData()
         super.viewWillAppear(animated)
     }
@@ -31,9 +30,10 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MainView()
-        data?.matches = [MatchView()]
+        data?.addMatch()
         data?.matches[0].opponentName = "Example #1"
         data?.matches[0].firstView = true
+        data?.matches[0].addGame()
         super.init(coder: aDecoder)
     }
     
@@ -66,12 +66,6 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         self.performSegue(withIdentifier: "MainToMatch", sender: self)
     }
     
-    private func loadSample() {
-        let match1 = MatchView()
-        let match2 = MatchView()
-        
-        data?.matches += [match1, match2]
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "MainToMatch") {
