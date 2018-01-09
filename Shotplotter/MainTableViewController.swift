@@ -37,6 +37,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         super.init(coder: aDecoder)
     }
     
+    // This gets called to load each cell
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GlobalTableViewCell", for: indexPath) as! GlobalTableViewCell
         
@@ -54,10 +55,12 @@ class MainTableViewController: UIViewController, UITableViewDataSource, UITableV
         return 1
     }*/
     
+    // Returns the number of cells in the TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (data?.matches.count)!
     }
     
+    // This gets called when a singular cell gets called
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         passedMatch = indexPath.row
         self.performSegue(withIdentifier: "MainToMatch", sender: self)
