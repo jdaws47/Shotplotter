@@ -44,9 +44,21 @@ class MatchView {
                 }
                 if (double) {newNumber += 1}
             }
-            //Ignore what it tells you. Do NOT change this to a let!
-            var newColor = UIColor.init(red: 0.9, green: 0.9, blue: 2, alpha: 0)      //TEMPORARY INITIALIZER - CHANGE TO RANDOMIZE COLOR <><><><><><><><><><><><><><><><><>
+            var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
             players.append(Player.init(_number: newNumber, _color: newColor))
+        }
+        syncColors()
+    }
+    
+    //
+    func syncColors() {
+        for i in 0...players.count {
+            if (i < players.count) {
+                players[i].color = playerColors[i]
+            } else {
+                players[i].color = UIColor.black
+            }
+            //add function that causes buttons to update colors
         }
     }
 }
