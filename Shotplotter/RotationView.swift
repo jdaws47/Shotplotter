@@ -5,7 +5,7 @@
 //  Created by Zelle Mandez on 12/6/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
-
+ 
 class RotationView {
     var positions = [PlayerSpot]()
     var activePlayers = [Player]()

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MatchView {
     var games = [GameView]()
@@ -27,5 +28,37 @@ class MatchView {
     
     public func addGame() {
         games.append(GameView(_gameNum:games.count + 1, _players:players))
+    }
+    
+    func playerNumShift(newNum: Int) {
+        let oldNum = players.count
+        let inc: Bool
+        inc = (oldNum < newNum)
+        if (inc) {
+            var double = true
+            var newNumber = 1
+            while (double) {
+                double = false
+                for player in players {
+                    if (newNumber == player.number) {double = true}
+                }
+                if (double) {newNumber += 1}
+            }
+            var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
+            players.append(Player.init(_number: newNumber, _color: newColor))
+        }
+        syncColors()
+    }
+    
+    //
+    func syncColors() {
+        for i in 0...players.count {
+            if (i < players.count) {
+                players[i].color = playerColors[i]
+            } else {
+                players[i].color = UIColor.black
+            }
+            //add function that causes buttons to update colors
+        }
     }
 }

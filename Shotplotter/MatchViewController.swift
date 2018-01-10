@@ -63,6 +63,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    // This gets called to load each cell
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchTableViewCell", for: indexPath) as! MatchTableViewCell
         
@@ -79,10 +80,12 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
      return 1
      }*/
     
+    // Returns the number of cells in the TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (data!.games.count)
     }
     
+    // This gets called when a singular cell gets called
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         passedGame = indexPath.row
         self.performSegue(withIdentifier: "MatchToGame", sender: self)
