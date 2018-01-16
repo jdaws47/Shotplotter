@@ -24,6 +24,9 @@ class MatchView {
         dateEdited = NSDate.init()
         datePlayed = NSDate.init()
         firstView = true
+        addGame()
+        addGame()
+        addGame()
     }
     
     public func addGame() {

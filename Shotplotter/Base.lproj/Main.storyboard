@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,13 +38,10 @@
                                                 <state key="normal" title="Filter"/>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="6f1-9k-B0B">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rvt-Oq-iV8">
-                                                <rect key="frame" x="974" y="7" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                <state key="normal" title="+"/>
-                                            </button>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="6f1-9k-B0B">
+                                            <connections>
+                                                <action selector="addNewMatch:" destination="BYZ-38-t0r" id="CBJ-AQ-Ng5"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -58,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k22-cO-Fkd" id="swI-mQ-Di9">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opponent Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drx-31-wdm">
@@ -97,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="408" y="122"/>
+            <point key="canvasLocation" x="425" y="122"/>
         </scene>
         <!--Rotation View Controller-->
         <scene sceneID="vJD-lc-PqX">
@@ -167,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FB7-1h-6Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="408" y="1020"/>
+            <point key="canvasLocation" x="514" y="853"/>
         </scene>
         <!--Match View Controller-->
         <scene sceneID="QfO-i0-Qf7">
@@ -198,7 +195,11 @@
                                             </button>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem systemItem="add" id="5SI-Mb-dmz"/>
+                                            <barButtonItem systemItem="add" id="5SI-Mb-dmz">
+                                                <connections>
+                                                    <action selector="addGame:" destination="vYv-gp-kO7" id="YYH-bd-lmk"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem style="plain" id="A3v-hi-qNz">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
                                                     <rect key="frame" x="921.5" y="7" width="46" height="30"/>
@@ -223,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRd-Zf-i5f" id="XV2-fM-jUh">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxY-wV-TH1">
@@ -249,6 +250,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="5SI-Mb-dmz" id="P0u-cK-m0b"/>
                         <outlet property="backToMain" destination="YGQ-AH-Sft" id="Hy8-a3-b1r"/>
                         <outlet property="editButton" destination="003-UZ-o9J" id="fpM-na-Lga"/>
                         <outlet property="titleBox" destination="Mzx-Ab-pFq" id="FMU-bP-tio"/>
@@ -351,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ye-nU-TaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2057" y="122"/>
+            <point key="canvasLocation" x="2044" y="122"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="JNa-PE-kRH">
@@ -366,7 +368,7 @@
                                 <rect key="frame" x="0.0" y="28" width="970" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
-                                    <rect key="frame" x="0.0" y="0.0" width="970" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -380,7 +382,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qs-Ag-lhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2057" y="921"/>
+            <point key="canvasLocation" x="2044" y="689"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="vty-f5-0ze">
@@ -421,7 +423,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="lne-1K-ywp">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FqM-BT-IL5">
-                                                <rect key="frame" x="897" y="2" width="130" height="40"/>
+                                                <rect key="frame" x="874" y="2" width="130" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Active Players"/>
@@ -539,7 +541,7 @@
                                         <rect key="frame" x="0.0" y="28" width="314" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Os7-RY-J4M" id="Jzx-Nb-Zoe">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -561,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtK-PT-I4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="843" y="1485"/>
+            <point key="canvasLocation" x="1721" y="1155"/>
         </scene>
     </scenes>
     <resources>

@@ -33,7 +33,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         data?.addMatch()
         data?.matches[0].opponentName = "Example #1"
         data?.matches[0].firstView = true
-        data?.matches[0].addGame()
         super.init(coder: aDecoder)
     }
     
@@ -63,6 +62,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.performSegue(withIdentifier: "MainToMatch", sender: self)
     }
     
+    @IBAction func addNewMatch(_ sender: Any) {
+        data?.addMatch()
+        localTableView?.reloadData()
+        passedMatch = (data?.matches.count)! - 1
+        self.performSegue(withIdentifier: "MainToMatch", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "MainToMatch") {
