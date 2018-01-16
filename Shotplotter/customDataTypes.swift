@@ -33,12 +33,21 @@ struct Line {
 }
 
 class Player {
-    var shots = [AnyHashable:Line]()
+    var shots = [Line]()
     var color: UIColor
     var number: Int
     init(_number: Int, _color: UIColor) {
         number = _number
         color = _color
+    }
+    
+    func addLine(line: Line) {
+        shots.append(line)
+    }
+    
+    func addLine(start:Pos, end:Pos, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
+        var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
+        addLine(line:temp)
     }
 }
 
