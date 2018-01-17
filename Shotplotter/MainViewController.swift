@@ -31,10 +31,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MainView()
-        /*data?.addMatch()
+        data?.addMatch()
         data?.matches[0].opponentName = "Example #1"
         data?.matches[0].firstView = true
-        data?.matches[0].addGame()*/
+        data?.matches[0].addGame()
         super.init(coder: aDecoder)
     }
     
@@ -64,6 +64,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // Runs whenever a cell is tapped. Used to segue to the relevant Match.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         passedMatch = indexPath.row
+        self.performSegue(withIdentifier: "MainToMatch", sender: self)
+    }
+    
+    @IBAction func addNewMatch(_ sender: Any) {
+        data?.addMatch()
+        localTableView?.reloadData()
+        passedMatch = (data?.matches.count)! - 1
         self.performSegue(withIdentifier: "MainToMatch", sender: self)
     }
     
