@@ -24,6 +24,9 @@ class MatchView {
         dateEdited = NSDate.init()
         datePlayed = NSDate.init()
         firstView = true
+        addGame()
+        addGame()
+        addGame()
     }
     
     public func addGame() { // Adds a blank game to the end of the array, sets it's GameNumber

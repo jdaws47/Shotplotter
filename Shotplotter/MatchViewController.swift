@@ -15,6 +15,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var backToMain: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var titleBox: UINavigationItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     // Doesn't always run. Do not use
     override func viewDidLoad() {
@@ -94,4 +95,13 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         passedGame = indexPath.row
         self.performSegue(withIdentifier: "MatchToGame", sender: self)
     }
+    
+    @IBAction func addGame(_ sender: Any) {
+        data?.addGame()
+        localTableView?.reloadData()
+        if((data?.games.count)! >= 5) {
+            addButton.isEnabled = false
+        }
+    }
+    
 }
