@@ -14,7 +14,7 @@ enum SortingMode: Int {
     case dateEdit,dateCreated,datePlayed
 }
 
-struct Pos { //Just a utility structure to hold position
+struct Pos { //Just a utility structure to hold field position
     var x: Int
     var y: Int
 }
@@ -41,17 +41,19 @@ class Player {
         color = _color
     }
     
+    //adds a copy of a line struct
     func addLine(line: Line) {
         shots.append(line)
     }
     
+    //adds a line to the array directly from the raw information
     func addLine(start:Pos, end:Pos, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
 }
 
-class PlayerSpot : UIButton {
+class PlayerSpot : UIButton { //might need to have a seperate file for this one
     
 }
 
