@@ -12,12 +12,15 @@ class GameView {
     var activePlayers = [Player]()
     var gameNum: Int
     
-    init(_gameNum: Int, _players: [Player]) { //Make a proper initializer with arguments
+    init(_gameNum: Int, _players: [Player]) {
         gameNum = _gameNum
         players = _players
+        while (rotations.count < 6) { // There should always be 6 rotations in a game
+            addRotation()
+        }
     }
     
-    func addRotation() {
+    func addRotation() { // adds a rotation with the proper rotationID and player array references
         rotations.append(RotationView(ID: rotations.count, GameNum: gameNum, _players: players, _activePlayers: activePlayers))
     }
 }

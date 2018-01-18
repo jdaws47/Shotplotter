@@ -19,13 +19,14 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var nameOfOpponent: UITextField!
     @IBOutlet weak var calendarWidget: UIDatePicker!
     
-    
+    // Doesn't always run. Do not use
     override func viewDidLoad() {
         nameOfOpponent.text = data?.opponentName
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    // Runs whenever the view starts loading. Use this instead of DidLoad.
     override func viewWillAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
         calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
@@ -41,16 +42,19 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         super.init(coder: aDecoder)
     }  
     
+    // Runs when the number of players in the Match is changed. Will update colors and the player array
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
     }
     
+    // TODO: Needs documentation
     @IBAction func goBack(_ sender: Any) {
         data?.datePlayed = calendarWidget.date as NSDate
         data?.dateEdited = NSDate.init()
         dismiss(animated: true, completion: nil)
     }
     
+    // Runs when the name of the opponent school is changed.
     @IBAction func oppNameChanged(_ sender: Any) {
         data?.opponentName = nameOfOpponent.text!
     }

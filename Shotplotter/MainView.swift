@@ -7,17 +7,18 @@
 //
 
 class MainView {
-    var matches = [MatchView]()
+    var matches = [MatchView]() // each element is a different match
     var sortMode: SortingMode
     var search: String
     var isSearching: Bool
     
     init() {
-        sortMode = SortingMode.alphaOpponent
+        sortMode = SortingMode.dateEdit
         search = ""
         isSearching = false
     }
     
+    // adds a blank match to the end of the array
     func addMatch() {
         matches.append(MatchView())
     }

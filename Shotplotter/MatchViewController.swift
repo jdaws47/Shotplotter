@@ -11,19 +11,20 @@ import UIKit
 class MatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var data: MatchView?
     var passedGame = -1 //initial value that can't exist as an index
-    private var localTableView: UITableView?
+    private var localTableView: UITableView? // A reference to the table of Games
     @IBOutlet weak var backToMain: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var titleBox: UINavigationItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     
-    
+    // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Like Caillou, this function doesn't deserve hair or love
     }
     
+    // Runs whenever the view finishes loading. Use this instead of DidLoad.
     override func viewDidAppear(_ animated: Bool) {
         if(data?.firstView)! {
             data?.firstView = false
@@ -32,6 +33,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidAppear(animated)
     }
     
+    // Runs whenever the view starts loading. Use this instead of DidLoad.
     override func viewWillAppear(_ animated: Bool) {
         titleBox.title = "Match vs. " + (data?.opponentName)!
         self.localTableView?.reloadData()
@@ -48,10 +50,12 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.init(coder: aDecoder)
     }
     
+    // TODO: Needs documentation
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
+    //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "MatchToMEdit") {
             if let destination = segue.destination as? MatchEditController {
@@ -64,7 +68,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    // This gets called to load each cell
+    // Runs once for each cell in a table. Use to initialize cell values, such as the labels.
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchTableViewCell", for: indexPath) as! MatchTableViewCell
         
@@ -81,12 +85,12 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
      return 1
      }*/
     
-    // Returns the number of cells in the TableView
+    // Just a basic getter to get the number of cells that are supposed to be in the table
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (data!.games.count)
     }
     
-    // This gets called when a singular cell gets called
+    // Runs whenever a cell is tapped. Used to segue to the relevant Game.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         passedGame = indexPath.row
         self.performSegue(withIdentifier: "MatchToGame", sender: self)
