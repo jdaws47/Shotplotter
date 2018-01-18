@@ -333,13 +333,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EzY-PZ-pwv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="12" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1gc-lt-Ict">
                                 <rect key="frame" x="27" y="401" width="970" height="347"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" id="deX-G3-9Cu" customClass="PlayerTableCell" customModule="Shotplotter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="970" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-Hv-ph1" customClass="PlayerTextField" customModule="Shotplotter" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="7" width="344" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jersey Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wez-ZT-2om" customClass="PlayerTextField" customModule="Shotplotter" customModuleProvider="target">
+                                                    <rect key="frame" x="380" y="7" width="151" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQZ-82-A5x">
+                                                    <rect key="frame" x="921" y="7" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="color" destination="UQZ-82-A5x" id="WTS-HU-2SI"/>
+                                            <outlet property="name" destination="Ggj-Hv-ph1" id="Vtd-HQ-NqZ"/>
+                                            <outlet property="number" destination="Wez-ZT-2om" id="BpK-C6-ZRk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
                                 <connections>
-                                    <segue destination="DlY-Qc-v78" kind="embed" id="k5X-Kg-fVn"/>
+                                    <outlet property="dataSource" destination="deq-F3-NKg" id="YQV-20-ksu"/>
+                                    <outlet property="delegate" destination="deq-F3-NKg" id="ecl-2f-LWy"/>
                                 </connections>
-                            </containerView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -355,35 +394,6 @@
             </objects>
             <point key="canvasLocation" x="2044" y="122"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="JNa-PE-kRH">
-            <objects>
-                <tableViewController id="DlY-Qc-v78" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="12" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1gc-lt-Ict">
-                        <rect key="frame" x="0.0" y="0.0" width="970" height="347"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="deX-G3-9Cu">
-                                <rect key="frame" x="0.0" y="28" width="970" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
-                                    <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="DlY-Qc-v78" id="0il-CC-IG4"/>
-                            <outlet property="delegate" destination="DlY-Qc-v78" id="fHP-MX-xGY"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qs-Ag-lhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2044" y="689"/>
-        </scene>
         <!--Game View Controller-->
         <scene sceneID="vty-f5-0ze">
             <objects>
@@ -396,15 +406,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnd-Nj-LP9">
-                                <rect key="frame" x="22" y="50" width="43" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="temp forward button"/>
-                                <connections>
-                                    <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="8EE-KG-fyM"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-vM-Hl5">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -501,6 +502,9 @@
                                 <rect key="frame" x="101" y="85" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <segue destination="pIQ-8Y-aoa" kind="show" id="9Wv-sr-3jn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotation 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="253-8Q-1PF">
                                 <rect key="frame" x="148" y="695" width="80" height="21"/>
@@ -514,6 +518,7 @@
                     </view>
                     <connections>
                         <outlet property="goToMatch" destination="LaX-I4-Ayb" id="DT5-Ka-Hsw"/>
+                        <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="xoN-Az-T9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUy-nt-uxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,6 +551,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Dy-qG-syk" id="Qk4-LS-o2w"/>
+                                    <outlet property="delegate" destination="9Dy-qG-syk" id="0TG-xp-TId"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose Active Players:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm9-Nu-JPB">
                                 <rect key="frame" x="5" y="20" width="512" height="21"/>
@@ -569,4 +578,7 @@
     <resources>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xoN-Az-T9w"/>
+    </inferredMetricsTieBreakers>
 </document>

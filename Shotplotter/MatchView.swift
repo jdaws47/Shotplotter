@@ -27,6 +27,7 @@ class MatchView {
         addGame()
         addGame()
         addGame()
+        playerNumShift(newNum: 12)
     }
     
     public func addGame() {
@@ -48,15 +49,15 @@ class MatchView {
                 if (double) {newNumber += 1}
             }
             var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
-            players.append(Player.init(_number: newNumber, _color: newColor))
+            players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
         }
         syncColors()
     }
     
     //
     func syncColors() {
-        for i in 0...players.count {
-            if (i < players.count) {
+        for i in 0...players.count - 1 {
+            if (i < playerColors.count) {
                 players[i].color = playerColors[i]
             } else {
                 players[i].color = UIColor.black

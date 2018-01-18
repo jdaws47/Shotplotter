@@ -36,9 +36,11 @@ class Player {
     var shots = [Line]()
     var color: UIColor
     var number: Int
-    init(_number: Int, _color: UIColor) {
+    var name: String
+    init(_number: Int, _color: UIColor, _name: String) {
         number = _number
         color = _color
+        name = _name
     }
     
     func addLine(line: Line) {
@@ -55,4 +57,12 @@ class PlayerSpot : UIButton {
     
 }
 
-let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192, green: 249, blue: 2, alpha: 0), UIColor.init(red: 249, green: 192, blue: 11, alpha: 0)]
+class PlayerTextField: UITextField {
+    var index: Int
+    required init?(coder aDecoder: NSCoder) {
+        index = -1
+        super.init(coder: aDecoder)
+    }
+}
+
+let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, /*UIColor.init(red: 192, green: 249, blue: 2, alpha: 0), UIColor.init(red: 249, green: 192, blue: 11, alpha: 0)*/]

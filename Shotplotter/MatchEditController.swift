@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MatchEditController: UIViewController {
+class MatchEditController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     var data: MatchView?
+    var localTableView: UITableView?
 
     //MARK: Protocols
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
@@ -54,9 +55,35 @@ class MatchEditController: UIViewController {
         data?.opponentName = nameOfOpponent.text!
     }
     
+    // This gets called to load each cell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! PlayerTableCell
+        
+        // Fetches the appropriate meal for the data source layout.
+        let player = data?.players[indexPath.row]
+        
+        cell.imageView?.backgroundColor = player?.color
+        cell.name.delegate = self
+        cell.number.delegate = self
+        
+        localTableView = tableView
+        return cell
+    }
     
+    /*public func numberOfSections(in tableView: UITableView) -> Int {
+     return 1
+     }*/
+    
+    // Returns the number of cells in the TableView
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Int(playerStepper.value)
+    }
     
     /*required init?(coder aDecoder: NSCoder) {
      fatalError("init(coder:) has not been implemented")
      }*/
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        //textField.
+    }
 }
