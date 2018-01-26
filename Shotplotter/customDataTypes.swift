@@ -76,4 +76,4 @@ class PlayerTextField: UITextField {
     }
 }
 
-let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, /*UIColor.init(red: 192, green: 249, blue: 2, alpha: 0), UIColor.init(red: 249, green: 192, blue: 11, alpha: 0)*/]
+let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0)]
