@@ -37,24 +37,31 @@ class MatchView {
     }
     
     // A function that runs when the number of players on a team is changed. Either removes a player or initializes a new one
+    // TODO: Find all locations that call this multiple times and replace them with a single call. Multiple changes have been implemented.
     func playerNumShift(newNum: Int) {
         let oldNum = players.count
         let inc: Bool
         inc = (oldNum < newNum)
         if (inc) { // If a new player is added
-            var double = true
-            var newNumber = 1
-            while (double) {
-                double = false
-                for player in players {
-                    if (newNumber == player.number) {double = true}
+            while (players.count < newNum) {
+                var double = true
+                var newNumber = 1
+                while (double) {
+                    double = false
+                    for player in players {
+                        if (newNumber == player.number) {double = true}
+                    }
+                    if (double) {newNumber += 1}
                 }
-                if (double) {newNumber += 1}
+                var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
+                players.append(Player.init(_number: newNumber, _color: newColor))
             }
             var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
             players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
         } else { // If a player is being removed
-            players.removeLast()
+            while (players.count > newNum) {
+                players.removeLast()
+            }
         }
         syncColors()
     }

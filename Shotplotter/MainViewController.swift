@@ -44,7 +44,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let match = data?.matches[indexPath.row]
         
         cell.opponentName.text = match?.opponentName
-        cell.date.text = match?.dateCreated.description
+        
+        var date = match?.dateCreated.description
+        let regexp = "\\d*-\\d*-\\d*"
+        if let range = date?.range(of:regexp, options: .regularExpression) {
+            date = date?.substring(with:range)
+        }
+        cell.date.text = date
+        //cell.date.text = match?.dateCreated.description
         
         localTableView = tableView
         return cell
