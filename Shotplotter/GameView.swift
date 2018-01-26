@@ -18,6 +18,7 @@ class GameView {
         while (rotations.count < 6) { // There should always be 6 rotations in a game
             addRotation()
         }
+        print(players)
     }
     
     func addRotation() { // adds a rotation with the proper rotationID and player array references

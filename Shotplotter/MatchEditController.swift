@@ -66,9 +66,18 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         // Fetches the appropriate meal for the data source layout.
         let player = data?.players[indexPath.row]
         
+        if(player?.name != "") {
+            cell.name.text = player?.name
+        }
+        if(player?.number != -1) {
+            cell.number.text = String((player?.number)!)
+        }
         cell.imageView?.backgroundColor = player?.color
         cell.name.delegate = self
         cell.number.delegate = self
+        cell.name.index = indexPath.row
+        cell.number.index = indexPath.row
+        cell.number.isName = false
         
         localTableView = tableView
         return cell
@@ -87,7 +96,12 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
      fatalError("init(coder:) has not been implemented")
      }*/
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        //textField.
+    func textFieldDidEndEditing(_ textField: PlayerTextField) {
+        if (textField.isName) {
+            data?.players[textField.index].name = textField.text!
+        } else {
+            data?.players[textField.index].number = Int(textField.text!)!
+        }
+        print("editing ended")
     }
 }

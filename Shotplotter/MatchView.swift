@@ -24,10 +24,12 @@ class MatchView {
         dateEdited = NSDate.init()
         datePlayed = NSDate.init()
         firstView = true
+        for i in 0..<12 {
+            playerNumShift(newNum: i + 1)
+        }
         addGame()
         addGame()
         addGame()
-        playerNumShift(newNum: 12)
     }
     
     public func addGame() { // Adds a blank game to the end of the array, sets it's GameNumber
@@ -51,6 +53,8 @@ class MatchView {
             }
             var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
             players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
+        } else { // If a player is being removed
+            players.removeLast()
         }
         syncColors()
     }

@@ -75,7 +75,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Fetches the appropriate meal for the data source layout.
         let game = data?.games[indexPath.row]
         
-        cell.title.text = "Game #\(game?.gameNum ?? -1)"
+        cell.title.text = "Game #\((game?.gameNum)! + 1 )"
         
         localTableView = tableView
         return cell

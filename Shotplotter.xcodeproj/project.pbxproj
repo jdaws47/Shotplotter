@@ -18,6 +18,7 @@
 		70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBA1FD862FD00909DBD /* GameView.swift */; };
 		70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CBC1FD8630400909DBD /* RotationView.swift */; };
 		70CD82781FDEF58C00CBEBDC /* GameEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CD82771FDEF58C00CBEBDC /* GameEditController.swift */; };
+		991821EF2018F84D0018583E /* ActivePlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991821EE2018F84D0018583E /* ActivePlayerCell.swift */; };
 		9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB481FD70E850034A279 /* AppDelegate.swift */; };
 		9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB4A1FD70E850034A279 /* ViewController.swift */; };
 		9928FB4E1FD70E850034A279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9928FB4C1FD70E850034A279 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		70CC0CBA1FD862FD00909DBD /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		70CC0CBC1FD8630400909DBD /* RotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
 		70CD82771FDEF58C00CBEBDC /* GameEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEditController.swift; sourceTree = "<group>"; };
+		991821EE2018F84D0018583E /* ActivePlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivePlayerCell.swift; sourceTree = "<group>"; };
 		9928FB451FD70E850034A279 /* Shotplotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shotplotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9928FB481FD70E850034A279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9928FB4A1FD70E850034A279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				99C19C04200FBE48003D370A /* PlayerTableCell.swift */,
 				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
 				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
+				991821EE2018F84D0018583E /* ActivePlayerCell.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
 				99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */,
 			);
@@ -330,6 +333,7 @@
 				99C19C05200FBE48003D370A /* PlayerTableCell.swift in Sources */,
 				7077BCE71FDB03CA00CFF007 /* MatchEditController.swift in Sources */,
 				70CD82781FDEF58C00CBEBDC /* GameEditController.swift in Sources */,
+				991821EF2018F84D0018583E /* ActivePlayerCell.swift in Sources */,
 				70CC0CB01FD85CF700909DBD /* RotationViewController.swift in Sources */,
 				70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */,
 				70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */,

@@ -30,4 +30,13 @@ class GameViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "OpenActivePlayers") {
+            if let destination = segue.destination as? GameEditController {
+                destination.data = self.data
+            }
+        }
+    }
 }

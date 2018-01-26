@@ -37,10 +37,12 @@ class Player {
     var color: UIColor
     var number: Int
     var name: String
+    var isActive: Bool
     init(_number: Int, _color: UIColor, _name: String) {
         number = _number
         color = _color
         name = _name
+        isActive = false
     }
     
     //adds a copy of a line struct
@@ -53,6 +55,11 @@ class Player {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
+    
+    @objc public func switchChanged(mySwitch: UISwitch) {
+        let value = mySwitch.isOn
+        isActive = value
+    }
 }
 
 class PlayerSpot : UIButton { //might need to have a seperate file for this one
@@ -61,8 +68,10 @@ class PlayerSpot : UIButton { //might need to have a seperate file for this one
 
 class PlayerTextField: UITextField {
     var index: Int
+    var isName: Bool
     required init?(coder aDecoder: NSCoder) {
         index = -1
+        isName = true
         super.init(coder: aDecoder)
     }
 }

@@ -33,8 +33,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.data = MainView()
         data?.addMatch()
         data?.matches[0].opponentName = "Example #1"
-        data?.matches[0].firstView = true
-        data?.matches[0].addGame()
         super.init(coder: aDecoder)
     }
     
