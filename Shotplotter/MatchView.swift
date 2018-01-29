@@ -54,10 +54,10 @@ class MatchView {
                     if (double) {newNumber += 1}
                 }
                 var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
-                players.append(Player.init(_number: newNumber, _color: newColor, _name: <#String#>))
+                players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
             }
-            var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
-            players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
+            //var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
+            //players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
         } else { // If a player is being removed
             while (players.count > newNum) {
                 players.removeLast()
