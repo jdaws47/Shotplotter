@@ -14,7 +14,7 @@ class ActivePlayerCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
-    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var activeSwitch: ActiveSwitch!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

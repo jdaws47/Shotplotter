@@ -59,6 +59,7 @@ class Player {
     @objc public func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
         isActive = value
+        print("value changed")
     }
 }
 
@@ -77,3 +78,21 @@ class PlayerTextField: UITextField {
 }
 
 let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0)]
+
+protocol ActiveSwitchDelegate: class {
+    func switched(sender: ActiveSwitch)
+}
+
+class ActiveSwitch: UISwitch {
+    var index: Int
+    weak var delegate:ActiveSwitchDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        index = -1
+        super.init(coder: aDecoder)
+    }
+    
+    func switched(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.switched(sender: self)
+    }
+}
