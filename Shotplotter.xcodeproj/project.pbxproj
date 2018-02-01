@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F71B65C2022342200BBB48D /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71B65B2022342200BBB48D /* ArrowView.swift */; };
 		7077BCE71FDB03CA00CFF007 /* MatchEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */; };
 		70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CA91FD85C7000909DBD /* MainViewController.swift */; };
 		70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F71B65B2022342200BBB48D /* ArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchEditController.swift; sourceTree = "<group>"; };
 		70CC0CA91FD85C7000909DBD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				991821EE2018F84D0018583E /* ActivePlayerCell.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
 				99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */,
+				3F71B65B2022342200BBB48D /* ArrowView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */,
 				70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */,
 				70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */,
+				3F71B65C2022342200BBB48D /* ArrowView.swift in Sources */,
 				70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */,
 				9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */,
 				9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */,
