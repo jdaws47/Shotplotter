@@ -59,6 +59,7 @@ class Player {
     @objc public func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
         isActive = value
+        print("value changed")
     }
 }
 
