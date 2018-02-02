@@ -89,3 +89,21 @@ func setColor(_ index: Int) -> UIColor {
     }
     return UIColor.black
 }
+
+protocol ActiveSwitchDelegate: class {
+    func switched(sender: ActiveSwitch)
+}
+
+class ActiveSwitch: UISwitch {
+    var index: Int
+    weak var delegate:ActiveSwitchDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        index = -1
+        super.init(coder: aDecoder)
+    }
+    
+    func switched(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.switched(sender: self)
+    }
+}
