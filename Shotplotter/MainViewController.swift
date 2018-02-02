@@ -45,7 +45,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.opponentName.text = match?.opponentName
         
-        var date = match?.dateCreated.description
+        var date = match?.datePlayed.description
         let regexp = "\\d*-\\d*-\\d*"
         if let range = date?.range(of:regexp, options: .regularExpression) {
             date = date?.substring(with:range)
