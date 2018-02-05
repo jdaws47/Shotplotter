@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7077BCE71FDB03CA00CFF007 /* MatchEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */; };
+		70A100B32028D86500F3C56F /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A100B22028D86500F3C56F /* Logo.png */; };
 		70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CA91FD85C7000909DBD /* MainViewController.swift */; };
 		70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */; };
 		70CC0CAE1FD85CE500909DBD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAD1FD85CE500909DBD /* GameViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchEditController.swift; sourceTree = "<group>"; };
+		70A100B22028D86500F3C56F /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		70CC0CA91FD85C7000909DBD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		70CC0CAD1FD85CE500909DBD /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				9928FB4A1FD70E850034A279 /* ViewController.swift */,
 				70CC0CBE1FD8630B00909DBD /* Data Holders */,
 				9928FB4C1FD70E850034A279 /* Main.storyboard */,
+				70A100B22028D86500F3C56F /* Logo.png */,
 				70CC0CB11FD8610000909DBD /* customDataTypes.swift */,
 				70CC0CB31FD8625A00909DBD /* ViewControllers */,
 				9928FB4F1FD70E850034A279 /* Assets.xcassets */,
@@ -299,6 +302,7 @@
 			files = (
 				9928FB531FD70E850034A279 /* LaunchScreen.storyboard in Resources */,
 				9928FB501FD70E850034A279 /* Assets.xcassets in Resources */,
+				70A100B32028D86500F3C56F /* Logo.png in Resources */,
 				99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */,
 				9928FB4E1FD70E850034A279 /* Main.storyboard in Resources */,
 			);

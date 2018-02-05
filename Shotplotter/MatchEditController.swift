@@ -105,6 +105,5 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         } else {
             data?.players[textField.index].number = Int(textField.text!)!
         }
-        print("editing ended")
     }
 }
