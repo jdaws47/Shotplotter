@@ -11,10 +11,13 @@ import UIKit
 class RotationViewController: UIViewController {
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
+    @IBOutlet weak var tipShot: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,4 +33,6 @@ class RotationViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
 }

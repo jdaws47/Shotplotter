@@ -21,6 +21,8 @@ class ArrowView: UIView {
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
     
+    var typeOfShot: Int
+    
     required init?(coder aDecoder: NSCoder) {
         color = UIColor.black
         strokeWidth = 3
@@ -31,6 +33,7 @@ class ArrowView: UIView {
         finPoint = CGPoint()
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
+        typeOfShot = -1
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }
