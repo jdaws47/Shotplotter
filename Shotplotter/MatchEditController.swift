@@ -45,6 +45,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     // Runs when the number of players in the Match is changed. Will update colors and the player array
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
+        localTableView?.reloadData()
     }
     
     // TODO: Needs documentation
@@ -72,7 +73,9 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         if(player?.number != -1) {
             cell.number.text = String((player?.number)!)
         }
-        cell.imageView?.backgroundColor = player?.color
+        //cell.imageView?.backgroundColor = player?.color
+        cell.color.backgroundColor = setColor(indexPath.row)
+        player?.color = cell.color.backgroundColor!
         cell.name.delegate = self
         cell.number.delegate = self
         cell.name.index = indexPath.row

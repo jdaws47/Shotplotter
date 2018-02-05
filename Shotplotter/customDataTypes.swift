@@ -59,6 +59,7 @@ class Player {
     @objc public func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
         isActive = value
+        print("value changed")
     }
 }
 
@@ -76,4 +77,33 @@ class PlayerTextField: UITextField {
     }
 }
 
-let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0)]
+let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0.5), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0.5), UIColor.init(red:125/255,green:0,blue:255/255,alpha:0)]
+
+func setColor(_ index: Int) -> UIColor {
+    if (index >= 0 && index < playerColors.count) {
+        return playerColors[index]
+    } else if (index < 0) {
+        return playerColors[0]
+    } else if (index >= playerColors.count) {
+        return playerColors[playerColors.count-1]
+    }
+    return UIColor.black
+}
+
+protocol ActiveSwitchDelegate: class {
+    func switched(sender: ActiveSwitch)
+}
+
+class ActiveSwitch: UISwitch {
+    var index: Int
+    weak var delegate:ActiveSwitchDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        index = -1
+        super.init(coder: aDecoder)
+    }
+    
+    func switched(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.switched(sender: self)
+    }
+}

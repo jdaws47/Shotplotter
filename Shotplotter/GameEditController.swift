@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameEditController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GameEditController: UIViewController, UITableViewDataSource, UITableViewDelegate, ActiveSwitchDelegate {
     var data: GameView?
     var localTableView: UITableView?
     
@@ -34,11 +34,13 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
         // Fetches the appropriate meal for the data source layout.
         let player = data?.players[indexPath.row]
         
+        cell.activeSwitch.index = indexPath.row
+        cell.activeSwitch.delegate = self
         cell.name.text = player?.name
         cell.number.text = String((player?.number)!)
         cell.activeSwitch.isOn = (player?.isActive)!
         
-        cell.activeSwitch.addTarget(player, action: #selector(Player.switchChanged(mySwitch:)), for: UIControlEvents.valueChanged)
+        cell.activeSwitch.addTarget(cell.activeSwitch, action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
         
         localTableView = tableView
         return cell
@@ -57,6 +59,9 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
+    func switched(sender: ActiveSwitch) {
+        data?.players[sender.index].isActive = sender.isOn
+        print("asdf")
+    }
     
 }
