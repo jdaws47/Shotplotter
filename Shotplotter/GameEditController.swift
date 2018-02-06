@@ -61,7 +61,25 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func switched(sender: ActiveSwitch) {
         data?.players[sender.index].isActive = sender.isOn
-        print("asdf")
+        if (data?.players[sender.index].isActive)! && (data?.activePlayers.count)! > 0 {
+            for k in 0 ..< (data?.activePlayers.count)! {
+                if (data?.players[sender.index])! === (data?.activePlayers[k])! {
+                    //print(data?.activePlayers)
+                    return
+                }
+            }
+            data?.activePlayers.append((data?.players[sender.index])!)
+        } else if (data?.players[sender.index].isActive)! && (data?.activePlayers.count == 0) {
+            data?.activePlayers.append((data?.players[sender.index])!)
+        } else {
+            for var k in 0 ..< (data?.activePlayers.count)! {
+                if (data?.players[sender.index])! === (data?.activePlayers[k])! {
+                    data?.activePlayers.remove(at: k)
+                    k = 0
+                }
+            }
+        }
+        //print(data?.activePlayers)
     }
     
 }
