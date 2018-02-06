@@ -9,9 +9,9 @@
 import UIKit
 
 class RotationViewController: UIViewController {
+    
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
-    @IBOutlet weak var tipShot: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,5 +34,11 @@ class RotationViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "DrawingDisplay") {
+            if let destination = segue.destination as? ArrowView {
+                destination.data = self.data
+            }
+        }
+    }
 }
