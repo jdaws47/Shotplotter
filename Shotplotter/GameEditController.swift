@@ -10,7 +10,9 @@ import UIKit
 
 class GameEditController: UIViewController, UITableViewDataSource, UITableViewDelegate, ActiveSwitchDelegate {
     var data: GameView?
+    var switches = [ActiveSwitch]()
     var localTableView: UITableView?
+    var firstRun = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,9 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.activeSwitch.index = indexPath.row
         cell.activeSwitch.delegate = self
+        if switches.count < 12 {
+            switches.append(cell.activeSwitch)
+        }
         cell.name.text = player?.name
         cell.number.text = String((player?.number)!)
         cell.activeSwitch.isOn = (player?.isActive)!
@@ -43,6 +48,19 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.activeSwitch.addTarget(cell.activeSwitch, action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
         
         localTableView = tableView
+        
+        if ((data?.activePlayers.count)! >= 6) && !firstRun {
+            for j in 0 ..< (data?.activePlayers.count)! {
+                if !firstRun && !switches[j].isOn {
+                    switches[j].isEnabled = false
+                }
+            }
+        }
+        
+        if(switches.count == 12) {
+            firstRun = false
+        }
+        
         return cell
     }
     
@@ -61,7 +79,45 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func switched(sender: ActiveSwitch) {
         data?.players[sender.index].isActive = sender.isOn
-        print("asdf")
+        if (data?.players[sender.index].isActive)! && (data?.activePlayers.count)! > 0 {
+            for var k in 0 ..< (data?.activePlayers.count)! {
+                if (data?.players[sender.index])! === (data?.activePlayers[k])! {
+                    //print(data?.activePlayers)
+                    k = 0
+                    return
+                }
+            }
+            data?.activePlayers.append((data?.players[sender.index])!)
+        } else if (data?.players[sender.index].isActive)! && (data?.activePlayers.count == 0) {
+            data?.activePlayers.append((data?.players[sender.index])!)
+        } else {
+            for var k in 0 ..< (data?.activePlayers.count)! {
+                //print(k)
+                if (data?.players[sender.index])! === (data?.activePlayers[k])! {
+                    data?.activePlayers.remove(at: k)
+                    k = 0
+                    break
+                }
+            }
+        }
+        //print(data?.activePlayers)
+        var count = 0
+        for i in 0 ..< (data?.activePlayers.count)! {
+            if (data?.activePlayers[i].isActive)! {
+                count = count + 1
+            }
+        }
+        if (count >= 6) {
+            for j in 0 ..< (data?.activePlayers.count)! {
+                if !switches[j].isOn {
+                    switches[j].isEnabled = false
+                }
+            }
+        } else if (count < 6) {
+            for j in 0 ..< (data?.activePlayers.count)! {
+                switches[j].isEnabled = true
+            }
+        }
     }
     
 }

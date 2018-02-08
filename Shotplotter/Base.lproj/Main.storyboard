@@ -524,26 +524,41 @@
                                 <rect key="frame" x="406" y="411" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <action selector="rotation5:" destination="pjS-34-rk7" eventType="touchUpInside" id="02s-3p-Vww"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7B-cD-oRg">
                                 <rect key="frame" x="101" y="411" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <action selector="rotation4:" destination="pjS-34-rk7" eventType="touchUpInside" id="Vfd-Bp-ZZ8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z21-lX-Fi6">
                                 <rect key="frame" x="712" y="411" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <action selector="rotation6:" destination="pjS-34-rk7" eventType="touchUpInside" id="16S-Yg-CYX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qx-pC-EBQ">
                                 <rect key="frame" x="712" y="85" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <action selector="rotation3:" destination="pjS-34-rk7" eventType="touchUpInside" id="4zY-6F-DhD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkF-rU-Z9j">
                                 <rect key="frame" x="406" y="86" width="175" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
+                                <connections>
+                                    <action selector="rotation2:" destination="pjS-34-rk7" eventType="touchUpInside" id="bKO-bu-Q62"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QQ-1x-kXC">
                                 <rect key="frame" x="101" y="85" width="175" height="270"/>

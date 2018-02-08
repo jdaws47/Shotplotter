@@ -11,6 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
+    var passedRotation = -1
     
     
     // Doesn't always run. Do not use
@@ -32,11 +33,45 @@ class GameViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func rotation1(_ sender: Any) {
+        passedRotation = 0
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
+    @IBAction func rotation2(_ sender: Any) {
+        passedRotation = 1
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
+    @IBAction func rotation3(_ sender: Any) {
+        passedRotation = 2
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
+    @IBAction func rotation4(_ sender: Any) {
+        passedRotation = 3
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
+    @IBAction func rotation5(_ sender: Any) {
+        passedRotation = 4
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
+    @IBAction func rotation6(_ sender: Any) {
+        passedRotation = 5
+        self.performSegue(withIdentifier: "GameToRotation", sender: self)
+    }
+    
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "OpenActivePlayers") {
             if let destination = segue.destination as? GameEditController {
                 destination.data = self.data
+            }
+        } else if (segue.identifier == "GameToRotation") {
+            if let destination = segue.destination as? RotationViewController {
+                destination.data = data?.rotations[passedRotation]
             }
         }
     }
