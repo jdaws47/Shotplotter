@@ -61,6 +61,10 @@ class Player {
         isActive = value
         print("value changed")
     }
+    
+    func getColor() -> UIColor {
+        return color
+    }
 }
 
 class PlayerSpot : UIButton { //might need to have a seperate file for this one
@@ -76,10 +80,7 @@ class PlayerSpot : UIButton { //might need to have a seperate file for this one
         
     }
     
-    func changeColor() {
-        
-    }
-    
+       
     func brutallyInjureOpponentPlayer() {
     
     }

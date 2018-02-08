@@ -10,6 +10,7 @@ import UIKit
 
 class RotationViewController: UIViewController {
     
+    @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
     
@@ -34,11 +35,10 @@ class RotationViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "DrawingDisplay") {
-            if let destination = segue.destination as? ArrowView {
-                destination.data = self.data
-            }
-        }
+    @IBAction func player1(_ sender: Any) {
+        print("Player1 button pushed")
+        drawingBoard.changeColor(player: (data?.players[0])!)
     }
+    
+    
 }

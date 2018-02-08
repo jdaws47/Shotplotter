@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     
+    
     // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,4 +40,5 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
 }
