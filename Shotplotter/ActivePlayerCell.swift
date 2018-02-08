@@ -23,5 +23,6 @@ class ActivePlayerCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         activeSwitch.isOn = false
+        activeSwitch.isEnabled = true
     }
 }
