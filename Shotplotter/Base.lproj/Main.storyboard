@@ -155,7 +155,7 @@
                                 <rect key="frame" x="425" y="84" width="430" height="664"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="Wrb-xF-Ouw" kind="embed" id="WEh-hA-ymc"/>
+                                    <segue destination="Wrb-xF-Ouw" kind="embed" identifier="DrawingDisplay" id="WEh-hA-ymc"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -185,6 +185,60 @@
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="664"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pf3-fI-mDc" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="86" y="121" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player1:" destination="ik8-VD-iLv" eventType="touchUpInside" id="LMq-9b-XnE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lG-hY-NkG" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="190" y="121" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player2:" destination="ik8-VD-iLv" eventType="touchUpInside" id="Ikx-fq-dZX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6Z-dy-i3U" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="298" y="121" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player3:" destination="ik8-VD-iLv" eventType="touchUpInside" id="hAZ-Mt-kYN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnq-WX-7PS" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="86" y="268" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player4:" destination="ik8-VD-iLv" eventType="touchUpInside" id="mjH-hk-519"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9P-46-fDl" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="190" y="268" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player5:" destination="ik8-VD-iLv" eventType="touchUpInside" id="EiI-Wi-e0m"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOT-6d-Lje" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="298" y="268" width="46" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Player 1"/>
+                                <connections>
+                                    <action selector="player6:" destination="ik8-VD-iLv" eventType="touchUpInside" id="Jh6-H0-DAf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

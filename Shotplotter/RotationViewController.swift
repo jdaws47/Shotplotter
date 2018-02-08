@@ -9,12 +9,15 @@
 import UIKit
 
 class RotationViewController: UIViewController {
+    
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,5 +32,13 @@ class RotationViewController: UIViewController {
     
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "DrawingDisplay") {
+            if let destination = segue.destination as? ArrowView {
+                destination.data = self.data
+            }
+        }
     }
 }
