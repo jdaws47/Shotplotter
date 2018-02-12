@@ -14,11 +14,12 @@ class RotationViewController: UIViewController {
     var data: RotationView?
     var protoLine: Line
     @IBOutlet weak var goToGame: UIButton!
+    @IBOutlet weak var rotationTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        drawingBoard.data = self.data
         //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
     }
     
