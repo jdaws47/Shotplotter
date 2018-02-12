@@ -12,7 +12,6 @@ class RotationViewController: UIViewController {
     
     @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
-    var protoLine: Line
     @IBOutlet weak var goToGame: UIButton!
     @IBOutlet weak var rotationTitle: UINavigationItem!
     
@@ -25,7 +24,7 @@ class RotationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         drawingBoard.data = data
-        
+        rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,7 +34,6 @@ class RotationViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         //self.data = RotationView()
-        protoLine = Line(startPos: CGPoint.init(x:0,y:0), endPos: CGPoint.init(x:0,y:0), tip: false, slide: false, A: false, roll: false, hit: false, color: UIColor.black, didScore: false, rotationID: -1)
         super.init(coder: aDecoder)
     }
     
@@ -43,20 +41,24 @@ class RotationViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func player1(_ sender: Any) {
-        print("Player1 button pushed")
-        drawingBoard.changeColor(player: (data?.players[0])!)
-    }
-    
     @IBAction func TipTypeSelect(_ sender: Any) {
+        data?.protoLine.tip = (data?.protoLine.tip)!
+        print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
     }
     
     @IBAction func SlideTypeSelect(_ sender: Any) {
+        data?.protoLine.tip = !(data?.protoLine.tip)!
+        print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
     }
     
     @IBAction func RollTypeSelect(_ sender: Any) {
     }
     
     @IBAction func ATypeSelect(_ sender: Any) {
+    }
+    
+    @IBAction func player1(_ sender: Any) {
+        print("Player1 button pushed")
+        drawingBoard.changeColor(player: (data?.players[0])!)
     }
 }
