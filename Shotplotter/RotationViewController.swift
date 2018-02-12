@@ -13,6 +13,7 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
+    @IBOutlet weak var rotationTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,11 @@ class RotationViewController: UIViewController {
         
         drawingBoard.data = self.data
         //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        drawingBoard.data = data
+        rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +40,22 @@ class RotationViewController: UIViewController {
     
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func TipTypeSelect(_ sender: Any) {
+        data?.protoLine.tip = (data?.protoLine.tip)!
+        print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
+    }
+    
+    @IBAction func SlideTypeSelect(_ sender: Any) {
+        data?.protoLine.tip = !(data?.protoLine.tip)!
+        print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
+    }
+    
+    @IBAction func RollTypeSelect(_ sender: Any) {
+    }
+    
+    @IBAction func ATypeSelect(_ sender: Any) {
     }
     
     @IBAction func player1(_ sender: Any) {

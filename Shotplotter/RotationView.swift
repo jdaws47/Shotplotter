@@ -5,17 +5,20 @@
 //  Created by Zelle Mandez on 12/6/17.
 //  Copyright © 2017 District196. All rights reserved.
 //
- 
+
+import UIKit
+
 class RotationView {
     var positions = [PlayerSpot]()
     var activePlayers = [Player]()
     var players = [Player]()
     var rotationID: Int
     var viewMode: Int //0 - Standard, all lines. 1 - Scoring only. 2 = ???. 3 = ???
-    var hasSelected: Bool                                //^ Idea: Weighted noise field based on where the lines end and score
+    var hasSelected: Bool                       //^ Idea: Weighted noise field based on where the lines end and score
     var selected: PlayerSpot?
     var nextDraws: Bool
-    var tipSelect, slideSelect, aSelect, rollSelect: Bool
+    var tipSelect, slideSelect, aSelect, rollSelect: Bool //Delete these?
+    var protoLine: Line
     
     
     init(ID: Int, GameNum: Int, _players: [Player], _activePlayers: [Player]) {
@@ -26,6 +29,7 @@ class RotationView {
         nextDraws = false
         tipSelect = false; slideSelect = false; aSelect = false; rollSelect = false
         activePlayers = _activePlayers
+        protoLine = Line(startPos: CGPoint.init(x:0,y:0), endPos: CGPoint.init(x:0,y:0), tip: false, slide: false, A: false, roll: false, hit: false, color: UIColor.black, didScore: false, rotationID: -1)
         players = _players
     }
     

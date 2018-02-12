@@ -20,8 +20,8 @@ struct Pos { //Just a utility structure to hold field position
 }
 
 struct Line {
-    var startPos: Pos
-    var endPos: Pos
+    var startPos: CGPoint
+    var endPos: CGPoint
     var tip: Bool = false
     var slide: Bool = false
     var A: Bool = false
@@ -30,6 +30,19 @@ struct Line {
     var color: UIColor
     var didScore: Bool = false
     var rotationID: Int
+    
+    mutating func reset() {
+        startPos = CGPoint.init(x: 0, y: 0)
+        endPos = CGPoint.init(x: 0, y: 0)
+        tip = false
+        slide = false
+        A = false
+        roll = false
+        hit = false
+        color = UIColor.black
+        didScore = false
+        rotationID = 0
+    }
 }
 
 class Player {
@@ -51,7 +64,7 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:Pos, end:Pos, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
+    func addLine(start:CGPoint, end:CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
