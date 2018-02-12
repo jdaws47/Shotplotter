@@ -22,6 +22,11 @@ class RotationViewController: UIViewController {
         //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        drawingBoard.data = data
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,11 +34,17 @@ class RotationViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         //self.data = RotationView()
+        protoLine = Line(startPos: CGPoint.init(x:0,y:0), endPos: CGPoint.init(x:0,y:0), tip: false, slide: false, A: false, roll: false, hit: false, color: UIColor.black, didScore: false, rotationID: -1)
         super.init(coder: aDecoder)
     }
     
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func player1(_ sender: Any) {
+        print("Player1 button pushed")
+        drawingBoard.changeColor(player: (data?.players[0])!)
     }
     
     @IBAction func TipTypeSelect(_ sender: Any) {
