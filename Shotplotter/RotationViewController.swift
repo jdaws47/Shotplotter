@@ -13,12 +13,18 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
+    @IBOutlet weak var rotationTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        drawingBoard.data = self.data
         //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
+        print(data?.players)
     }
     
     override func didReceiveMemoryWarning() {
