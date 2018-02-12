@@ -20,8 +20,10 @@ class ArrowView: UIView {
     var finPoint: CGPoint
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
+    var layers: [CAShapeLayer]
     
     var typeOfShot: Int
+    var lines: Line
     
     required init?(coder aDecoder: NSCoder) {
         color = UIColor.black
@@ -33,7 +35,9 @@ class ArrowView: UIView {
         finPoint = CGPoint()
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
+        layers = [CAShapeLayer]()
         typeOfShot = -1
+        lines = Line(startPos: <#T##Pos#>, endPos: <#T##Pos#>, tip: <#T##Bool#>, slide: <#T##Bool#>, A: <#T##Bool#>, roll: <#T##Bool#>, hit: <#T##Bool#>, color: <#T##UIColor#>, didScore: <#T##Bool#>, rotationID: <#T##Int#>)
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }
