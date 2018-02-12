@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k22-cO-Fkd" id="swI-mQ-Di9">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opponent Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drx-31-wdm">
@@ -132,24 +132,36 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Tip"/>
+                                <connections>
+                                    <action selector="TipTypeSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="fNn-NQ-1Dg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l85-Jf-cgb">
                                 <rect key="frame" x="300" y="321" width="66" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Slide"/>
+                                <connections>
+                                    <action selector="SlideTypeSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="Pbn-iF-xfL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfk-4s-FBc">
                                 <rect key="frame" x="301" y="391" width="64" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Roll"/>
+                                <connections>
+                                    <action selector="RollTypeSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="hz1-38-A4P"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmq-yy-key">
                                 <rect key="frame" x="313" y="471" width="40" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="A"/>
+                                <connections>
+                                    <action selector="ATypeSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="q6k-Sc-NQ8"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFT-fk-Jcp" customClass="ArrowView" customModule="Shotplotter" customModuleProvider="target">
                                 <rect key="frame" x="425" y="84" width="430" height="664"/>
@@ -167,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FB7-1h-6Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513.8671875" y="852.34375"/>
+            <point key="canvasLocation" x="579" y="852"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="WlL-zK-TTg">
@@ -191,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgf-Aj-CjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598.828125" y="1605.46875"/>
+            <point key="canvasLocation" x="738" y="1508"/>
         </scene>
         <!--Match View Controller-->
         <scene sceneID="QfO-i0-Qf7">
@@ -229,7 +241,7 @@
                                             </barButtonItem>
                                             <barButtonItem style="plain" id="A3v-hi-qNz">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
-                                                    <rect key="frame" x="923" y="7" width="46" height="30"/>
+                                                    <rect key="frame" x="921.5" y="7" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Edit"/>
@@ -251,7 +263,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRd-Zf-i5f" id="XV2-fM-jUh">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxY-wV-TH1">
@@ -362,7 +374,7 @@
                                         <rect key="frame" x="0.0" y="28" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-Hv-ph1" customClass="PlayerTextField" customModule="Shotplotter" customModuleProvider="target">
@@ -419,7 +431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ye-nU-TaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2044" y="122"/>
+            <point key="canvasLocation" x="1937" y="122"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="vty-f5-0ze">
@@ -573,7 +585,7 @@
                                         <rect key="frame" x="0.0" y="28" width="314" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Os7-RY-J4M" id="Jzx-Nb-Zoe">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbl-7A-ttf">
@@ -624,24 +636,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtK-PT-I4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1720.8984375" y="1154.6875"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Qsp-vy-QA2">
-            <objects>
-                <viewController id="Pwb-we-x9s" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="N91-wI-9lg"/>
-                        <viewControllerLayoutGuide type="bottom" id="m7x-cY-CTK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ObP-SO-lNU">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JpV-Z8-rIz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="1427" y="1349"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="T6Z-K8-uH5">
@@ -659,12 +654,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZC-7z-ovO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1937" y="852"/>
         </scene>
     </scenes>
     <resources>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Wv-sr-3jn"/>
+        <segue reference="xoN-Az-T9w"/>
     </inferredMetricsTieBreakers>
 </document>

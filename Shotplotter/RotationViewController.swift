@@ -10,6 +10,7 @@ import UIKit
 
 class RotationViewController: UIViewController {
     var data: RotationView?
+    var protoLine: Line
     @IBOutlet weak var goToGame: UIButton!
     
     override func viewDidLoad() {
@@ -29,5 +30,17 @@ class RotationViewController: UIViewController {
     
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func TipTypeSelect(_ sender: Any) {
+    }
+    
+    @IBAction func SlideTypeSelect(_ sender: Any) {
+    }
+    
+    @IBAction func RollTypeSelect(_ sender: Any) {
+    }
+    
+    @IBAction func ATypeSelect(_ sender: Any) {
     }
 }
