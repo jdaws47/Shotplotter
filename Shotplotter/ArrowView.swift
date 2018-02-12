@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ArrowView: UIView {
-    
+    var data: RotationView?
     var color: UIColor
     var strokeWidth: CGFloat
     var isDrawing: Bool
@@ -20,6 +20,8 @@ class ArrowView: UIView {
     var finPoint: CGPoint
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
+    
+    var typeOfShot: Int
     
     required init?(coder aDecoder: NSCoder) {
         color = UIColor.black
@@ -31,6 +33,7 @@ class ArrowView: UIView {
         finPoint = CGPoint()
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
+        typeOfShot = -1
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }
@@ -69,5 +72,10 @@ class ArrowView: UIView {
         self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
+    
+    func changeColor(player: Player) {
+        self.color = player.getColor()
+    }
+    
 }
 

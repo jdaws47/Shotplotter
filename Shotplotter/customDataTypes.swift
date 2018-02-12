@@ -74,10 +74,29 @@ class Player {
         isActive = value
         print("value changed")
     }
+    
+    func getColor() -> UIColor {
+        return color
+    }
 }
 
 class PlayerSpot : UIButton { //might need to have a seperate file for this one
+    var player: Player?
+    var playerIsSelected: Bool
     
+    required init?(coder aDecoder: NSCoder) {
+        self.playerIsSelected = false
+        super.init(coder: aDecoder)!
+    }
+    
+    func rotate() {
+        
+    }
+    
+       
+    func brutallyInjureOpponentPlayer() {
+    
+    }
 }
 
 class PlayerTextField: UITextField {

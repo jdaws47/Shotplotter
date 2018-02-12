@@ -9,6 +9,8 @@
 import UIKit
 
 class RotationViewController: UIViewController {
+    
+    @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
     var protoLine: Line
     @IBOutlet weak var goToGame: UIButton!
@@ -16,6 +18,8 @@ class RotationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
     }
     
     override func didReceiveMemoryWarning() {
