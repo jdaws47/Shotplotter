@@ -9,16 +9,13 @@
 import UIKit
 import Foundation
 
+//----------------------------- Enumeration used to keep track of which Matches we should be displaying on Mainview.
 enum SortingMode: Int {
     case alphaOpponent = 0
     case dateEdit,dateCreated,datePlayed
 }
 
-struct Pos { //Just a utility structure to hold field position
-    var x: Int
-    var y: Int
-}
-
+//----------------------------- The Line structure. This is used to keep track of all information for each line
 struct Line {
     var startPos: CGPoint
     var endPos: CGPoint
@@ -45,12 +42,14 @@ struct Line {
     }
 }
 
+//----------------------------- The Player class is used to hold all data that is specific to each player
 class Player {
     var shots = [Line]()
     var color: UIColor
     var number: Int
     var name: String
     var isActive: Bool
+    
     init(_number: Int, _color: UIColor, _name: String) {
         number = _number
         color = _color
@@ -78,7 +77,7 @@ class Player {
     
     @objc public func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
-        isActive = value
+        //isActive = value
         print("value changed")
     }
     
@@ -87,7 +86,8 @@ class Player {
     }
 }
 
-class PlayerSpot : UIButton { //might need to have a seperate file for this one
+//----------------------------- Represents each player in the GUI
+class PlayerSpot : UIButton {
     var player: Player?
     var playerIsSelected: Bool
     
@@ -146,3 +146,16 @@ class ActiveSwitch: UISwitch {
         delegate?.switched(sender: self)
     }
 }
+
+//----------------------------- Holds references to images
+let AOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/AOff.png"
+let AOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/AOn.png"
+
+let RollOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/RollOff.png"
+let RollOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/RollOn.png"
+
+let SlideOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/SlideOff.png"
+let SlideOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/SlideOn.png"
+
+let TipOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/TipOff.png"
+let TipOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/TipOn.png"

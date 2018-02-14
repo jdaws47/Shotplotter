@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F71B65C2022342200BBB48D /* ArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F71B65B2022342200BBB48D /* ArrowView.swift */; };
 		7077BCE71FDB03CA00CFF007 /* MatchEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */; };
+		70A09DF7203357200064D2D7 /* ShotTypeIcons in Resources */ = {isa = PBXBuildFile; fileRef = 70A09DF6203357200064D2D7 /* ShotTypeIcons */; };
 		70A100B32028D86500F3C56F /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70A100B22028D86500F3C56F /* Logo.png */; };
 		70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CA91FD85C7000909DBD /* MainViewController.swift */; };
 		70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		3F71B65B2022342200BBB48D /* ArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowView.swift; sourceTree = "<group>"; };
 		7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchEditController.swift; sourceTree = "<group>"; };
+		70A09DF6203357200064D2D7 /* ShotTypeIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ShotTypeIcons; sourceTree = "<group>"; };
 		70A100B22028D86500F3C56F /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		70CC0CA91FD85C7000909DBD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		70CC0CAB1FD85CD300909DBD /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				9928FB481FD70E850034A279 /* AppDelegate.swift */,
 				9928FB4A1FD70E850034A279 /* ViewController.swift */,
+				70A09DF6203357200064D2D7 /* ShotTypeIcons */,
 				70CC0CBE1FD8630B00909DBD /* Data Holders */,
 				9928FB4C1FD70E850034A279 /* Main.storyboard */,
 				70A100B22028D86500F3C56F /* Logo.png */,
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9928FB531FD70E850034A279 /* LaunchScreen.storyboard in Resources */,
+				70A09DF7203357200064D2D7 /* ShotTypeIcons in Resources */,
 				9928FB501FD70E850034A279 /* Assets.xcassets in Resources */,
 				70A100B32028D86500F3C56F /* Logo.png in Resources */,
 				99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */,
