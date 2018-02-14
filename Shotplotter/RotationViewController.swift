@@ -14,6 +14,7 @@ class RotationViewController: UIViewController {
     var data: RotationView?
     @IBOutlet weak var goToGame: UIButton!
     @IBOutlet weak var rotationTitle: UINavigationItem!
+    var activePlayer: Player
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class RotationViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         //self.data = RotationView()
+        activePlayer = Player()
         super.init(coder: aDecoder)
     }
     
@@ -60,29 +62,32 @@ class RotationViewController: UIViewController {
     
     @IBAction func player1(_ sender: Any) {
         print("Player1 button pushed")
-        //guard data?.players[0] != nil else {
-            drawingBoard.changeColor(player: (data?.players[0])!)
-            //return
-        //}
+        activePlayer = (data?.players[0])!
+        drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player2(_ sender: Any) {
-        drawingBoard.changeColor(player: (data?.players[1])!)
+        activePlayer = (data?.players[1])!
+        drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player3(_ sender: Any) {
-        drawingBoard.changeColor(player: (data?.players[2])!)
+        activePlayer = (data?.players[2])!
+        drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player4(_ sender: Any) {
-        drawingBoard.changeColor(player: (data?.players[3])!)
+        activePlayer = (data?.players[3])!
+        drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player5(_ sender: Any) {
-        drawingBoard.changeColor(player: (data?.players[4])!)
+        activePlayer = (data?.players[4])!
+        drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player6(_ sender: Any) {
-        drawingBoard.changeColor(player: (data?.players[5])!)
+        activePlayer = (data?.players[5])!
+        drawingBoard.changeColor(player: activePlayer)
     }
 }

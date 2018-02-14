@@ -58,6 +58,13 @@ class Player {
         isActive = false
     }
     
+    init() {
+        number = -1
+        color = UIColor.black
+        name = ""
+        isActive = false
+    }
+    
     //adds a copy of a line struct
     func addLine(line: Line) {
         shots.append(line)
