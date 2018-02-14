@@ -617,7 +617,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Volleyball Court.jpg"/>
                                 <connections>
-                                    <action selector="rotation1:" destination="pjS-34-rk7" eventType="touchUpInside" id="hzy-yu-OSv"/>
+                                    <action selector="rotation1:" destination="pjS-34-rk7" eventType="touchUpInside" id="xmh-3f-afg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotation 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="253-8Q-1PF">
@@ -735,4 +735,7 @@
     <resources>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xoN-Az-T9w"/>
+    </inferredMetricsTieBreakers>
 </document>

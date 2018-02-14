@@ -37,7 +37,7 @@ class ArrowView: UIView {
         storeLayer = CAShapeLayer()
         layers = [CAShapeLayer]()
         typeOfShot = -1
-        lines = Line(startPos: <#T##Pos#>, endPos: <#T##Pos#>, tip: <#T##Bool#>, slide: <#T##Bool#>, A: <#T##Bool#>, roll: <#T##Bool#>, hit: <#T##Bool#>, color: <#T##UIColor#>, didScore: <#T##Bool#>, rotationID: <#T##Int#>)
+        lines = Line(startPos: <#T##CGPoint#>, endPos: <#T##CGPoint#>, tip: <#T##Bool#>, slide: <#T##Bool#>, A: <#T##Bool#>, roll: <#T##Bool#>, hit: <#T##Bool#>, color: <#T##UIColor#>, didScore: <#T##Bool#>, rotationID: <#T##Int#>)
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }
