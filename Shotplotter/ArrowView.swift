@@ -20,7 +20,6 @@ class ArrowView: UIView {
     var finPoint: CGPoint
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
-    var layers: [CAShapeLayer]
     
     var typeOfShot: Int
     var activePlayer: Player
@@ -37,7 +36,7 @@ class ArrowView: UIView {
         finPoint = CGPoint()
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
-        layers = [CAShapeLayer]()
+        
         typeOfShot = -1
         
         activePlayer = Player()
@@ -58,7 +57,7 @@ class ArrowView: UIView {
         storePath.addLine(to: finPoint)
         drawShapeLayer(path: storePath, layer: storeLayer)
         dispPath.removeAllPoints()
-        activePlayer.addLine(start: startPoint, end: finPoint, tip: false, rotation: 0, slide:false, A: false, roll: false, hit: false, didScore: true)
+        activePlayer.addLine(start: startPoint, end: finPoint, tip: false, rotation: 0, slide: false, A: false, roll: false, hit: false, didScore: true)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,7 +83,7 @@ class ArrowView: UIView {
     func changeColor(player: Player) {
         activePlayer = player
         self.color = player.getColor()
+        self.storeLayer = player.getLayer()
     }
-    
 }
 

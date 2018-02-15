@@ -95,32 +95,32 @@ class RotationViewController: UIViewController {
     
     @IBAction func player1(_ sender: Any) {
         print("Player1 button pushed")
-        activePlayer = (data?.players[0])!
+        activePlayer = (data?.activePlayers[0])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player2(_ sender: Any) {
-        activePlayer = (data?.players[1])!
+        activePlayer = (data?.activePlayers[1])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player3(_ sender: Any) {
-        activePlayer = (data?.players[2])!
+        activePlayer = (data?.activePlayers[2])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player4(_ sender: Any) {
-        activePlayer = (data?.players[3])!
+        activePlayer = (data?.activePlayers[3])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player5(_ sender: Any) {
-        activePlayer = (data?.players[4])!
+        activePlayer = (data?.activePlayers[4])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player6(_ sender: Any) {
-        activePlayer = (data?.players[5])!
+        activePlayer = (data?.activePlayers[5])!
         drawingBoard.changeColor(player: activePlayer)
     }
 }

@@ -45,12 +45,14 @@ struct Line {
 //----------------------------- The Player class is used to hold all data that is specific to each player
 class Player {
     var shots = [Line]()
+    var layer: CAShapeLayer
     var color: UIColor
     var number: Int
     var name: String
     var isActive: Bool
     
     init(_number: Int, _color: UIColor, _name: String) {
+        layer = CAShapeLayer()
         number = _number
         color = _color
         name = _name
@@ -62,6 +64,7 @@ class Player {
         color = UIColor.black
         name = ""
         isActive = false
+        layer = CAShapeLayer()
     }
     
     //adds a copy of a line struct
@@ -83,6 +86,10 @@ class Player {
     
     func getColor() -> UIColor {
         return color
+    }
+    
+    func getLayer() -> CAShapeLayer {
+        return layer
     }
 }
 
