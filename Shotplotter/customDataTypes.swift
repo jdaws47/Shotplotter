@@ -155,14 +155,14 @@ class ActiveSwitch: UISwitch {
 }
 
 //----------------------------- Holds references to images
-let AOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/AOff.png"
-let AOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/AOn.png"
+let AOff = #imageLiteral(resourceName: "AOff.png")
+let AOn = #imageLiteral(resourceName: "AOn.png")
 
-let RollOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/RollOff.png"
-let RollOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/RollOn.png"
+let RollOff = #imageLiteral(resourceName: "RollOff.png")
+let RollOn = #imageLiteral(resourceName: "RollOn.png")
 
-let SlideOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/SlideOff.png"
-let SlideOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/SlideOn.png"
+let SlideOff = #imageLiteral(resourceName: "SlideOff.png")
+let SlideOn = #imageLiteral(resourceName: "SlideOn.png")
 
-let TipOff = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/TipOff.png"
-let TipOn = "/Users/Zelle/Documents/Projects/School/Programming/Shotplotter/Shotplotter/ShotTypeIcons/TipOn.png"
+let TipOff = #imageLiteral(resourceName: "TipOff.png")
+let TipOn = #imageLiteral(resourceName: "TipOn.png")
