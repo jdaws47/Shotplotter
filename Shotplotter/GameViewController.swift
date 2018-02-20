@@ -22,7 +22,12 @@ class GameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navTitle.title = "Game \((data?.gameNum)! + 1) vs. \((data?.opponentName)!)"
+        //print(data?.gameNum)
+        //print(data?.opponentName)
+        //if data?.gameNum != nil && data?.opponentName != nil {
+        let game = (data?.gameNum)! + 1
+        let name = (data?.opponentName)!
+        navTitle.title = "Game \(game) vs. \(name)"
     }
     
     override func didReceiveMemoryWarning() {
