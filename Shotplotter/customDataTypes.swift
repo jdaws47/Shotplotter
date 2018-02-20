@@ -9,19 +9,16 @@
 import UIKit
 import Foundation
 
+//----------------------------- Enumeration used to keep track of which Matches we should be displaying on Mainview.
 enum SortingMode: Int {
     case alphaOpponent = 0
     case dateEdit,dateCreated,datePlayed
 }
 
-struct Pos { //Just a utility structure to hold field position
-    var x: Int
-    var y: Int
-}
-
+//----------------------------- The Line structure. This is used to keep track of all information for each line
 struct Line {
-    var startPos: Pos
-    var endPos: Pos
+    var startPos: CGPoint
+    var endPos: CGPoint
     var tip: Bool = false
     var slide: Bool = false
     var A: Bool = false
@@ -30,14 +27,29 @@ struct Line {
     var color: UIColor
     var didScore: Bool = false
     var rotationID: Int
+    
+    mutating func reset() {
+        startPos = CGPoint.init(x: 0, y: 0)
+        endPos = CGPoint.init(x: 0, y: 0)
+        tip = false
+        slide = false
+        A = false
+        roll = false
+        hit = false
+        color = UIColor.black
+        didScore = false
+        rotationID = 0
+    }
 }
 
+//----------------------------- The Player class is used to hold all data that is specific to each player
 class Player {
     var shots = [Line]()
     var color: UIColor
     var number: Int
     var name: String
     var isActive: Bool
+    
     init(_number: Int, _color: UIColor, _name: String) {
         number = _number
         color = _color
@@ -51,14 +63,14 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:Pos, end:Pos, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
+    func addLine(start:CGPoint, end:CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
     
     @objc public func switchChanged(mySwitch: UISwitch) {
         let value = mySwitch.isOn
-        isActive = value
+        //isActive = value
         print("value changed")
     }
     
@@ -67,7 +79,8 @@ class Player {
     }
 }
 
-class PlayerSpot : UIButton { //might need to have a seperate file for this one
+//----------------------------- Represents each player in the GUI
+class PlayerSpot : UIButton {
     var player: Player?
     var playerIsSelected: Bool
     
@@ -126,3 +139,16 @@ class ActiveSwitch: UISwitch {
         delegate?.switched(sender: self)
     }
 }
+
+//----------------------------- Holds references to images
+let AOff = #imageLiteral(resourceName: "AOff.png")
+let AOn = #imageLiteral(resourceName: "AOn.png")
+
+let RollOff = #imageLiteral(resourceName: "RollOff.png")
+let RollOn = #imageLiteral(resourceName: "RollOn.png")
+
+let SlideOff = #imageLiteral(resourceName: "SlideOff.png")
+let SlideOn = #imageLiteral(resourceName: "SlideOn.png")
+
+let TipOff = #imageLiteral(resourceName: "TipOff.png")
+let TipOn = #imageLiteral(resourceName: "TipOn.png")
