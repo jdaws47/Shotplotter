@@ -12,11 +12,17 @@ class GameViewController: UIViewController {
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     var passedRotation = -1
+    @IBOutlet weak var navTitle: UINavigationItem!
     
     
     // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navTitle.title = "Game \((data?.gameNum)! + 1) vs. \((data?.opponentName)!)"
     }
     
     override func didReceiveMemoryWarning() {

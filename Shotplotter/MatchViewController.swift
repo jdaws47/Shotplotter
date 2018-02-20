@@ -38,6 +38,9 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleBox.title = "Match vs. " + (data?.opponentName)!
         self.localTableView?.reloadData()
         super.viewWillAppear(animated)
+        if((data?.games.count)! >= 5) {
+            addButton.isEnabled = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,6 +67,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         } else if (segue.identifier == "MatchToGame") {
             if let destination = segue.destination as? GameViewController {
                 destination.data = (self.data?.games[passedGame])
+                destination.data?.opponentName = (self.data?.opponentName)!
             }
         }
     }
@@ -75,6 +79,8 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Fetches the appropriate meal for the data source layout.
         let game = data?.games[indexPath.row]
         
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        cell.addGestureRecognizer(longGesture)
         cell.title.text = "Game #\((game?.gameNum)! + 1 )"
         
         localTableView = tableView
@@ -96,6 +102,27 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.performSegue(withIdentifier: "MatchToGame", sender: self)
     }
     
+    //deletes row when called
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && indexPath.row > 2{
+            //print("Deleted")
+            
+            data?.games.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        if((data?.games.count)! < 5) {
+            addButton.isEnabled = true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row < 3 {
+            return false
+        }
+        return true
+    }
+    
     @IBAction func addGame(_ sender: Any) {
         data?.addGame()
         localTableView?.reloadData()
@@ -104,4 +131,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func longPress() {
+        localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
+    }
 }

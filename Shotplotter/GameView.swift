@@ -11,10 +11,12 @@ class GameView {
     var players = [Player]()
     var activePlayers = [Player]()
     var gameNum: Int
+    var opponentName: String
     
     init(_gameNum: Int, _players: [Player]) {
         gameNum = _gameNum
         players = _players
+        opponentName = ""
         while (rotations.count < 6) { // There should always be 6 rotations in a game
             addRotation()
         }
