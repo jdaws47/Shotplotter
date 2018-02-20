@@ -35,6 +35,8 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
         calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
+        playerStepper.value = Double((data?.numOfPlayers)!)
+        numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
         super.viewWillAppear(animated)
     }
     
@@ -50,6 +52,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     // Runs when the number of players in the Match is changed. Will update colors and the player array
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
+        data?.numOfPlayers = Int(playerStepper.value)
         localTableView?.reloadData()
     }
     
@@ -98,7 +101,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Returns the number of cells in the TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(playerStepper.value)
+        return (data?.numOfPlayers)!
     }
     
     /*required init?(coder aDecoder: NSCoder) {
