@@ -13,11 +13,13 @@ class ArrowView: UIView {
     var data: RotationView?
     var color: UIColor
     var strokeWidth: CGFloat
+    
     var isDrawing: Bool
     var startPoint: CGPoint
     var dispPath: UIBezierPath
     var storePath: UIBezierPath
     var finPoint: CGPoint
+    
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
     

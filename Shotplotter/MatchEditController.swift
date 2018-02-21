@@ -11,6 +11,9 @@ import UIKit
 class MatchEditController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     var data: MatchView?
     var localTableView: UITableView?
+    var localTextField: UITextField?
+    var keyBoardSize: CGRect?
+    var editingIndexPath: IndexPath?
 
     //MARK: Protocols
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
@@ -24,12 +27,16 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         nameOfOpponent.text = data?.opponentName
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // Runs whenever the view starts loading. Use this instead of DidLoad.
     override func viewWillAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
         calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
+        playerStepper.value = Double((data?.numOfPlayers)!)
+        numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
         super.viewWillAppear(animated)
     }
     
@@ -45,6 +52,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     // Runs when the number of players in the Match is changed. Will update colors and the player array
     @IBAction func adjustPlayerNumber(_ sender: Any) {
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
+        data?.numOfPlayers = Int(playerStepper.value)
         localTableView?.reloadData()
     }
     
@@ -82,6 +90,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         cell.number.index = indexPath.row
         cell.number.isName = false
         
+        editingIndexPath = indexPath
         localTableView = tableView
         return cell
     }
@@ -92,12 +101,18 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Returns the number of cells in the TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(playerStepper.value)
+        return (data?.numOfPlayers)!
     }
     
     /*required init?(coder aDecoder: NSCoder) {
      fatalError("init(coder:) has not been implemented")
      }*/
+    
+    func textFieldDidBeginEditing(_ textField: PlayerTextField) {
+        let fieldIndexPath = IndexPath(row: textField.index, section: 0)
+        localTableView?.scrollToRow(at: fieldIndexPath, at: .top, animated: true)
+
+    }
     
     func textFieldDidEndEditing(_ textField: PlayerTextField) {
         if (textField.isName) {
@@ -106,4 +121,28 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
             data?.players[textField.index].number = Int(textField.text!)!
         }
     }
+
+    func keyboardWasShown (notification: NSNotification) {
+        let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        
+        var contentInsets:UIEdgeInsets
+        
+        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) {
+            
+            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize?.height)! / 2, 0.0);
+        }
+        else {
+            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize?.height)! / 2, 0.0);
+            
+        }
+        
+        localTableView?.contentInset = contentInsets
+        localTableView?.scrollIndicatorInsets = (localTableView?.contentInset)!
+    }
+    
+    func keyboardWillBeHidden (notification: NSNotification) {
+        localTableView?.contentInset = UIEdgeInsets.zero
+        localTableView?.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
 }
+

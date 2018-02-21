@@ -11,10 +11,14 @@ class GameView {
     var players = [Player]()
     var activePlayers = [Player]()
     var gameNum: Int
+    var opponentName: String
+    var numOfPlayers: Int
     
     init(_gameNum: Int, _players: [Player]) {
         gameNum = _gameNum
         players = _players
+        numOfPlayers = -1
+        opponentName = ""
         while (rotations.count < 6) { // There should always be 6 rotations in a game
             addRotation()
         }
@@ -22,5 +26,11 @@ class GameView {
     
     func addRotation() { // adds a rotation with the proper rotationID and player array references
         rotations.append(RotationView(ID: rotations.count, GameNum: gameNum, _players: players, _activePlayers: activePlayers))
+    }
+    
+    func updateActive() {
+        for rotation in rotations {
+            rotation.updateActive(newActive: activePlayers)
+        }
     }
 }

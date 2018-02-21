@@ -12,11 +12,23 @@ class GameViewController: UIViewController {
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     var passedRotation = -1
+    @IBOutlet weak var navTitle: UINavigationItem!
     
     
     // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //print(data?.gameNum)
+        //print(data?.opponentName)
+        //if data?.gameNum != nil && data?.opponentName != nil {
+        let game = (data?.gameNum)! + 1
+        let name = (data?.opponentName)!
+        navTitle.title = "Game \(game) vs. \(name)"
+        print("GameView: " + String(describing: data?.activePlayers.count))
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,6 +77,7 @@ class GameViewController: UIViewController {
     
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        data?.updateActive()
         if (segue.identifier == "OpenActivePlayers") {
             if let destination = segue.destination as? GameEditController {
                 destination.data = self.data

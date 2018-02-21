@@ -15,9 +15,8 @@ class RotationView {
     var rotationID: Int
     var viewMode: Int //0 - Standard, all lines. 1 - Scoring only. 2 = ???. 3 = ???
     var hasSelected: Bool                       //^ Idea: Weighted noise field based on where the lines end and score
-    var selected: PlayerSpot?
+    var selected: Int
     var nextDraws: Bool
-    var tipSelect, slideSelect, aSelect, rollSelect: Bool //Delete these?
     var protoLine: Line
     
     
@@ -25,12 +24,15 @@ class RotationView {
         rotationID = GameNum*10+ID
         viewMode = 0
         hasSelected = false
-        selected = nil
+        selected = -1
         nextDraws = false
-        tipSelect = false; slideSelect = false; aSelect = false; rollSelect = false
         activePlayers = _activePlayers
         protoLine = Line(startPos: CGPoint.init(x:0,y:0), endPos: CGPoint.init(x:0,y:0), tip: false, slide: false, A: false, roll: false, hit: false, color: UIColor.black, didScore: false, rotationID: -1)
         players = _players
+    }
+    
+    func updateActive(newActive: [Player]) {
+        activePlayers = newActive
     }
     
     // TODO: Get this working
