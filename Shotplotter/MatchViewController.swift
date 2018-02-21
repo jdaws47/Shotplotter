@@ -68,6 +68,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let destination = segue.destination as? GameViewController {
                 destination.data = (self.data?.games[passedGame])
                 destination.data?.opponentName = (self.data?.opponentName)!
+                destination.data?.numOfPlayers = (data?.numOfPlayers)!
             }
         }
     }

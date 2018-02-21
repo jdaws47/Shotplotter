@@ -57,7 +57,7 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        if(switches.count == 12) {
+        if(switches.count == data?.numOfPlayers) {
             firstRun = false
         }
         
@@ -70,8 +70,8 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Returns the number of cells in the TableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (data?.players.count != nil) {
-            return (data?.players.count)!
+        if (data?.numOfPlayers != nil) {
+            return (data?.numOfPlayers)!
         } else {
             return 12
         }

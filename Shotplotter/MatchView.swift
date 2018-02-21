@@ -17,6 +17,7 @@ class MatchView {
     var datePlayed: NSDate
     var opponentName: String
     var firstView: Bool
+    var numOfPlayers: Int
     
     init() { // TODO: Make a proper initializer with arguments
         dateCreated = NSDate.init()
@@ -24,6 +25,7 @@ class MatchView {
         dateEdited = NSDate.init()
         datePlayed = NSDate.init()
         firstView = true
+        numOfPlayers = 12
         for i in 0..<12 {
             playerNumShift(newNum: i + 1)
         }
