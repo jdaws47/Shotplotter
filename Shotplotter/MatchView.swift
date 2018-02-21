@@ -28,8 +28,6 @@ class MatchView {
             playerNumShift(newNum: i + 1)
         }
         addGame()
-        addGame()
-        addGame()
     }
     
     public func addGame() { // Adds a blank game to the end of the array, sets it's GameNumber

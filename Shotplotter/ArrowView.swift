@@ -13,15 +13,15 @@ class ArrowView: UIView {
     var data: RotationView?
     var color: UIColor
     var strokeWidth: CGFloat
+    
     var isDrawing: Bool
     var startPoint: CGPoint
     var dispPath: UIBezierPath
     var storePath: UIBezierPath
     var finPoint: CGPoint
+    
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
-    
-    var typeOfShot: Int
     
     required init?(coder aDecoder: NSCoder) {
         color = UIColor.black
@@ -33,7 +33,6 @@ class ArrowView: UIView {
         finPoint = CGPoint()
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
-        typeOfShot = -1
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }

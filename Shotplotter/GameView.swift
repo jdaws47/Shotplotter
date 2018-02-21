@@ -25,4 +25,10 @@ class GameView {
     func addRotation() { // adds a rotation with the proper rotationID and player array references
         rotations.append(RotationView(ID: rotations.count, GameNum: gameNum, _players: players, _activePlayers: activePlayers))
     }
+    
+    func updateActive() {
+        for rotation in rotations {
+            rotation.updateActive(newActive: activePlayers)
+        }
+    }
 }

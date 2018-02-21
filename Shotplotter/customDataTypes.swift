@@ -40,6 +40,10 @@ struct Line {
         didScore = false
         rotationID = 0
     }
+    
+    func hasType() -> Bool {
+        return tip || slide || A || roll || hit
+    }
 }
 
 //----------------------------- The Player class is used to hold all data that is specific to each player
