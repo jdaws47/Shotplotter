@@ -94,32 +94,61 @@ class RotationViewController: UIViewController {
     
     @IBAction func player1(_ sender: Any) {
         print("Player1 button pushed")
+        data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player2(_ sender: Any) {
+        data?.selected = 1
         activePlayer = (data?.activePlayers[1])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player3(_ sender: Any) {
+        data?.selected = 2
         activePlayer = (data?.activePlayers[2])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player4(_ sender: Any) {
+        data?.selected = 3
         activePlayer = (data?.activePlayers[3])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player5(_ sender: Any) {
+        data?.selected = 4
         activePlayer = (data?.activePlayers[4])!
         drawingBoard.changeColor(player: activePlayer)
     }
     
     @IBAction func player6(_ sender: Any) {
+        data?.selected = 5
         activePlayer = (data?.activePlayers[5])!
         drawingBoard.changeColor(player: activePlayer)
+    }
+    
+    func checkButtons (empty: Int) {
+        if (data?.protoLine.A)! {
+            aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        if (data?.protoLine.roll)! {
+            rollButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/RollOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            rollButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/RollOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        if (data?.protoLine.slide)! {
+            slideButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/SlideOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            slideButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/SlideOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        if (data?.protoLine.tip)! {
+            tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
 }

@@ -23,7 +23,6 @@ class ArrowView: UIView {
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
     
-    var typeOfShot: Int
     var activePlayer: Player
     
     
@@ -39,41 +38,43 @@ class ArrowView: UIView {
         dispLayer = CAShapeLayer()
         storeLayer = CAShapeLayer()
         
-        typeOfShot = -1
-        
         activePlayer = Player()
         super.init(coder: aDecoder)
         self.clipsToBounds = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Howdy I am touchesBegan begining")
-        isDrawing = true
-        guard let touch = touches.first else { return }
-        startPoint = touch.location(in: self)
-        //touchesMoved(Set<UITouch>, with: <#T##UIEvent?#>)
-        print("Howdy I am touchesBegan end")
+        data?.checkDraw()
+        if (data?.nextDraws)! {
+            isDrawing = true
+            guard let touch = touches.first else { return }
+            startPoint = touch.location(in: self)
+            data?.protoLine.startPos = startPoint
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Howdy I am touchesEnded began")
         guard isDrawing else { return }
         isDrawing = false
         storePath.move(to: startPoint)
         storePath.addLine(to: endPoint)
+        data?.protoLine.endPos = endPoint
         drawShapeLayer(path: storePath, layer: storeLayer)
         activePlayer.layer = self.storeLayer
-        print(activePlayer.number)
-        print(startPoint)
-        print(endPoint)
+        //print(activePlayer.number)
+        //print(startPoint)
+        //print(endPoint)
         dispPath.removeAllPoints()
-        activePlayer.addLine(start: startPoint, end: endPoint, tip: false, rotation: 0, slide: false, A: false, roll: false, hit: false, didScore: true)
+        activePlayer.addLine(line: (data?.protoLine)!)
         endPoint = startPoint
-        print("Howdy I am touchesBegan end")
+        data?.protoLine.reset()
+        data?.protoLine.rotationID = (data?.rotationID)!
+        
+        data?.selected = -1
+        updateShotButtonsEvent.raise(data: 0)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Howdy I am touchesMoved beganning")
         guard isDrawing else { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
@@ -83,7 +84,6 @@ class ArrowView: UIView {
         drawShapeLayer(path: dispPath, layer: dispLayer)
         endPoint = touchPoint
         drawShapeLayer(path: storePath, layer: storeLayer)
-        print("Howdy I am touchesMoved end")
     }
     
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
