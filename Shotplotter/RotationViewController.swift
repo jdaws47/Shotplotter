@@ -33,11 +33,7 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
-        
-        aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        rollButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/RollOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        slideButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/SlideOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        checkButtons(empty: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +45,7 @@ class RotationViewController: UIViewController {
         //self.data = RotationView()
         activePlayer = Player()
         super.init(coder: aDecoder)
+        updateShotButtonsEvent.addHandler(target: self, handler: RotationViewController.checkButtons)
     }
     
     @IBAction func goBack(_ sender: Any) {
