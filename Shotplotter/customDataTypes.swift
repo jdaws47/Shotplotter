@@ -9,6 +9,25 @@
 import UIKit
 import Foundation
 
+let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0.5), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0.5), UIColor.init(red:125/255,green:0,blue:255/255,alpha:0)]
+
+let updateShotButtonsEvent = Event<Int>()
+let updateActiveEvent = Event<[Player]>()
+
+//----------------------------- Holds references to images
+let AOff = #imageLiteral(resourceName: "AOff.png")
+let AOn = #imageLiteral(resourceName: "AOn.png")
+
+let RollOff = #imageLiteral(resourceName: "RollOff.png")
+let RollOn = #imageLiteral(resourceName: "RollOn.png")
+
+let SlideOff = #imageLiteral(resourceName: "SlideOff.png")
+let SlideOn = #imageLiteral(resourceName: "SlideOn.png")
+
+let TipOff = #imageLiteral(resourceName: "TipOff.png")
+let TipOn = #imageLiteral(resourceName: "TipOn.png")
+
+
 //----------------------------- Enumeration used to keep track of which Matches we should be displaying on Mainview.
 enum SortingMode: Int {
     case alphaOpponent = 0
@@ -98,7 +117,7 @@ class PlayerSpot : UIButton {
     }
     
        
-    func brutallyInjureOpponentPlayer() {
+    func brutallyInjureOpponentPlayer() { //Depricated, use "geld()" instead
     
     }
 }
@@ -112,8 +131,6 @@ class PlayerTextField: UITextField {
         super.init(coder: aDecoder)
     }
 }
-
-let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0.5), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0.5), UIColor.init(red:125/255,green:0,blue:255/255,alpha:0)]
 
 func setColor(_ index: Int) -> UIColor {
     if (index >= 0 && index < playerColors.count) {
@@ -144,15 +161,54 @@ class ActiveSwitch: UISwitch {
     }
 }
 
-//----------------------------- Holds references to images
-let AOff = #imageLiteral(resourceName: "AOff.png")
-let AOn = #imageLiteral(resourceName: "AOn.png")
+//----------------------------- Event Implementation
+private class EventHandlerWrapper<T: AnyObject, U>
+: Invocable, Disposable {
+    weak var target: T?
+    let handler: (T) -> (U) -> ()
+    let event: Event<U>
+    
+    init(target: T?, handler: @escaping (T) -> (U) -> (), event: Event<U>) {
+        self.target = target
+        self.handler = handler
+        self.event = event;
+    }
+    
+    func invoke(data: Any) -> () {
+        if let t = target {
+            handler(t)(data as! U)
+        }
+    }
+    
+    func dispose() {
+        event.eventHandlers = event.eventHandlers.filter { $0 !== self }
+    }
+}
 
-let RollOff = #imageLiteral(resourceName: "RollOff.png")
-let RollOn = #imageLiteral(resourceName: "RollOn.png")
+public protocol Disposable {
+    func dispose()
+}
 
-let SlideOff = #imageLiteral(resourceName: "SlideOff.png")
-let SlideOn = #imageLiteral(resourceName: "SlideOn.png")
 
-let TipOff = #imageLiteral(resourceName: "TipOff.png")
-let TipOn = #imageLiteral(resourceName: "TipOn.png")
+public class Event<T> {
+    
+    public typealias EventHandler = (T) -> ()
+    
+    var eventHandlers = [Invocable]()
+    
+    public func raise(data: T) {
+        for handler in self.eventHandlers {
+            handler.invoke(data: data)
+        }
+    }
+    
+    public func addHandler<U: AnyObject>(target: U, handler: @escaping (U) -> EventHandler) -> Disposable {
+        let wrapper = EventHandlerWrapper(target: target, handler: handler, event: self)
+        eventHandlers.append(wrapper)
+        return wrapper
+    }
+}
+
+protocol Invocable: class {
+    func invoke(data: Any)
+}

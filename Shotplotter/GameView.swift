@@ -22,6 +22,7 @@ class GameView {
         while (rotations.count < 6) { // There should always be 6 rotations in a game
             addRotation()
         }
+        updateActiveEvent.addHandler(target: self, handler: GameView.updateActive)
     }
     
     func addRotation() { // adds a rotation with the proper rotationID and player array references
@@ -32,5 +33,10 @@ class GameView {
         for rotation in rotations {
             rotation.updateActive(newActive: activePlayers)
         }
+    }
+    
+    func updateActive(newActive: [Player]) {
+        activePlayers = newActive
+        updateActive()
     }
 }

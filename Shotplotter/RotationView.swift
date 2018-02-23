@@ -35,6 +35,11 @@ class RotationView {
         activePlayers = newActive
     }
     
+    func checkDraw() -> Bool {
+        nextDraws = protoLine.hasType() && (selected > -1)
+        return nextDraws
+    }
+    
     // TODO: Get this working
     /*func addLine(playerNum:Int, start:Pos, end:Pos, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
         activePlayers[?].addLine(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, didScore: didScore, rotationID: rotation)

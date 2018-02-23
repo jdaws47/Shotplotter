@@ -38,9 +38,12 @@ class ArrowView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isDrawing = true
-        guard let touch = touches.first else { return }
-        startPoint = touch.location(in: self)
+        data?.checkDraw()
+        if (data?.nextDraws)! {
+            isDrawing = true
+            guard let touch = touches.first else { return }
+            startPoint = touch.location(in: self)
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,6 +53,9 @@ class ArrowView: UIView {
         storePath.addLine(to: finPoint)
         drawShapeLayer(path: storePath, layer: storeLayer)
         dispPath.removeAllPoints()
+        data?.protoLine.reset()
+        data?.selected = -1
+        updateShotButtonsEvent.raise(data: 0)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
