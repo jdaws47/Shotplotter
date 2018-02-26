@@ -99,6 +99,7 @@ class GameViewController: UIViewController, RotationDelegate {
     
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        data?.updateActive()
         if (segue.identifier == "OpenActivePlayers") {
             if let destination = segue.destination as? GameEditController {
                 destination.data = self.data

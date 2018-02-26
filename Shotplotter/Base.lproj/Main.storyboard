@@ -166,30 +166,45 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Player 1"/>
+                                        <connections>
+                                            <action selector="player2:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="H41-V3-A8m"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE9-DK-EHf" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
                                         <rect key="frame" x="298" y="121" width="46" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Player 1"/>
+                                        <connections>
+                                            <action selector="player3:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="HMC-Ld-LGG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr0-Rx-KK9" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
                                         <rect key="frame" x="86" y="268" width="46" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Player 1"/>
+                                        <connections>
+                                            <action selector="player4:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="h62-lH-zSP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-cP-a4U" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
                                         <rect key="frame" x="190" y="268" width="46" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Player 1"/>
+                                        <connections>
+                                            <action selector="player5:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="9Zu-EZ-VRM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-EA-Nwg" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
                                         <rect key="frame" x="298" y="268" width="46" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <state key="normal" title="Player 1"/>
+                                        <connections>
+                                            <action selector="player6:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="3HO-fQ-Gnf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
