@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
     }
     
-    // Runs whenever the view starts loading. Use this instead of DidLoad.
+    // Runs whenever the view starts loading. Use this or init() instead of DidLoad.
     override func viewWillAppear(_ animated: Bool) {
         self.localTableView?.reloadData()
         super.viewWillAppear(animated)
