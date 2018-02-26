@@ -140,6 +140,10 @@ class ActiveSwitch: UISwitch {
     }
 }
 
+protocol RotationDelegate: class {
+    func passScreenCap(screenshot: UIImage, index: Int)
+}
+
 //----------------------------- Holds references to images
 let AOff = #imageLiteral(resourceName: "AOff.png")
 let AOn = #imageLiteral(resourceName: "AOn.png")

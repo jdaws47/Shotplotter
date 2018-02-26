@@ -598,6 +598,12 @@
                     <connections>
                         <outlet property="goToMatch" destination="LaX-I4-Ayb" id="DT5-Ka-Hsw"/>
                         <outlet property="navTitle" destination="toY-Ow-BP4" id="Rq1-Ic-EcF"/>
+                        <outlet property="rotation1" destination="8QQ-1x-kXC" id="6g3-bO-FqM"/>
+                        <outlet property="rotation2" destination="FkF-rU-Z9j" id="YMj-h6-zdN"/>
+                        <outlet property="rotation3" destination="5qx-pC-EBQ" id="72w-WB-3Ok"/>
+                        <outlet property="rotation4" destination="t7B-cD-oRg" id="6oc-bD-7rE"/>
+                        <outlet property="rotation5" destination="sEn-7h-NSv" id="8Nl-S5-jJ4"/>
+                        <outlet property="rotation6" destination="Z21-lX-Fi6" id="aiA-G6-TZD"/>
                         <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="xoN-Az-T9w"/>
                     </connections>
                 </viewController>

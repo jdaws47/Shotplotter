@@ -8,16 +8,32 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, RotationDelegate {
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     var passedRotation = -1
     @IBOutlet weak var navTitle: UINavigationItem!
-    
+    var previews = [UIImage]()
+    var rotationButtons = [UIButton]()
+    @IBOutlet weak var rotation1: UIButton!
+    @IBOutlet weak var rotation2: UIButton!
+    @IBOutlet weak var rotation3: UIButton!
+    @IBOutlet weak var rotation4: UIButton!
+    @IBOutlet weak var rotation5: UIButton!
+    @IBOutlet weak var rotation6: UIButton!
     
     // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
+        for _ in 0 ..< 6 {
+            previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
+        }
+        rotationButtons.append(rotation1)
+        rotationButtons.append(rotation2)
+        rotationButtons.append(rotation3)
+        rotationButtons.append(rotation4)
+        rotationButtons.append(rotation5)
+        rotationButtons.append(rotation6)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +44,9 @@ class GameViewController: UIViewController {
         let game = (data?.gameNum)! + 1
         let name = (data?.opponentName)!
         navTitle.title = "Game \(game) vs. \(name)"
+        for i in 0 ..< previews.count {
+            //rotationButtons[i].background = previews[i]
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,6 +93,10 @@ class GameViewController: UIViewController {
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
+    func passScreenCap(screenshot: UIImage, index: Int) {
+        previews[index] = screenshot
+    }
+    
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "OpenActivePlayers") {
@@ -83,6 +106,7 @@ class GameViewController: UIViewController {
         } else if (segue.identifier == "GameToRotation") {
             if let destination = segue.destination as? RotationViewController {
                 destination.data = data?.rotations[passedRotation]
+                destination.delegate = self
             }
         }
     }
