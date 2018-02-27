@@ -111,6 +111,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             data?.games.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            localTableView?.reloadData()
         }
         
         if((data?.games.count)! < 5) {
@@ -133,8 +134,10 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    @objc func longPress() {
-        localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
+    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == .began) {
+            localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
+        }
     }
     
 }

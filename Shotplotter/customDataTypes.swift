@@ -175,13 +175,32 @@ class ActiveSwitch: UISwitch {
     }
 }
 
+//----------------------------- Event Implementation
+private class EventHandlerWrapper<T: AnyObject, U>
+: Invocable, Disposable {
+    weak var target: T?
+    let handler: (T) -> (U) -> ()
+    let event: Event<U>
+    
+    init(target: T?, handler: @escaping (T) -> (U) -> (), event: Event<U>) {
+        self.target = target
+        self.handler = handler
+        self.event = event;
+    }
+    
+    func invoke(data: Any) -> () {
+        if let t = target {
+            handler(t)(data as! U)
+        }
+    }
+    
+    func dispose() {
+        event.eventHandlers = event.eventHandlers.filter { $0 !== self }
+    }
+}
 protocol RotationDelegate: class {
     func passScreenCap(screenshot: UIImage, index: Int)
 }
-
-//----------------------------- Holds references to images
-let AOff = #imageLiteral(resourceName: "AOff.png")
-let AOn = #imageLiteral(resourceName: "AOn.png")
 
 public protocol Disposable {
     func dispose()

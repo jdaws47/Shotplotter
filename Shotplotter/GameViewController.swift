@@ -28,12 +28,12 @@ class GameViewController: UIViewController, RotationDelegate {
         for _ in 0 ..< 6 {
             previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
         }
-        rotationButtons.append(rotation1)
-        rotationButtons.append(rotation2)
-        rotationButtons.append(rotation3)
-        rotationButtons.append(rotation4)
-        rotationButtons.append(rotation5)
-        rotationButtons.append(rotation6)
+//        rotationButtons.append(rotation1)
+//        rotationButtons.append(rotation2)
+//        rotationButtons.append(rotation3)
+//        rotationButtons.append(rotation4)
+//        rotationButtons.append(rotation5)
+//        rotationButtons.append(rotation6)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,9 +44,16 @@ class GameViewController: UIViewController, RotationDelegate {
         let game = (data?.gameNum)! + 1
         let name = (data?.opponentName)!
         navTitle.title = "Game \(game) vs. \(name)"
-        for i in 0 ..< previews.count {
-            //rotationButtons[i].background = previews[i]
-        }
+        print("GameView: " + String(describing: data?.activePlayers.count))
+//        for i in 0 ..< previews.count {
+//            rotationButtons[i].setBackgroundImage(previews[i], for: UIControlState.normal)
+//        }
+        rotation1.setBackgroundImage(previews[0], for: UIControlState.normal)
+        rotation2.setBackgroundImage(previews[1], for: UIControlState.normal)
+        rotation3.setBackgroundImage(previews[2], for: UIControlState.normal)
+        rotation4.setBackgroundImage(previews[3], for: UIControlState.normal)
+        rotation5.setBackgroundImage(previews[4], for: UIControlState.normal)
+        rotation6.setBackgroundImage(previews[5], for: UIControlState.normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,6 +102,8 @@ class GameViewController: UIViewController, RotationDelegate {
     
     func passScreenCap(screenshot: UIImage, index: Int) {
         previews[index] = screenshot
+        print(screenshot)
+        print(previews[index])
     }
     
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.

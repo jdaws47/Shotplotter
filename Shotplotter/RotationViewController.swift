@@ -16,6 +16,8 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var goToGame: UIButton!
     @IBOutlet weak var rotationTitle: UINavigationItem!
     weak var delegate: RotationDelegate?
+    var activePlayer: Player
+    
     @IBOutlet weak var tipButton: UIButton!
     @IBOutlet weak var slideButton: UIButton!
     @IBOutlet weak var rollButton: UIButton!
