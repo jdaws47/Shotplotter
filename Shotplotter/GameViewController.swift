@@ -25,8 +25,10 @@ class GameViewController: UIViewController, RotationDelegate {
     // Doesn't always run. Do not use
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0 ..< 6 {
-            previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
+        if(previews.count < 6) {
+            for _ in 0 ..< 6 {
+                previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
+            }
         }
 //        rotationButtons.append(rotation1)
 //        rotationButtons.append(rotation2)
@@ -48,12 +50,13 @@ class GameViewController: UIViewController, RotationDelegate {
 //        for i in 0 ..< previews.count {
 //            rotationButtons[i].setBackgroundImage(previews[i], for: UIControlState.normal)
 //        }
-        rotation1.setBackgroundImage(previews[0], for: UIControlState.normal)
-        rotation2.setBackgroundImage(previews[1], for: UIControlState.normal)
-        rotation3.setBackgroundImage(previews[2], for: UIControlState.normal)
-        rotation4.setBackgroundImage(previews[3], for: UIControlState.normal)
-        rotation5.setBackgroundImage(previews[4], for: UIControlState.normal)
-        rotation6.setBackgroundImage(previews[5], for: UIControlState.normal)
+        rotation1.setImage(previews[0], for: UIControlState.normal)
+        rotation2.setImage(previews[1], for: UIControlState.normal)
+        rotation3.setImage(previews[2], for: UIControlState.normal)
+        rotation4.setImage(previews[3], for: UIControlState.normal)
+        rotation5.setImage(previews[4], for: UIControlState.normal)
+        rotation6.setImage(previews[5], for: UIControlState.normal)
+        //rotation1.imageView!.image = previews[0]
     }
     
     override func didReceiveMemoryWarning() {
