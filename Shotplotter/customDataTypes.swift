@@ -90,6 +90,8 @@ class Player {
         layer = CAShapeLayer()
     }
     
+    //stupid delete this
+    
     //adds a copy of a line struct
     func addLine(line: Line) {
         shots.append(line)
