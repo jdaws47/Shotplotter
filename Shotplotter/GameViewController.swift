@@ -21,6 +21,8 @@ class GameViewController: UIViewController, RotationDelegate {
     @IBOutlet weak var rotation4: UIButton!
     @IBOutlet weak var rotation5: UIButton!
     @IBOutlet weak var rotation6: UIButton!
+    let activePError = UIAlertController.init(title: "Not Enough Active Players", message: "There aren't six active players. Please select six active players before opening a rotation.", preferredStyle: .alert)
+    
     
     // Doesn't always run. Do not use
     override func viewDidLoad() {
@@ -30,6 +32,9 @@ class GameViewController: UIViewController, RotationDelegate {
                 previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
             }
         }
+        activePError.addAction(UIAlertAction(title: "Ok", style: .default, handler: {
+            (action: UIAlertAction!) in print("Handle Ok logic here")
+        }))
 //        rotationButtons.append(rotation1)
 //        rotationButtons.append(rotation2)
 //        rotationButtons.append(rotation3)
@@ -74,31 +79,55 @@ class GameViewController: UIViewController, RotationDelegate {
     }
     
     @IBAction func rotation1(_ sender: Any) {
+        if ((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 0
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
     @IBAction func rotation2(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 1
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
     @IBAction func rotation3(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 2
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
     @IBAction func rotation4(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 3
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
     @IBAction func rotation5(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 4
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
     
     @IBAction func rotation6(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         passedRotation = 5
         self.performSegue(withIdentifier: "GameToRotation", sender: self)
     }
