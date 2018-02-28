@@ -45,6 +45,7 @@ class RotationViewController: UIViewController {
         //self.data = RotationView()
         activePlayer = Player()
         super.init(coder: aDecoder)
+        //adlsjf
         updateShotButtonsEvent.addHandler(target: self, handler: RotationViewController.checkButtons)
     }
     
