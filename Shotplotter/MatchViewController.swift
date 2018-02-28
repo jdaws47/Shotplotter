@@ -81,6 +81,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         let game = data?.games[indexPath.row]
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
+        longGesture.minimumPressDuration = 0.75
         cell.addGestureRecognizer(longGesture)
         cell.title.text = "Game #\((game?.gameNum)! + 1 )"
         
@@ -105,11 +106,12 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //deletes row when called
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && indexPath.row > 2{
+        if editingStyle == .delete && indexPath.row > 2 {
             //print("Deleted")
             
             data?.games.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            localTableView?.reloadData()
         }
         
         if((data?.games.count)! < 5) {
@@ -132,7 +134,10 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func longPress() {
-        localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
+    @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == .began) {
+            localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
+        }
     }
+    
 }

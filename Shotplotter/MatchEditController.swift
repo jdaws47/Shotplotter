@@ -122,7 +122,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-    func keyboardWasShown (notification: NSNotification) {
+    @objc func keyboardWasShown (notification: NSNotification) {
         let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         
         var contentInsets:UIEdgeInsets
@@ -140,7 +140,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         localTableView?.scrollIndicatorInsets = (localTableView?.contentInset)!
     }
     
-    func keyboardWillBeHidden (notification: NSNotification) {
+    @objc func keyboardWillBeHidden (notification: NSNotification) {
         localTableView?.contentInset = UIEdgeInsets.zero
         localTableView?.scrollIndicatorInsets = UIEdgeInsets.zero
     }

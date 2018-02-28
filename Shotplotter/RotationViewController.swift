@@ -12,8 +12,10 @@ class RotationViewController: UIViewController {
     
     @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
+    var screenshot: UIImage?
     @IBOutlet weak var goToGame: UIButton!
     @IBOutlet weak var rotationTitle: UINavigationItem!
+    weak var delegate: RotationDelegate?
     var activePlayer: Player
     
     @IBOutlet weak var tipButton: UIButton!
@@ -50,6 +52,8 @@ class RotationViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        screenshot = drawingBoard.pb_takeSnapshot()
+        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
         dismiss(animated: true, completion: nil)
     }
     

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,8 +31,8 @@
                                 <items>
                                     <navigationItem title="Matches" id="4sE-sv-eqF">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="wa2-OA-6H3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3bw-s5-bhe">
-                                                <rect key="frame" x="20" y="7" width="80" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3bw-s5-bhe">
+                                                <rect key="frame" x="20" y="4" width="80" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Filter"/>
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k22-cO-Fkd" id="swI-mQ-Di9">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opponent Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drx-31-wdm">
@@ -114,8 +114,8 @@
                                 <items>
                                     <navigationItem title="Rotation 1" id="lF8-Na-pDk">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="CNT-ON-MIx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GyI-dL-IAe">
-                                                <rect key="frame" x="20" y="7" width="66" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GyI-dL-IAe">
+                                                <rect key="frame" x="20" y="4" width="66" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="&lt; Back"/>
@@ -262,8 +262,8 @@
                                 <items>
                                     <navigationItem title="Match vs. [Name of School]" id="Mzx-Ab-pFq">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="pN5-be-RDN">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGQ-AH-Sft">
-                                                <rect key="frame" x="20" y="7" width="227" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGQ-AH-Sft">
+                                                <rect key="frame" x="20" y="4" width="227" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="&lt; Back"/>
@@ -279,8 +279,8 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" id="A3v-hi-qNz">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
-                                                    <rect key="frame" x="921.5" y="7" width="46" height="30"/>
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
+                                                    <rect key="frame" x="921.5" y="4" width="46" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="Edit"/>
@@ -302,7 +302,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRd-Zf-i5f" id="XV2-fM-jUh">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxY-wV-TH1">
@@ -371,8 +371,8 @@
                                 <items>
                                     <navigationItem title="Match Details" id="kTy-3H-875">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nhn-jj-qCo">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
-                                                <rect key="frame" x="20" y="9" width="45" height="26"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
+                                                <rect key="frame" x="20" y="5" width="45" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Done"/>
@@ -414,7 +414,7 @@
                                         <rect key="frame" x="0.0" y="28" width="970" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="deX-G3-9Cu" id="1Rp-Vc-p5S">
-                                            <rect key="frame" x="0.0" y="0.0" width="970" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="970" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-Hv-ph1" customClass="PlayerTextField" customModule="Shotplotter" customModuleProvider="target">
@@ -492,7 +492,7 @@
                                     <navigationItem title="Game [#] vs. [Name of School]" id="toY-Ow-BP4">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="Nfl-H6-LDh">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LaX-I4-Ayb">
-                                                <rect key="frame" x="20" y="7" width="227" height="30"/>
+                                                <rect key="frame" x="20" y="4" width="227" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="&lt; Back"/>
@@ -613,12 +613,18 @@
                     <connections>
                         <outlet property="goToMatch" destination="LaX-I4-Ayb" id="DT5-Ka-Hsw"/>
                         <outlet property="navTitle" destination="toY-Ow-BP4" id="Rq1-Ic-EcF"/>
+                        <outlet property="rotation1" destination="8QQ-1x-kXC" id="6g3-bO-FqM"/>
+                        <outlet property="rotation2" destination="FkF-rU-Z9j" id="YMj-h6-zdN"/>
+                        <outlet property="rotation3" destination="5qx-pC-EBQ" id="72w-WB-3Ok"/>
+                        <outlet property="rotation4" destination="t7B-cD-oRg" id="6oc-bD-7rE"/>
+                        <outlet property="rotation5" destination="sEn-7h-NSv" id="8Nl-S5-jJ4"/>
+                        <outlet property="rotation6" destination="Z21-lX-Fi6" id="aiA-G6-TZD"/>
                         <segue destination="pIQ-8Y-aoa" kind="show" identifier="GameToRotation" id="xoN-Az-T9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUy-nt-uxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="853"/>
+            <point key="canvasLocation" x="1239.84375" y="852.34375"/>
         </scene>
         <!--Active Players Overlay-->
         <scene sceneID="bZT-qa-n49">
@@ -641,7 +647,7 @@
                                         <rect key="frame" x="0.0" y="28" width="314" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Os7-RY-J4M" id="Jzx-Nb-Zoe">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbl-7A-ttf">
