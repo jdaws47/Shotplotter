@@ -35,7 +35,6 @@ class ArrowView2: UIView {
     var endPoint: CGPoint
     
     var drawLayer: CAShapeLayer
-    var storeLayer: [CAShapeLayer]
     
     var activePlayer: Player
     
@@ -50,15 +49,9 @@ class ArrowView2: UIView {
         startPoint = CGPoint()
         endPoint = CGPoint()
         
-        storeLayer = [CAShapeLayer]()
-        
-        
-        //interpolationPoints = [CGPoint]()
-        
         super.init(coder: aDecoder)
         
         self.clipsToBounds = true
-        storeLayer.append(CAShapeLayer())
         
         layer.addSublayer(drawLayer)
         
@@ -86,7 +79,6 @@ class ArrowView2: UIView {
         drawPath.addLine(to: endPoint)
         data?.protoLine.endPos = endPoint
         drawShapeLayer(path: drawPath, layer: activePlayer.layer)
-        //activePlayer.layer = self.storeLayer
         //print(activePlayer.number)
         //print(startPoint)
         //print(endPoint)
