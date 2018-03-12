@@ -83,6 +83,9 @@ class Player {
         isActive = false
         layerExists = false
         layer.strokeColor = color.cgColor
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color.cgColor
+        layer.addSublayer(previewLayer)
     }
     
     init() {
@@ -92,6 +95,10 @@ class Player {
         isActive = false
         layer = CAShapeLayer()
         layerExists = false
+        layer.strokeColor = color.cgColor
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color.cgColor
+        layer.addSublayer(previewLayer)
     }
     
     //stupid delete this

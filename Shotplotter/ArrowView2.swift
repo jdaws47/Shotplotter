@@ -78,7 +78,7 @@ class ArrowView2: UIView {
         drawPath.move(to: startPoint)
         drawPath.addLine(to: endPoint)
         data?.protoLine.endPos = endPoint
-        drawShapeLayer(path: drawPath, layer: activePlayer.layer)
+        finalizeShapeLayer(path: drawPath, layer: activePlayer.layer)
         //print(activePlayer.number)
         //print(startPoint)
         //print(endPoint)
@@ -105,10 +105,22 @@ class ArrowView2: UIView {
         drawShapeLayer(path: drawPath, layer: activePlayer.layer)
     }
     
+    func finalizeShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
+        var newLayer = CAShapeLayer()
+        newLayer.fillColor = nil
+        newLayer.strokeColor = activePlayer.color.cgColor
+        layer.addSublayer(newLayer)
+        newLayer.path = path.cgPath //THIS IS THE IMPORTANT ONE
+        newLayer.lineWidth = strokeWidth
+        //self.layer.addSublayer(layer)
+        self.setNeedsDisplay()
+    }
+    
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
-        layer.path = path.cgPath
-        layer.strokeColor = activePlayer.color.cgColor
-        layer.lineWidth = strokeWidth
+        var subLayer = layer.sublayers![0] as! CAShapeLayer
+        subLayer.lineWidth = strokeWidth
+        subLayer.strokeColor = activePlayer.color.cgColor
+        subLayer.path = path.cgPath
         //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
