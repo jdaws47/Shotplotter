@@ -31,6 +31,7 @@
 		9928FB691FD70E850034A279 /* ShotplotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB681FD70E850034A279 /* ShotplotterUITests.swift */; };
 		99346F731FFFF02A00E76C73 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99346F721FFFF02A00E76C73 /* MatchTableViewCell.swift */; };
 		99462DBA1FED7B2500E3C8C6 /* GlobalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */; };
+		99760B54204872AA008B8230 /* ArrowView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99760B53204872AA008B8230 /* ArrowView2.swift */; };
 		99C19C05200FBE48003D370A /* PlayerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C19C04200FBE48003D370A /* PlayerTableCell.swift */; };
 		99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		9928FB6A1FD70E850034A279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99346F721FFFF02A00E76C73 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTableViewCell.swift; sourceTree = "<group>"; };
+		99760B53204872AA008B8230 /* ArrowView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowView2.swift; sourceTree = "<group>"; };
 		99C19C04200FBE48003D370A /* PlayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableCell.swift; sourceTree = "<group>"; };
 		99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Volleyball Court.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
 				99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */,
 				3F71B65B2022342200BBB48D /* ArrowView.swift */,
+				99760B53204872AA008B8230 /* ArrowView2.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */,
 				70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */,
 				70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */,
+				99760B54204872AA008B8230 /* ArrowView2.swift in Sources */,
 				70CC0CAA1FD85C7000909DBD /* MainViewController.swift in Sources */,
 				3F71B65C2022342200BBB48D /* ArrowView.swift in Sources */,
 				70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */,

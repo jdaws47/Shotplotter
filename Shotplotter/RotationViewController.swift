@@ -10,7 +10,7 @@ import UIKit
 
 class RotationViewController: UIViewController {
     
-    @IBOutlet weak var drawingBoard: ArrowView!
+    @IBOutlet weak var drawingBoard: ArrowView2!
     var data: RotationView?
     var screenshot: UIImage?
     @IBOutlet weak var goToGame: UIButton!
@@ -101,6 +101,7 @@ class RotationViewController: UIViewController {
         print("Player1 button pushed")
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
+        //print(activePlayer)
         drawingBoard.changeColor(player: activePlayer)
     }
     

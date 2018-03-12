@@ -73,6 +73,7 @@ class Player {
     var number: Int
     var name: String
     var isActive: Bool
+    var layerExists: Bool
     
     init(_number: Int, _color: UIColor, _name: String) {
         layer = CAShapeLayer()
@@ -80,6 +81,8 @@ class Player {
         color = _color
         name = _name
         isActive = false
+        layerExists = false
+        layer.strokeColor = color.cgColor
     }
     
     init() {
@@ -88,6 +91,7 @@ class Player {
         name = ""
         isActive = false
         layer = CAShapeLayer()
+        layerExists = false
     }
     
     //stupid delete this
