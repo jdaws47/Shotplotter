@@ -198,6 +198,9 @@ private class EventHandlerWrapper<T: AnyObject, U>
         event.eventHandlers = event.eventHandlers.filter { $0 !== self }
     }
 }
+protocol RotationDelegate: class {
+    func passScreenCap(screenshot: UIImage, index: Int)
+}
 
 public protocol Disposable {
     func dispose()
