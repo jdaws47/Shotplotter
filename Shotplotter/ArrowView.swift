@@ -20,6 +20,7 @@ class ArrowView: UIView {
     var storePath: UIBezierPath
     var endPoint: CGPoint
     
+    
     var dispLayer: CAShapeLayer
     var storeLayer: CAShapeLayer
     
@@ -71,6 +72,7 @@ class ArrowView: UIView {
         data?.protoLine.rotationID = (data?.rotationID)!
         
         data?.selected = -1
+        print("touchesEnded")
         updateShotButtonsEvent.raise(data: 0)
     }
     

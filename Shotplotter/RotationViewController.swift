@@ -21,6 +21,13 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var rollButton: UIButton!
     @IBOutlet weak var aButton: UIButton!
     
+    @IBOutlet weak var playerSpot1: PlayerSpot!
+    @IBOutlet weak var playerSpot2: PlayerSpot!
+    @IBOutlet weak var playerSpot3: PlayerSpot!
+    @IBOutlet weak var playerSpot4: PlayerSpot!
+    @IBOutlet weak var playerSpot5: PlayerSpot!
+    @IBOutlet weak var playerSpot6: PlayerSpot!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,7 +40,7 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
-        checkButtons(empty: 0)
+        checkButtons()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,41 +62,25 @@ class RotationViewController: UIViewController {
     @IBAction func TipTypeSelect(_ sender: Any) {
         data?.protoLine.tip = !(data?.protoLine.tip)!
         //print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
-        if (data?.protoLine.tip)! {
-            tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
+        checkButtons()
     }
     
     @IBAction func SlideTypeSelect(_ sender: Any) {
         data?.protoLine.slide = !(data?.protoLine.slide)!
         //print("Slide shot type toggled: " + String(describing: data?.protoLine.slide))
-        if (data?.protoLine.slide)! {
-            slideButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/SlideOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            slideButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/SlideOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
+        checkButtons()
     }
     
     @IBAction func RollTypeSelect(_ sender: Any) {
         data?.protoLine.roll = !(data?.protoLine.roll)!
         //print("Roll shot type toggled: " + String(describing: data?.protoLine.roll))
-        if (data?.protoLine.roll)! {
-            rollButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/RollOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            rollButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/RollOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
+        checkButtons()
     }
     
     @IBAction func ATypeSelect(_ sender: Any) {
         data?.protoLine.A = !(data?.protoLine.A)!
         //print("A shot type toggled: " + String(describing: data?.protoLine.A))
-        if (data?.protoLine.A)! {
-            aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
+        checkButtons()
     }
     
     @IBAction func player1(_ sender: Any) {
@@ -97,39 +88,45 @@ class RotationViewController: UIViewController {
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
     @IBAction func player2(_ sender: Any) {
         data?.selected = 1
         activePlayer = (data?.activePlayers[1])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
     @IBAction func player3(_ sender: Any) {
         data?.selected = 2
         activePlayer = (data?.activePlayers[2])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
     @IBAction func player4(_ sender: Any) {
         data?.selected = 3
         activePlayer = (data?.activePlayers[3])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
     @IBAction func player5(_ sender: Any) {
         data?.selected = 4
         activePlayer = (data?.activePlayers[4])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
     @IBAction func player6(_ sender: Any) {
         data?.selected = 5
         activePlayer = (data?.activePlayers[5])!
         drawingBoard.changeColor(player: activePlayer)
+        checkButtons()
     }
     
-    func checkButtons (empty: Int) {
+    func checkButtons (empty: Int = 0) {
         if (data?.protoLine.A)! {
             aButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/AOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
@@ -150,5 +147,39 @@ class RotationViewController: UIViewController {
         } else {
             tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
+        
+        if (data?.selected == 0) {playerSpot1.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot1.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        if (data?.selected == 1) {playerSpot2.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot2.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        if (data?.selected == 2) {playerSpot3.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot3.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        if (data?.selected == 3) {playerSpot4.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot4.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        if (data?.selected == 4) {playerSpot5.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot5.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        if (data?.selected == 5) {playerSpot6.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
+        else {playerSpot6.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
+        
+        playerSpot1.tintColor = UIColor.black
+        playerSpot1.backgroundColor = data?.activePlayers[0].getColor()
+        playerSpot1.setTitle(String(describing: data!.activePlayers[0].number), for: .normal)
+        playerSpot2.tintColor = UIColor.black
+        playerSpot2.backgroundColor = data?.activePlayers[1].getColor()
+        playerSpot2.setTitle(String(describing: data!.activePlayers[1].number), for: .normal)
+        playerSpot3.tintColor = UIColor.black
+        playerSpot3.backgroundColor = data?.activePlayers[2].getColor()
+        playerSpot3.setTitle(String(describing: data!.activePlayers[2].number), for: .normal)
+        playerSpot4.tintColor = UIColor.black
+        playerSpot4.backgroundColor = data?.activePlayers[3].getColor()
+        playerSpot4.setTitle(String(describing: data!.activePlayers[3].number), for: .normal)
+        playerSpot5.tintColor = UIColor.black
+        playerSpot5.backgroundColor = data?.activePlayers[4].getColor()
+        playerSpot5.setTitle(String(describing: data!.activePlayers[4].number), for: .normal)
+        playerSpot6.tintColor = UIColor.black
+        playerSpot6.backgroundColor = data?.activePlayers[5].getColor()
+        playerSpot6.setTitle(String(describing: data!.activePlayers[5].number), for: .normal)
+        
+        print("Buttons Ch-Ch-Checked")
     }
 }

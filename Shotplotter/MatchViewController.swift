@@ -21,7 +21,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //Like Caillou, this function doesn't deserve hair or love
+        // Like Caillou, this function doesn't deserve hair or love
     }
     
     // Runs whenever the view finishes loading. Use this instead of DidLoad.
@@ -132,7 +132,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func longPress() {
+    func longPress() { // CURRENTLY DOES NOT ACTUALLY DELETE ITEMS FROM THE MatchView ARRAY OF GAMES
         localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
     }
 }
