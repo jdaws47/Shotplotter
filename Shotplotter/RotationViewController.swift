@@ -10,7 +10,7 @@ import UIKit
 
 class RotationViewController: UIViewController {
     
-    @IBOutlet weak var drawingBoard: ArrowView2!
+    @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
     var screenshot: UIImage?
     @IBOutlet weak var goToGame: UIButton!
@@ -36,6 +36,13 @@ class RotationViewController: UIViewController {
         print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
         checkButtons(empty: 0)
+        for i in 0 ..< (data?.activePlayers.count)! {
+            var player = (data?.activePlayers[i])!
+            if (!player.layerExists) {
+                drawingBoard.layer.addSublayer(player.layer)
+                player.layerExists = true
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,6 +61,9 @@ class RotationViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         screenshot = drawingBoard.pb_takeSnapshot()
         delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
+        for i in 0 ..< (data?.activePlayers.count)! {
+            data?.activePlayers[i].layerExists = false
+        }
         dismiss(animated: true, completion: nil)
     }
     

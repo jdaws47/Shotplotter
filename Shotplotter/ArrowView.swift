@@ -11,15 +11,15 @@ import UIKit
 
 extension UIView {
     
-//    func pb_takeSnapshot() -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
-//        
-//        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-//        
-//        let image = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//        return image
-//    }
+    func pb_takeSnapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
 
 class ArrowView: UIView {
@@ -31,39 +31,28 @@ class ArrowView: UIView {
     var isDrawing: Bool
     var startPoint: CGPoint
     var drawPath: UIBezierPath
-    var storePath: UIBezierPath
+    //var storePath: UIBezierPath
     var endPoint: CGPoint
     
     var drawLayer: CAShapeLayer
-    var storeLayer: [CAShapeLayer]
     
     var activePlayer: Player
     
-    private var index: Int
-    
     required init?(coder aDecoder: NSCoder) {
         activePlayer = Player()
-        index = 0
         color = UIColor.red
         strokeWidth = 3
         isDrawing = false
         drawPath = UIBezierPath()
-        storePath = UIBezierPath()
+        //storePath = UIBezierPath()
         drawLayer = CAShapeLayer()
         startPoint = CGPoint()
         endPoint = CGPoint()
         
-        storeLayer = [CAShapeLayer]()
-        
-        
-        //interpolationPoints = [CGPoint]()
-        
         super.init(coder: aDecoder)
         
         self.clipsToBounds = true
-        storeLayer.append(CAShapeLayer())
         
-        layer.addSublayer(storeLayer[index])
         layer.addSublayer(drawLayer)
         
         drawLayer.fillColor = nil
@@ -71,18 +60,11 @@ class ArrowView: UIView {
         drawLayer.lineWidth = strokeWidth
         drawLayer.lineCap = kCALineCapRound
         
-        storeLayer[index].fillColor = nil
-        storeLayer[index].strokeColor = color.cgColor
-        storeLayer[index].lineWidth = strokeWidth
-        storeLayer[index].lineCap = kCALineCapRound
-        
-        storeLayer[index].path = CGMutablePath()
     }
-
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        data?.checkDraw()
-        if (data?.nextDraws)! {
+        if (data?.checkDraw())! {
             isDrawing = true
             guard let touch = touches.first else { return }
             startPoint = touch.location(in: self)
@@ -93,17 +75,17 @@ class ArrowView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isDrawing else { return }
         isDrawing = false
-        storePath.move(to: startPoint)
-        storePath.addLine(to: endPoint)
+        drawPath.move(to: startPoint)
+        drawPath.addLine(to: endPoint)
         data?.protoLine.endPos = endPoint
-        //drawShapeLayer(path: storePath, layer: storeLayer)
-        //activePlayer.layer = self.storeLayer
+        finalizeShapeLayer(path: drawPath, layer: activePlayer.layer)
         //print(activePlayer.number)
         //print(startPoint)
         //print(endPoint)
         drawPath.removeAllPoints()
         activePlayer.addLine(line: (data?.protoLine)!)
-        endPoint = startPoint
+        endPoint = CGPoint()
+        startPoint = CGPoint()
         data?.protoLine.reset()
         data?.protoLine.rotationID = (data?.rotationID)!
         
@@ -118,15 +100,27 @@ class ArrowView: UIView {
         drawPath.removeAllPoints()
         drawPath.move(to: startPoint)
         drawPath.addLine(to: touchPoint)
-        drawShapeLayer(path: drawPath, layer: drawLayer)
+        //drawShapeLayer(path: drawPath, layer: drawLayer)
         endPoint = touchPoint
-        drawShapeLayer(path: storePath, layer: activePlayer.layer)
+        drawShapeLayer(path: drawPath, layer: activePlayer.layer)
+    }
+    
+    func finalizeShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
+        var newLayer = CAShapeLayer()
+        newLayer.fillColor = nil
+        newLayer.strokeColor = activePlayer.color.cgColor
+        layer.addSublayer(newLayer)
+        newLayer.path = path.cgPath //THIS IS THE IMPORTANT ONE
+        newLayer.lineWidth = strokeWidth
+        //self.layer.addSublayer(layer)
+        self.setNeedsDisplay()
     }
     
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
-        layer.path = path.cgPath
-        layer.strokeColor = activePlayer.color.cgColor
-        layer.lineWidth = strokeWidth
+        var subLayer = layer.sublayers![0] as! CAShapeLayer
+        subLayer.lineWidth = strokeWidth
+        subLayer.strokeColor = activePlayer.color.cgColor
+        subLayer.path = path.cgPath
         //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
@@ -134,9 +128,11 @@ class ArrowView: UIView {
     func changeColor(player: Player) {
         activePlayer = player
         self.color = player.getColor()
-        index = player.number
+        if (!player.layerExists) {
+            layer.addSublayer(player.layer)
+            player.layerExists = true
+        }
     }
-    
-    
 }
+
 

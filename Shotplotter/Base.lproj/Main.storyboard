@@ -104,7 +104,7 @@
                         <viewControllerLayoutGuide type="top" id="yq5-Pt-ogW"/>
                         <viewControllerLayoutGuide type="bottom" id="MLD-Dx-Yad"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YzC-ca-lBm" customClass="ArrowView2" customModule="Shotplotter" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="YzC-ca-lBm">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -144,7 +144,7 @@
                                     <action selector="ATypeSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="q6k-Sc-NQ8"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UAH-nI-SJW" customClass="ArrowView2" customModule="Shotplotter" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UAH-nI-SJW" customClass="ArrowView" customModule="Shotplotter" customModuleProvider="target">
                                 <rect key="frame" x="474" y="79" width="430" height="664"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
