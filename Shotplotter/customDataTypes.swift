@@ -57,7 +57,7 @@ struct Line {
         hit = false
         color = UIColor.black
         didScore = false
-        rotationID = 0
+        rotationID = -1
     }
     
     func hasType() -> Bool {

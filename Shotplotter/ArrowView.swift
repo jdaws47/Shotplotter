@@ -90,6 +90,7 @@ class ArrowView: UIView {
         data?.protoLine.reset()
         data?.protoLine.rotationID = (data?.rotationID)!
         data?.selected = -1
+        print("touchesEnded")
         updateShotButtonsEvent.raise(data: 0)
     }
     

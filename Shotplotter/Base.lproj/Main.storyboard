@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G19009" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,56 +152,56 @@
                                         <rect key="frame" x="0.0" y="0.0" width="430" height="664"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29b-KB-Rgv" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="86" y="121" width="46" height="10"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
-                                        <connections>
-                                            <action selector="player1:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="jdj-9Q-fwS"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtV-OU-Veh" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="121" width="46" height="10"/>
+                                        <rect key="frame" x="201" y="114" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
+                                        <state key="normal" title="2"/>
                                         <connections>
                                             <action selector="player2:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="H41-V3-A8m"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE9-DK-EHf" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="298" y="121" width="46" height="10"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
-                                        <connections>
-                                            <action selector="player3:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="HMC-Ld-LGG"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr0-Rx-KK9" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="86" y="268" width="46" height="10"/>
+                                        <rect key="frame" x="97" y="261" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
+                                        <state key="normal" title="4"/>
                                         <connections>
                                             <action selector="player4:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="h62-lH-zSP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-cP-a4U" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="268" width="46" height="10"/>
+                                        <rect key="frame" x="201" y="261" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
+                                        <state key="normal" title="5"/>
                                         <connections>
                                             <action selector="player5:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="9Zu-EZ-VRM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-EA-Nwg" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="298" y="268" width="46" height="10"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29b-KB-Rgv" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                        <rect key="frame" x="97" y="114" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Player 1"/>
+                                        <state key="normal" title="1"/>
+                                        <connections>
+                                            <action selector="player1:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="jdj-9Q-fwS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE9-DK-EHf" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                        <rect key="frame" x="309" y="114" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="3"/>
+                                        <connections>
+                                            <action selector="player3:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="HMC-Ld-LGG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-EA-Nwg" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                        <rect key="frame" x="309" y="261" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="6"/>
                                         <connections>
                                             <action selector="player6:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="3HO-fQ-Gnf"/>
                                         </connections>
@@ -234,6 +234,12 @@
                         <outlet property="aButton" destination="mmq-yy-key" id="d9y-gX-eYz"/>
                         <outlet property="drawingBoard" destination="UAH-nI-SJW" id="ISo-s3-UuB"/>
                         <outlet property="goToGame" destination="GyI-dL-IAe" id="m5W-Zs-vAG"/>
+                        <outlet property="playerSpot1" destination="29b-KB-Rgv" id="4Of-qA-lmO"/>
+                        <outlet property="playerSpot2" destination="gtV-OU-Veh" id="3WY-7J-CHp"/>
+                        <outlet property="playerSpot3" destination="VE9-DK-EHf" id="zl9-1P-7uE"/>
+                        <outlet property="playerSpot4" destination="Wr0-Rx-KK9" id="yJ0-9p-iXT"/>
+                        <outlet property="playerSpot5" destination="2VS-cP-a4U" id="0wo-cD-ARN"/>
+                        <outlet property="playerSpot6" destination="4zO-EA-Nwg" id="Inc-ga-XkO"/>
                         <outlet property="rollButton" destination="pfk-4s-FBc" id="2HW-gM-OgB"/>
                         <outlet property="rotationTitle" destination="lF8-Na-pDk" id="Sok-yR-vb0"/>
                         <outlet property="slideButton" destination="l85-Jf-cgb" id="hZZ-Nw-Kqz"/>
