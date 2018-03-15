@@ -23,67 +23,72 @@ extension UIView {
 }
 
 class ArrowView: UIView {
+    
     var data: RotationView?
+    
     var color: UIColor
     var strokeWidth: CGFloat
-    
     var isDrawing: Bool
     var startPoint: CGPoint
-    var dispPath: UIBezierPath
-    var storePath: UIBezierPath
+    var drawPath: UIBezierPath
+    //var storePath: UIBezierPath
     var endPoint: CGPoint
     
-    
-    var dispLayer: CAShapeLayer
-    var storeLayer: CAShapeLayer
+    var drawLayer: CAShapeLayer
     
     var activePlayer: Player
     
-    
     required init?(coder aDecoder: NSCoder) {
-        color = UIColor.black
+        activePlayer = Player()
+        color = UIColor.red
         strokeWidth = 3
         isDrawing = false
+        drawPath = UIBezierPath()
+        //storePath = UIBezierPath()
+        drawLayer = CAShapeLayer()
         startPoint = CGPoint()
-        //endPoint = CGPoint()
-        dispPath = UIBezierPath()
-        storePath = UIBezierPath()
         endPoint = CGPoint()
-        dispLayer = CAShapeLayer()
-        storeLayer = CAShapeLayer()
         
-        activePlayer = Player()
         super.init(coder: aDecoder)
+        
         self.clipsToBounds = true
+        
+        layer.addSublayer(drawLayer)
+        
+        drawLayer.fillColor = nil
+        drawLayer.strokeColor = color.cgColor
+        drawLayer.lineWidth = strokeWidth
+        drawLayer.lineCap = kCALineCapRound
+        
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        data?.checkDraw()
-        if (data?.nextDraws)! {
+        if (data?.checkDraw())! {
             isDrawing = true
             guard let touch = touches.first else { return }
             startPoint = touch.location(in: self)
             data?.protoLine.startPos = startPoint
+            data?.protoLine.color = color
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isDrawing else { return }
         isDrawing = false
-        storePath.move(to: startPoint)
-        storePath.addLine(to: endPoint)
+        drawPath.move(to: startPoint)
+        drawPath.addLine(to: endPoint)
         data?.protoLine.endPos = endPoint
-        drawShapeLayer(path: storePath, layer: storeLayer)
-        activePlayer.layer = self.storeLayer
+        finalizeShapeLayer(path: drawPath, layer: activePlayer.layer)
         //print(activePlayer.number)
         //print(startPoint)
         //print(endPoint)
-        dispPath.removeAllPoints()
+        drawPath.removeAllPoints()
         activePlayer.addLine(line: (data?.protoLine)!)
-        endPoint = startPoint
+        endPoint = CGPoint()
+        startPoint = CGPoint()
         data?.protoLine.reset()
         data?.protoLine.rotationID = (data?.rotationID)!
-        
         data?.selected = -1
         print("touchesEnded")
         updateShotButtonsEvent.raise(data: 0)
@@ -93,26 +98,44 @@ class ArrowView: UIView {
         guard isDrawing else { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
-        dispPath.removeAllPoints()
-        dispPath.move(to: startPoint)
-        dispPath.addLine(to: touchPoint)
-        drawShapeLayer(path: dispPath, layer: dispLayer)
+        drawPath.removeAllPoints()
+        drawPath.move(to: startPoint)
+        drawPath.addLine(to: touchPoint)
+        //drawShapeLayer(path: drawPath, layer: drawLayer)
         endPoint = touchPoint
-        drawShapeLayer(path: storePath, layer: storeLayer)
+        drawShapeLayer(path: drawPath, layer: activePlayer.layer)
     }
     
+    //only called in touchesEnded
+    func finalizeShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
+        let newLayer = CAShapeLayer()
+        newLayer.fillColor = nil
+        newLayer.strokeColor = activePlayer.color.cgColor
+        layer.addSublayer(newLayer)
+        newLayer.path = path.cgPath //THIS IS THE IMPORTANT ONE
+        newLayer.lineWidth = strokeWidth
+        //self.layer.addSublayer(layer)
+        self.setNeedsDisplay()
+    }
+    
+    //called multiple times for the preview line in touches moved
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
-        layer.path = path.cgPath
-        layer.strokeColor = color.cgColor
-        layer.lineWidth = strokeWidth
-        self.layer.addSublayer(layer)
+        let subLayer = layer.sublayers![0] as! CAShapeLayer
+        subLayer.lineWidth = strokeWidth
+        subLayer.strokeColor = activePlayer.color.cgColor
+        subLayer.path = path.cgPath
+        //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
     
     func changeColor(player: Player) {
         activePlayer = player
         self.color = player.getColor()
-        self.storeLayer = player.getLayer()
+        if (!player.layerExists) {
+            layer.addSublayer(player.layer)
+            player.layerExists = true
+        }
     }
 }
+
 

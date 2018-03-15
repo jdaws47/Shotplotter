@@ -43,6 +43,14 @@ class RotationViewController: UIViewController {
         print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
         checkButtons()
+        for i in 0 ..< (data?.activePlayers.count)! {
+            var player = (data?.activePlayers[i])!
+            if (!player.layerExists) {
+                player.initializeLayer((data?.rotationID)!)
+                drawingBoard.layer.addSublayer(player.layer)
+                player.layerExists = true
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,12 +62,16 @@ class RotationViewController: UIViewController {
         //self.data = RotationView()
         activePlayer = Player()
         super.init(coder: aDecoder)
+        //adlsjf
         updateShotButtonsEvent.addHandler(target: self, handler: RotationViewController.checkButtons)
     }
     
     @IBAction func goBack(_ sender: Any) {
         screenshot = drawingBoard.pb_takeSnapshot()
         delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
+        for i in 0 ..< (data?.activePlayers.count)! {
+            data?.activePlayers[i].layerExists = false
+        }
         dismiss(animated: true, completion: nil)
     }
     

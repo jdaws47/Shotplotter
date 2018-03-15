@@ -134,8 +134,8 @@ class GameViewController: UIViewController, RotationDelegate {
     
     func passScreenCap(screenshot: UIImage, index: Int) {
         previews[index] = screenshot
-        print(screenshot)
-        print(previews[index])
+        //print(screenshot)
+        //print(previews[index])
     }
     
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
