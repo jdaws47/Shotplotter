@@ -42,7 +42,7 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
-        checkButtons(empty: 0)
+        checkButtons()
         for i in 0 ..< (data?.activePlayers.count)! {
             var player = (data?.activePlayers[i])!
             if (!player.layerExists) {
@@ -103,7 +103,6 @@ class RotationViewController: UIViewController {
         print("Player1 button pushed")
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
-        //print(activePlayer)
         drawingBoard.changeColor(player: activePlayer)
         checkButtons()
     }
