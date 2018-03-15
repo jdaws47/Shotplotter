@@ -63,6 +63,19 @@ struct Line {
     func hasType() -> Bool {
         return tip || slide || A || roll || hit
     }
+    
+    func convert() -> CAShapeLayer {
+        let newLayer = CAShapeLayer()
+        newLayer.strokeColor = color.cgColor
+        newLayer.lineWidth = 3
+        //add in stuff here about types
+        let newPath = UIBezierPath()
+        newPath.removeAllPoints()
+        newPath.move(to: startPos)
+        newPath.addLine(to: endPos)
+        newLayer.path = newPath.cgPath
+        return newLayer
+    }
 }
 
 //----------------------------- The Player class is used to hold all data that is specific to each player
@@ -73,6 +86,7 @@ class Player {
     var number: Int
     var name: String
     var isActive: Bool
+    var layerExists: Bool
     
     init(_number: Int, _color: UIColor, _name: String) {
         layer = CAShapeLayer()
@@ -80,6 +94,11 @@ class Player {
         color = _color
         name = _name
         isActive = false
+        layerExists = false
+        layer.strokeColor = color.cgColor
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color.cgColor
+        layer.addSublayer(previewLayer)
     }
     
     init() {
@@ -88,7 +107,14 @@ class Player {
         name = ""
         isActive = false
         layer = CAShapeLayer()
+        layerExists = false
+        layer.strokeColor = color.cgColor
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color.cgColor
+        layer.addSublayer(previewLayer)
     }
+    
+    //stupid delete this
     
     //adds a copy of a line struct
     func addLine(line: Line) {
@@ -111,7 +137,16 @@ class Player {
         return color
     }
     
-    func getLayer() -> CAShapeLayer {
+    func initializeLayer(_ wantedID:Int) -> CAShapeLayer {
+        layer.sublayers?.removeAll()
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color.cgColor
+        layer.addSublayer(previewLayer)
+        for i in 0 ..< shots.count {
+            if shots[i].rotationID == wantedID {
+                layer.addSublayer(shots[i].convert() as CALayer)
+            }
+        }
         return layer
     }
 }

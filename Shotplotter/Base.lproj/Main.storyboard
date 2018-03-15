@@ -31,7 +31,7 @@
                                 <items>
                                     <navigationItem title="Matches" id="4sE-sv-eqF">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="wa2-OA-6H3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3bw-s5-bhe">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3bw-s5-bhe">
                                                 <rect key="frame" x="20" y="4" width="80" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -114,7 +114,7 @@
                                 <items>
                                     <navigationItem title="Rotation 1" id="lF8-Na-pDk">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="CNT-ON-MIx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GyI-dL-IAe">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GyI-dL-IAe">
                                                 <rect key="frame" x="20" y="4" width="66" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -268,7 +268,7 @@
                                 <items>
                                     <navigationItem title="Match vs. [Name of School]" id="Mzx-Ab-pFq">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="pN5-be-RDN">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGQ-AH-Sft">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGQ-AH-Sft">
                                                 <rect key="frame" x="20" y="4" width="227" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -285,7 +285,7 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" id="A3v-hi-qNz">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="003-UZ-o9J">
                                                     <rect key="frame" x="921.5" y="4" width="46" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -377,7 +377,7 @@
                                 <items>
                                     <navigationItem title="Match Details" id="kTy-3H-875">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nhn-jj-qCo">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
                                                 <rect key="frame" x="20" y="5" width="45" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
