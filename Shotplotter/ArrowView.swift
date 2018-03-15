@@ -69,6 +69,7 @@ class ArrowView: UIView {
             guard let touch = touches.first else { return }
             startPoint = touch.location(in: self)
             data?.protoLine.startPos = startPoint
+            data?.protoLine.color = color
         }
     }
     
@@ -88,7 +89,6 @@ class ArrowView: UIView {
         startPoint = CGPoint()
         data?.protoLine.reset()
         data?.protoLine.rotationID = (data?.rotationID)!
-        
         data?.selected = -1
         updateShotButtonsEvent.raise(data: 0)
     }
@@ -105,8 +105,9 @@ class ArrowView: UIView {
         drawShapeLayer(path: drawPath, layer: activePlayer.layer)
     }
     
+    //only called in touchesEnded
     func finalizeShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
-        var newLayer = CAShapeLayer()
+        let newLayer = CAShapeLayer()
         newLayer.fillColor = nil
         newLayer.strokeColor = activePlayer.color.cgColor
         layer.addSublayer(newLayer)
@@ -116,8 +117,9 @@ class ArrowView: UIView {
         self.setNeedsDisplay()
     }
     
+    //called multiple times for the preview line in touches moved
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
-        var subLayer = layer.sublayers![0] as! CAShapeLayer
+        let subLayer = layer.sublayers![0] as! CAShapeLayer
         subLayer.lineWidth = strokeWidth
         subLayer.strokeColor = activePlayer.color.cgColor
         subLayer.path = path.cgPath

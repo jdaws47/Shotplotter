@@ -39,6 +39,7 @@ class RotationViewController: UIViewController {
         for i in 0 ..< (data?.activePlayers.count)! {
             var player = (data?.activePlayers[i])!
             if (!player.layerExists) {
+                player.initializeLayer((data?.rotationID)!)
                 drawingBoard.layer.addSublayer(player.layer)
                 player.layerExists = true
             }
