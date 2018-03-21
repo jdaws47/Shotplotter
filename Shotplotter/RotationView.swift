@@ -33,6 +33,13 @@ class RotationView {
     
     func updateActive(newActive: [Player]) {
         activePlayers = newActive
+        if (activePlayers.count > 2) {
+            for i in 0 ... 5 {
+                print (activePlayers.count)
+                print ((i+(rotationID%10))%6)
+                activePlayers[(i+(rotationID%10))%6] = newActive[i]
+            }
+        }
     }
     
     func checkDraw() -> Bool {

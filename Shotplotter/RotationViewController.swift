@@ -99,7 +99,6 @@ class RotationViewController: UIViewController {
     }
     
     @IBAction func player1(_ sender: Any) {
-        print("Player1 button pushed")
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
         drawingBoard.changeColor(player: activePlayer)
@@ -194,8 +193,6 @@ class RotationViewController: UIViewController {
         playerSpot6.tintColor = UIColor.black
         playerSpot6.backgroundColor = data?.activePlayers[5].getColor()
         playerSpot6.setTitle(String(describing: data!.activePlayers[5].number), for: .normal)
-        
-        print("Buttons Ch-Ch-Checked")
     }
     
     @IBAction func nextRotation(_ sender: Any) {
