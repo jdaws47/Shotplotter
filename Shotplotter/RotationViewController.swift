@@ -44,10 +44,9 @@ class RotationViewController: UIViewController {
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
         checkButtons()
         for i in 0 ..< (data?.activePlayers.count)! {
-            var player = (data?.activePlayers[i])!
+            let player = (data?.activePlayers[i])!
             if (!player.layerExists) {
-                player.initializeLayer((data?.rotationID)!)
-                drawingBoard.layer.addSublayer(player.layer)
+                drawingBoard.layer.addSublayer(player.initializeLayer((data?.rotationID)!))
                 player.layerExists = true
             }
         }
@@ -197,5 +196,19 @@ class RotationViewController: UIViewController {
         playerSpot6.setTitle(String(describing: data!.activePlayers[5].number), for: .normal)
         
         print("Buttons Ch-Ch-Checked")
+    }
+    
+    @IBAction func nextRotation(_ sender: Any) {
+        delegate?.nextRotation(ID: (data?.rotationID)!, self)
+        drawingBoard.data = data
+        drawingBoard.clear()
+        self.viewWillAppear(false)
+    }
+    
+    @IBAction func prevRotation(_ sender: Any) {
+        delegate?.previousRotation(ID: (data?.rotationID)!, self)
+        drawingBoard.data = data
+        drawingBoard.clear()
+        self.viewWillAppear(false)
     }
 }

@@ -138,6 +138,28 @@ class GameViewController: UIViewController, RotationDelegate {
         //print(previews[index])
     }
     
+    func nextRotation(ID: Int, _ sender: RotationViewController) {
+        data?.updateActive()
+        var newID = -1
+        if (ID % 10 != 5) {
+            newID = ID + 1
+        } else {
+            newID = ID - 5
+        }
+        sender.data? = (data?.rotations[newID % 10])!
+    }
+    
+    func previousRotation(ID: Int, _ sender: RotationViewController) {
+        data?.updateActive()
+        var newID = -1
+        if (ID % 10 != 0) {
+            newID = ID - 1
+        } else {
+            newID = ID + 5
+        }
+        sender.data? = (data?.rotations[newID % 10])!
+    }
+    
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         data?.updateActive()
