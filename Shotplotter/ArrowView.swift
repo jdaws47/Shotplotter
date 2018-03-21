@@ -79,6 +79,7 @@ class ArrowView: UIView {
         drawPath.move(to: startPoint)
         drawPath.addLine(to: endPoint)
         data?.protoLine.endPos = endPoint
+        data?.protoLine.rotationID = (data?.rotationID)!
         finalizeShapeLayer(path: drawPath, layer: activePlayer.layer)
         //print(activePlayer.number)
         //print(startPoint)
@@ -88,7 +89,6 @@ class ArrowView: UIView {
         endPoint = CGPoint()
         startPoint = CGPoint()
         data?.protoLine.reset()
-        data?.protoLine.rotationID = (data?.rotationID)!
         data?.selected = -1
         print("touchesEnded")
         updateShotButtonsEvent.raise(data: 0)
@@ -110,10 +110,12 @@ class ArrowView: UIView {
     func finalizeShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
         let newLayer = CAShapeLayer()
         newLayer.fillColor = nil
-        newLayer.strokeColor = activePlayer.color.cgColor
-        layer.addSublayer(newLayer)
-        newLayer.path = path.cgPath //THIS IS THE IMPORTANT ONE
+        let path2 = path.cgPath.mutableCopy()
+        path2?.addLines(between: [startPoint, endPoint])
+        newLayer.lineDashPattern = [7, 3]
         newLayer.lineWidth = strokeWidth
+        newLayer.strokeColor = activePlayer.color.cgColor
+        newLayer.path = path2 //This is the important one
         //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
@@ -121,9 +123,12 @@ class ArrowView: UIView {
     //called multiple times for the preview line in touches moved
     func drawShapeLayer(path: UIBezierPath, layer: CAShapeLayer) {
         let subLayer = layer.sublayers![0] as! CAShapeLayer
+        let path2 = path.cgPath.mutableCopy()
+        path2?.addLines(between: [startPoint, endPoint])
+        subLayer.lineDashPattern = [7, 3]
         subLayer.lineWidth = strokeWidth
         subLayer.strokeColor = activePlayer.color.cgColor
-        subLayer.path = path.cgPath
+        subLayer.path = path2
         //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
@@ -135,6 +140,11 @@ class ArrowView: UIView {
             layer.addSublayer(player.layer)
             player.layerExists = true
         }
+    }
+    
+    func clear() {
+        //layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        data?.players.forEach { _ = $0.initializeLayer((data?.rotationID)!) }
     }
 }
 

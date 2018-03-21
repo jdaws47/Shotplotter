@@ -30,8 +30,8 @@ class GameView {
     }
     
     func updateActive() {
-        for rotation in rotations {
-            rotation.updateActive(newActive: activePlayers)
+        rotations.forEach {
+            $0.updateActive(newActive: activePlayers)
         }
     }
     

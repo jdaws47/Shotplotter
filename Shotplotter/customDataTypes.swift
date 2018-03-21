@@ -205,7 +205,7 @@ class ActiveSwitch: UISwitch {
         super.init(coder: aDecoder)
     }
     
-    func switched(_ tapGesture: UITapGestureRecognizer) {
+    @objc func switched(_ tapGesture: UITapGestureRecognizer) {
         delegate?.switched(sender: self)
     }
 }
@@ -235,6 +235,8 @@ private class EventHandlerWrapper<T: AnyObject, U>
 }
 protocol RotationDelegate: class {
     func passScreenCap(screenshot: UIImage, index: Int)
+    func nextRotation(ID: Int, _ sender: RotationViewController)
+    func previousRotation(ID: Int, _ sender: RotationViewController)
 }
 
 public protocol Disposable {
