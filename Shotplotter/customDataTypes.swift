@@ -40,8 +40,8 @@ struct Line {
     var endPos: CGPoint
     var tip: Bool = false
     var slide: Bool = false
-    var A: Bool = false
     var roll: Bool = false
+    var A: Bool = false
     var hit: Bool = false
     var color: UIColor
     var didScore: Bool = false
@@ -52,8 +52,8 @@ struct Line {
         endPos = CGPoint.init(x: 0, y: 0)
         tip = false
         slide = false
-        A = false
         roll = false
+        A = false
         hit = false
         color = UIColor.black
         didScore = false
@@ -71,9 +71,67 @@ struct Line {
         //add in stuff here about types
         let newPath = UIBezierPath()
         newPath.removeAllPoints()
-        newPath.move(to: startPos)
-        newPath.addLine(to: endPos)
-        newLayer.path = newPath.cgPath
+        //newPath.move(to: startPos)
+        
+        if (tip) {
+            newLayer.path =  newPath.cgPath //THIS IS THE IMPORTANT ONE
+        } else if (slide) {
+            let slidePath = UIBezierPath().cgPath.mutableCopy()
+            let startX = CGFloat(startPos.x)
+            let startY = CGFloat(startPos.y)
+            let endX = CGFloat(endPos.x)
+            let endY = CGFloat(endPos.y)
+            
+            let amplitude = CGFloat(5)
+            var period = CGFloat(5)
+            // Increase this number to increase performance
+            let segmentLength = 5
+            
+            let xDiff = startX - endX
+            let yDiff = startY - endY
+            
+            var angle = atan2(yDiff, xDiff)
+            if angle < 0 {
+                angle += 2.0 * CGFloat.pi
+            }
+            
+            let length = sqrt(xDiff * xDiff + yDiff * yDiff)
+            
+            var occilations = CGFloat((Int)(length / (2 * CGFloat.pi)))
+            occilations = CGFloat(Int(occilations / period))
+            period = (CGFloat(occilations) * ((2 * CGFloat.pi) / length))
+            
+            var x3 = CGFloat(startX)
+            var y3 = CGFloat(startY)
+            for i in stride(from: 0, to: Int(length), by: segmentLength) {
+                var counter = CGFloat(i)
+                var x1 = startX - counter * (xDiff / length)
+                var y1 = startY - counter * (yDiff / length)
+                var x2 = x1 + sin(counter * period) * amplitude * cos(angle + CGFloat.pi / CGFloat(2))
+                var y2 = y1 + sin(counter * period) * amplitude * sin(angle + CGFloat.pi / CGFloat(2))
+                
+                var firstPoint = CGPoint(x: x3,y: y3)
+                var lastPoint = CGPoint(x: x2, y: y2)
+                slidePath?.addLines(between: [firstPoint, lastPoint])
+                
+                newLayer.path = slidePath
+                
+                x3 = x2
+                y3 = y2
+            }
+        } else if roll {
+            let rollPath = newPath.cgPath.mutableCopy()
+            rollPath?.addLines(between: [startPos, endPos])
+            newLayer.lineDashPattern = [30, 15, 15, 15]
+            newLayer.path = rollPath
+        } else if A {
+            let aPath = newPath.cgPath.mutableCopy()
+            aPath?.addLines(between: [startPos, endPos])
+            newLayer.lineDashPattern = [7, 3, 7]
+            newLayer.path = aPath
+        }
+        //newPath.addLine(to: endPos)
+        //newLayer.path = newPath.cgPath
         return newLayer
     }
 }
@@ -123,7 +181,7 @@ class Player {
     
     //adds a line to the array directly from the raw information
     func addLine(start:CGPoint, end:CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
-        var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, color: color, didScore: didScore, rotationID: rotation)
+        var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, roll: roll, A: A, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
     
