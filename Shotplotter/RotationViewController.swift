@@ -200,6 +200,8 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         drawingBoard.clear()
         self.viewWillAppear(false)
+        screenshot = drawingBoard.pb_takeSnapshot()
+        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
     }
     
     @IBAction func prevRotation(_ sender: Any) {
@@ -207,5 +209,7 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         drawingBoard.clear()
         self.viewWillAppear(false)
+        screenshot = drawingBoard.pb_takeSnapshot()
+        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
     }
 }
