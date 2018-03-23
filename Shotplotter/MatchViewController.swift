@@ -10,6 +10,7 @@ import UIKit
 
 class MatchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var data: MatchView?
+    var sameRotation = false //should be false when switching to a new game, but not when reopening the same game
     var passedGame = -1 //initial value that can't exist as an index
     private var localTableView: UITableView? // A reference to the table of Games
     @IBOutlet weak var backToMain: UIButton!
@@ -65,6 +66,10 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
                 destination.data = self.data
             }
         } else if (segue.identifier == "MatchToGame") {
+            if (!sameRotation) {
+                data?.players.forEach { $0.isActive = false }
+                print("isActive reset")
+            }
             if let destination = segue.destination as? GameViewController {
                 destination.data = (self.data?.games[passedGame])
                 destination.data?.opponentName = (self.data?.opponentName)!
@@ -100,6 +105,9 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Runs whenever a cell is tapped. Used to segue to the relevant Game.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(passedGame == indexPath.row) {
+            sameRotation = true
+        }
         passedGame = indexPath.row
         self.performSegue(withIdentifier: "MatchToGame", sender: self)
     }

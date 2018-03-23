@@ -62,6 +62,12 @@ class GameViewController: UIViewController, RotationDelegate {
         rotation5.setImage(previews[4], for: UIControlState.normal)
         rotation6.setImage(previews[5], for: UIControlState.normal)
         //rotation1.imageView!.image = previews[0]
+        data?.players.forEach {
+            let n = $0
+            var a = false
+            data?.activePlayers.forEach { if(n.number == $0.number) { a = true} }
+            $0.isActive = a
+        }
     }
     
     override func didReceiveMemoryWarning() {
