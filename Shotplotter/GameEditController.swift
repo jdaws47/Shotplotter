@@ -13,10 +13,17 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
     var switches = [ActiveSwitch]()
     var localTableView: UITableView?
     var firstRun = true
+    var loaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loaded = false
+        switches.removeAll()
+        firstRun = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,6 +68,8 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
             firstRun = false
         }
         
+        loaded = true
+        
         return cell
     }
     
@@ -78,6 +87,10 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func switched(sender: ActiveSwitch) {
+        if (!loaded) {
+            sender.isOn = false
+            return
+        }
         data?.players[sender.index].isActive = sender.isOn
         if (data?.players[sender.index].isActive)! && (data?.activePlayers.count)! > 0 {
             for var k in 0 ..< (data?.activePlayers.count)! {
@@ -101,19 +114,13 @@ class GameEditController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         //print(data?.activePlayers)
-        var count = 0
-        for i in 0 ..< (data?.activePlayers.count)! {
-            if (data?.activePlayers[i].isActive)! {
-                count = count + 1
-            }
-        }
-        if (count >= 6) {
+        if ((data?.activePlayers.count)! >= 6) {
             for j in 0 ..< (data?.activePlayers.count)! {
                 if !switches[j].isOn {
                     switches[j].isEnabled = false
                 }
             }
-        } else if (count < 6) {
+        } else if ((data?.activePlayers.count)! < 6) {
             for j in 0 ..< (data?.activePlayers.count)! {
                 switches[j].isEnabled = true
             }
