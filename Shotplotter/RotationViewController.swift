@@ -196,20 +196,20 @@ class RotationViewController: UIViewController {
     }
     
     @IBAction func nextRotation(_ sender: Any) {
+        screenshot = drawingBoard.pb_takeSnapshot()
+        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
         delegate?.nextRotation(ID: (data?.rotationID)!, self)
         drawingBoard.data = data
         drawingBoard.clear()
         self.viewWillAppear(false)
-        screenshot = drawingBoard.pb_takeSnapshot()
-        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
     }
     
     @IBAction func prevRotation(_ sender: Any) {
+        screenshot = drawingBoard.pb_takeSnapshot()
+        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
         delegate?.previousRotation(ID: (data?.rotationID)!, self)
         drawingBoard.data = data
         drawingBoard.clear()
         self.viewWillAppear(false)
-        screenshot = drawingBoard.pb_takeSnapshot()
-        delegate?.passScreenCap(screenshot: screenshot!, index: ((data?.rotationID)! % 10))
     }
 }

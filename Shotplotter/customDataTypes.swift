@@ -74,7 +74,9 @@ struct Line {
         //newPath.move(to: startPos)
         
         if (tip) {
-            newLayer.path =  newPath.cgPath //THIS IS THE IMPORTANT ONE
+            let tipPath = newPath.cgPath.mutableCopy()
+            tipPath?.addLines(between: [startPos, endPos])
+            newLayer.path = tipPath
         } else if (slide) {
             let slidePath = UIBezierPath().cgPath.mutableCopy()
             let startX = CGFloat(startPos.x)
