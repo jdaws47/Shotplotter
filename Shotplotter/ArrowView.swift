@@ -60,7 +60,6 @@ class ArrowView: UIView {
         
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (data?.checkDraw())! {
             isDrawing = true
