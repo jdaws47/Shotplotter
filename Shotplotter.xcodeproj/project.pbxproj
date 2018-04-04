@@ -33,6 +33,8 @@
 		99462DBA1FED7B2500E3C8C6 /* GlobalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */; };
 		99C19C05200FBE48003D370A /* PlayerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C19C04200FBE48003D370A /* PlayerTableCell.swift */; };
 		99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */; };
+		99EA9990207294720082E39C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EA998F207294720082E39C /* OrderViewController.swift */; };
+		99EA9992207294A40082E39C /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EA9991207294A40082E39C /* OrderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTableViewCell.swift; sourceTree = "<group>"; };
 		99C19C04200FBE48003D370A /* PlayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableCell.swift; sourceTree = "<group>"; };
 		99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Volleyball Court.jpg"; sourceTree = "<group>"; };
+		99EA998F207294720082E39C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		99EA9991207294A40082E39C /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				7077BCE61FDB03CA00CFF007 /* MatchEditController.swift */,
 				99C19C04200FBE48003D370A /* PlayerTableCell.swift */,
 				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
+				99EA998F207294720082E39C /* OrderViewController.swift */,
+				99EA9991207294A40082E39C /* OrderCell.swift */,
 				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
 				991821EE2018F84D0018583E /* ActivePlayerCell.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
@@ -341,6 +347,7 @@
 			files = (
 				70CC0CAE1FD85CE500909DBD /* GameViewController.swift in Sources */,
 				70CC0CB71FD862CA00909DBD /* MainView.swift in Sources */,
+				99EA9992207294A40082E39C /* OrderCell.swift in Sources */,
 				70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */,
 				99346F731FFFF02A00E76C73 /* MatchTableViewCell.swift in Sources */,
 				99462DBA1FED7B2500E3C8C6 /* GlobalTableViewCell.swift in Sources */,
@@ -349,6 +356,7 @@
 				70CD82781FDEF58C00CBEBDC /* GameEditController.swift in Sources */,
 				991821EF2018F84D0018583E /* ActivePlayerCell.swift in Sources */,
 				70CC0CB01FD85CF700909DBD /* RotationViewController.swift in Sources */,
+				99EA9990207294720082E39C /* OrderViewController.swift in Sources */,
 				70CC0CBB1FD862FD00909DBD /* GameView.swift in Sources */,
 				70CC0CB91FD862F900909DBD /* MatchView.swift in Sources */,
 				70CC0CBD1FD8630400909DBD /* RotationView.swift in Sources */,
