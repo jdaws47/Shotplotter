@@ -206,35 +206,35 @@ struct Line: Codable {
 class Player {
     var shots = [Line]()
     var layer: CAShapeLayer
-    var color: UIColor
+    var color: CGColor
     var number: Int
     var name: String
     var isActive: Bool
     var layerExists: Bool
     
-    init(_number: Int, _color: UIColor, _name: String) {
+    init(_number: Int, _color: CGColor, _name: String) {
         layer = CAShapeLayer()
         number = _number
         color = _color
         name = _name
         isActive = false
         layerExists = false
-        layer.strokeColor = color.cgColor
+        layer.strokeColor = color
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
     }
     
     init() {
         number = -1
-        color = UIColor.black
+        color = UIColor.black.cgColor
         name = ""
         isActive = false
         layer = CAShapeLayer()
         layerExists = false
-        layer.strokeColor = color.cgColor
+        layer.strokeColor = color
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
     }
     
@@ -246,7 +246,7 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
+    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false,  as! CGColordidScore:Bool = false) {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, roll: roll, A: A, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
@@ -257,14 +257,14 @@ class Player {
         print("value changed")
     }
     
-    func getColor() -> UIColor {
+    func getColor() -> CGColor {
         return color
     }
     
     func initializeLayer(_ wantedID:Int) -> CAShapeLayer {
         layer.sublayers?.removeAll()
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
         for i in 0 ..< shots.count {
             if shots[i].rotationID == wantedID {

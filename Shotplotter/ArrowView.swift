@@ -26,7 +26,7 @@ class ArrowView: UIView {
     
     var data: RotationView?
     
-    var color: UIColor
+    var color: CGColor
     var strokeWidth: CGFloat
     var isDrawing: Bool
     var startPoint: CGPoint
@@ -38,7 +38,7 @@ class ArrowView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         activePlayer = Player()
-        color = UIColor.red
+        color = UIColor.red.cgColor
         strokeWidth = 3
         isDrawing = false
         drawPath = UIBezierPath()
@@ -54,7 +54,7 @@ class ArrowView: UIView {
         layer.addSublayer(drawLayer)
         
         drawLayer.fillColor = nil
-        drawLayer.strokeColor = color.cgColor
+        drawLayer.strokeColor = color
         drawLayer.lineWidth = strokeWidth
         drawLayer.lineCap = kCALineCapRound
         
@@ -66,7 +66,7 @@ class ArrowView: UIView {
             guard let touch = touches.first else { return }
             startPoint = touch.location(in: self)
             data?.protoLine.startPos = startPoint
-            data?.protoLine.color = color.cgColor
+            data?.protoLine.color = color
         }
     }
     
@@ -185,7 +185,7 @@ class ArrowView: UIView {
     
     func changeColor(player: Player) {
         activePlayer = player
-        self.color = player.getColor()
+        self.color = player.color
         if (!player.layerExists) {
             layer.addSublayer(player.layer)
             player.layerExists = true
