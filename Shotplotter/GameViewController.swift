@@ -178,7 +178,15 @@ class GameViewController: UIViewController, RotationDelegate {
                 destination.data = data?.rotations[passedRotation]
                 destination.delegate = self
             }
+        } else if (segue.identifier == "GameToOrder") {
+            if let destination = segue.destination as? OrderViewController {
+                destination.data = self.data
+            }
         }
+    }
+    
+    @IBAction func transitionToSetOrder(_ sender: Any) {
+        self.performSegue(withIdentifier: "GameToOrder", sender: self)
     }
     
 }
