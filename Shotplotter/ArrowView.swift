@@ -66,7 +66,7 @@ class ArrowView: UIView {
             guard let touch = touches.first else { return }
             startPoint = touch.location(in: self)
             data?.protoLine.startPos = startPoint
-            data?.protoLine.color = color
+            data?.protoLine.color = color.cgColor
         }
     }
     

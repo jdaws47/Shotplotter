@@ -35,7 +35,7 @@ enum SortingMode: Int {
 }
 
 //----------------------------- The Line structure. This is used to keep track of all information for each line
-struct Line {
+struct Line: Codable {
     var startPos: CGPoint
     var endPos: CGPoint
     var tip: Bool = false
@@ -43,7 +43,7 @@ struct Line {
     var roll: Bool = false
     var A: Bool = false
     var hit: Bool = false
-    var color: UIColor
+    var color: CGColor
     var didScore: Bool = false
     var rotationID: Int
     
@@ -55,9 +55,67 @@ struct Line {
         roll = false
         A = false
         hit = false
-        color = UIColor.black
+        color = UIColor.black.cgColor
         didScore = false
         rotationID = -1
+    }
+    
+    /**
+     * Archive this MeetClass object
+     * @param: fileName from which to archived this object
+     */
+    func archive(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    
+    /**
+     * blah
+     * @param: blah
+     */
+    mutating func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(Line.self, from: recoveredDataCoded)
+                print("Data successfully recovered from file.")
+                startPos = recoveredData.startPos
+                endPos = recoveredData.endPos
+                tip = recoveredData.tip
+                slide = recoveredData.slide
+                roll = recoveredData.roll
+                A = recoveredData.A
+                hit = recoveredData.hit
+                color = recoveredData.color
+                didScore = recoveredData.didScore
+                rotationID = recoveredData.rotationID
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        print("Ho")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        print("Howdy")
     }
     
     func hasType() -> Bool {
@@ -66,7 +124,7 @@ struct Line {
     
     func convert() -> CAShapeLayer {
         let newLayer = CAShapeLayer()
-        newLayer.strokeColor = color.cgColor
+        newLayer.strokeColor = color
         newLayer.lineWidth = 3
         //add in stuff here about types
         let newPath = UIBezierPath()
@@ -136,6 +194,12 @@ struct Line {
         //newLayer.path = newPath.cgPath
         return newLayer
     }
+    
+    func getPath(layer: CAShapeLayer) -> CAShapeLayer {
+        var layer = layer
+        layer = self.convert()
+        return layer
+    }
 }
 
 //----------------------------- The Player class is used to hold all data that is specific to each player
@@ -182,7 +246,7 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:CGPoint, end:CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
+    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
         var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, roll: roll, A: A, hit: hit, color: color, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }
