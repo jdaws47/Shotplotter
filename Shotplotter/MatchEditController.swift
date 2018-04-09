@@ -83,7 +83,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
         }
         //cell.imageView?.backgroundColor = player?.color
         cell.color.backgroundColor = setColor(indexPath.row)
-        player?.color = cell.color.backgroundColor!
+        player?.color = cell.color.backgroundColor!.cgColor
         cell.name.delegate = self
         cell.number.delegate = self
         cell.name.index = indexPath.row
