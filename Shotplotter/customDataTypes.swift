@@ -9,6 +9,20 @@
 import UIKit
 import Foundation
 
+let Orange = UIColor.init(red: 255/255, green: 149/255, blue:   0/255, alpha: 0)
+let Blue   = UIColor.init(red:   4/255, green:  51/255, blue: 255/255, alpha: 0)
+let Brown  = UIColor.init(red: 157/255, green:  83/255, blue:   0/255, alpha: 0)
+let Pink   = UIColor.init(red: 255/255, green:  64/255, blue: 255/255, alpha: 0)
+let Red    = UIColor.init(red: 255/255, green:  38/255, blue:   0/255, alpha: 0)
+let Green  = UIColor.init(red: 141/255, green: 213/255, blue:   0/255, alpha: 0)
+let Cyan   = UIColor.init(red:   0/255, green: 151/255, blue: 255/255, alpha: 0)
+let Yellow = UIColor.init(red: 215/255, green: 207/255, blue:   0/255, alpha: 0)
+let Purple = UIColor.init(red: 148/255, green:  55/255, blue: 255/255, alpha: 0)
+let Russet = UIColor.init(red: 215/255, green:  91/255, blue:   0/255, alpha: 0)
+let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 0)
+let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 0)
+let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 0)
+
 let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0.5), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0.5), UIColor.init(red:125/255,green:0,blue:255/255,alpha:0)]
 
 let updateShotButtonsEvent = Event<Int>()
