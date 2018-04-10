@@ -176,22 +176,22 @@ class RotationViewController: UIViewController {
         else {playerSpot6.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
         
         playerSpot1.tintColor = UIColor.black
-        playerSpot1.backgroundColor = data?.activePlayers[0].getColor()
+        playerSpot1.backgroundColor = UIColor(cgColor: (data?.activePlayers[0].color)!)
         playerSpot1.setTitle(String(describing: data!.activePlayers[0].number), for: .normal)
         playerSpot2.tintColor = UIColor.black
-        playerSpot2.backgroundColor = data?.activePlayers[1].getColor()
+        playerSpot2.backgroundColor = UIColor(cgColor: (data?.activePlayers[1].color)!)
         playerSpot2.setTitle(String(describing: data!.activePlayers[1].number), for: .normal)
         playerSpot3.tintColor = UIColor.black
-        playerSpot3.backgroundColor = data?.activePlayers[2].getColor()
+        playerSpot3.backgroundColor = UIColor(cgColor: (data?.activePlayers[2].color)!)
         playerSpot3.setTitle(String(describing: data!.activePlayers[2].number), for: .normal)
         playerSpot4.tintColor = UIColor.black
-        playerSpot4.backgroundColor = data?.activePlayers[3].getColor()
+        playerSpot4.backgroundColor = UIColor(cgColor: (data?.activePlayers[3].color)!)
         playerSpot4.setTitle(String(describing: data!.activePlayers[3].number), for: .normal)
         playerSpot5.tintColor = UIColor.black
-        playerSpot5.backgroundColor = data?.activePlayers[4].getColor()
+        playerSpot5.backgroundColor = UIColor(cgColor: (data?.activePlayers[4].color)!)
         playerSpot5.setTitle(String(describing: data!.activePlayers[4].number), for: .normal)
         playerSpot6.tintColor = UIColor.black
-        playerSpot6.backgroundColor = data?.activePlayers[5].getColor()
+        playerSpot6.backgroundColor = UIColor(cgColor: (data?.activePlayers[5].color)!)
         playerSpot6.setTitle(String(describing: data!.activePlayers[5].number), for: .normal)
     }
     

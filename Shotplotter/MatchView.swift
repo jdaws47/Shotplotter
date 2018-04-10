@@ -56,7 +56,7 @@ class MatchView {
                     if (double) {newNumber += 1}
                 }
                 var newColor = UIColor.black// >>>>Ignore what it tells you. Do NOT change this to a let!<<<<
-                players.append(Player.init(_number: newNumber, _color: newColor, _name: ""))
+                players.append(Player.init(_number: newNumber, _color: newColor.cgColor, _name: ""))
             }
         } else { // If a player is being removed
             while (players.count > newNum) {
@@ -70,9 +70,9 @@ class MatchView {
     func syncColors() {
         for i in 0...players.count - 1 {
             if (i < playerColors.count) {
-                players[i].color = playerColors[i]
+                players[i].color = playerColors[i].cgColor
             } else {
-                players[i].color = UIColor.black
+                players[i].color = UIColor.black.cgColor
             }
             //add function that causes buttons to update colors
         }

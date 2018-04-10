@@ -126,6 +126,29 @@ struct Line: Codable {
     
     init(from decoder: Decoder) throws {
         print("Ho")
+        startPos = CGPoint.init(x: 0, y: 0)
+        endPos = CGPoint.init(x: 0, y: 0)
+        tip = false
+        slide = false
+        roll = false
+        A = false
+        hit = false
+        color = UIColor.black.cgColor
+        didScore = false
+        rotationID = -1
+    }
+    
+    init(_startPos: CGPoint, _endPos: CGPoint, _tip: Bool, _slide: Bool, _roll: Bool, _A: Bool, _hit: Bool, _color: CGColor, _didScore: Bool, _rotationID: Int) {
+        startPos = _startPos
+        endPos = _endPos
+        tip = _tip
+        slide = _slide
+        roll = _roll
+        A = _A
+        hit = _hit
+        color = _color
+        didScore = _didScore
+        rotationID = _rotationID
     }
     
     func encode(to encoder: Encoder) throws {
@@ -145,10 +168,20 @@ struct Line: Codable {
         newPath.removeAllPoints()
         //newPath.move(to: startPos)
         
+        convertPath(layer: newLayer, path: newPath)
+        
+        //newPath.addLine(to: endPos)
+        //newLayer.path = newPath.cgPath
+        return newLayer
+    }
+    
+    func convertPath(layer: CAShapeLayer, path: UIBezierPath) {
+        let layer = layer
+        
         if (tip) {
-            let tipPath = newPath.cgPath.mutableCopy()
+            let tipPath = path.cgPath.mutableCopy()
             tipPath?.addLines(between: [startPos, endPos])
-            newLayer.path = tipPath
+            layer.path = tipPath
         } else if (slide) {
             let slidePath = UIBezierPath().cgPath.mutableCopy()
             let startX = CGFloat(startPos.x)
@@ -178,41 +211,32 @@ struct Line: Codable {
             var x3 = CGFloat(startX)
             var y3 = CGFloat(startY)
             for i in stride(from: 0, to: Int(length), by: segmentLength) {
-                var counter = CGFloat(i)
-                var x1 = startX - counter * (xDiff / length)
-                var y1 = startY - counter * (yDiff / length)
-                var x2 = x1 + sin(counter * period) * amplitude * cos(angle + CGFloat.pi / CGFloat(2))
-                var y2 = y1 + sin(counter * period) * amplitude * sin(angle + CGFloat.pi / CGFloat(2))
+                let counter = CGFloat(i)
+                let x1 = startX - counter * (xDiff / length)
+                let y1 = startY - counter * (yDiff / length)
+                let x2 = x1 + sin(counter * period) * amplitude * cos(angle + CGFloat.pi / CGFloat(2))
+                let y2 = y1 + sin(counter * period) * amplitude * sin(angle + CGFloat.pi / CGFloat(2))
                 
-                var firstPoint = CGPoint(x: x3,y: y3)
-                var lastPoint = CGPoint(x: x2, y: y2)
+                let firstPoint = CGPoint(x: x3,y: y3)
+                let lastPoint = CGPoint(x: x2, y: y2)
                 slidePath?.addLines(between: [firstPoint, lastPoint])
                 
-                newLayer.path = slidePath
+                layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
         } else if roll {
-            let rollPath = newPath.cgPath.mutableCopy()
+            let rollPath = path.cgPath.mutableCopy()
             rollPath?.addLines(between: [startPos, endPos])
-            newLayer.lineDashPattern = [30, 15, 15, 15]
-            newLayer.path = rollPath
+            layer.lineDashPattern = [30, 15, 15, 15]
+            layer.path = rollPath
         } else if A {
-            let aPath = newPath.cgPath.mutableCopy()
+            let aPath = path.cgPath.mutableCopy()
             aPath?.addLines(between: [startPos, endPos])
-            newLayer.lineDashPattern = [7, 3, 7]
-            newLayer.path = aPath
+            layer.lineDashPattern = [7, 3, 7]
+            layer.path = aPath
         }
-        //newPath.addLine(to: endPos)
-        //newLayer.path = newPath.cgPath
-        return newLayer
-    }
-    
-    func getPath(layer: CAShapeLayer) -> CAShapeLayer {
-        var layer = layer
-        layer = self.convert()
-        return layer
     }
 }
 
@@ -260,8 +284,8 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false,  as! CGColordidScore:Bool = false) {
-        var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, roll: roll, A: A, hit: hit, color: color, didScore: didScore, rotationID: rotation)
+    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, color:CGColor, didScore:Bool = false) {
+        var temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
         addLine(line:temp)
     }
     
@@ -269,10 +293,6 @@ class Player {
         let value = mySwitch.isOn
         //isActive = value
         print("value changed")
-    }
-    
-    func getColor() -> CGColor {
-        return color
     }
     
     func initializeLayer(_ wantedID:Int) -> CAShapeLayer {
