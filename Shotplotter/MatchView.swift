@@ -70,7 +70,7 @@ class MatchView {
     func syncColors() {
         for i in 0...players.count - 1 {
             if (i < playerColors.count) {
-                players[i].color = playerColors[i].cgColor
+                players[i].color = playerColors[i]
             } else {
                 players[i].color = UIColor.black.cgColor
             }
