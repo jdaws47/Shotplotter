@@ -245,6 +245,15 @@
                                     <action selector="nextRotation:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="r4u-zR-A2q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80k-q5-DZh">
+                                <rect key="frame" x="128" y="362" width="135" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" backgroundImage="ScoreOff.png"/>
+                                <connections>
+                                    <action selector="ScoreButtonSelect:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="jzf-mn-wV3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -260,6 +269,7 @@
                         <outlet property="playerSpot6" destination="4zO-EA-Nwg" id="Inc-ga-XkO"/>
                         <outlet property="rollButton" destination="pfk-4s-FBc" id="2HW-gM-OgB"/>
                         <outlet property="rotationTitle" destination="lF8-Na-pDk" id="Sok-yR-vb0"/>
+                        <outlet property="scoreButton" destination="80k-q5-DZh" id="K6X-TF-at0"/>
                         <outlet property="slideButton" destination="l85-Jf-cgb" id="hZZ-Nw-Kqz"/>
                         <outlet property="tipButton" destination="CaE-Gw-o8G" id="Yot-UD-C58"/>
                     </connections>
@@ -860,6 +870,7 @@
     <resources>
         <image name="AOff.png" width="90" height="45"/>
         <image name="RollOff.png" width="90" height="45"/>
+        <image name="ScoreOff.png" width="135" height="45"/>
         <image name="SlideOff.png" width="90" height="45"/>
         <image name="TipOff.png" width="90" height="45"/>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
