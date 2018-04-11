@@ -163,13 +163,14 @@ struct Line: Codable {
     
     func convertPath(layer: CAShapeLayer, path: UIBezierPath) {
         let layer = layer
+        var path = path.cgPath.mutableCopy()
         
         if (tip) {
-            let tipPath = path.cgPath.mutableCopy()
-            tipPath?.addLines(between: [startPos, endPos])
-            layer.path = tipPath
+            //let tipPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
+            
         } else if (slide) {
-            let slidePath = UIBezierPath().cgPath.mutableCopy()
+            path = UIBezierPath().cgPath.mutableCopy()
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
             let endX = CGFloat(endPos.x)
@@ -205,24 +206,34 @@ struct Line: Codable {
                 
                 let firstPoint = CGPoint(x: x3,y: y3)
                 let lastPoint = CGPoint(x: x2, y: y2)
-                slidePath?.addLines(between: [firstPoint, lastPoint])
+                path?.addLines(between: [firstPoint, lastPoint])
                 
-                layer.path = slidePath
+                //layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
         } else if roll {
-            let rollPath = path.cgPath.mutableCopy()
-            rollPath?.addLines(between: [startPos, endPos])
+            //let rollPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
             layer.lineDashPattern = [30, 15, 15, 15]
-            layer.path = rollPath
+            
         } else if A {
-            let aPath = path.cgPath.mutableCopy()
-            aPath?.addLines(between: [startPos, endPos])
+            //let aPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
             layer.lineDashPattern = [7, 3, 7]
-            layer.path = aPath
+
         }
+        
+        var radius1 = 20.0
+        //var width = 20
+        var origin = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
+        let rect = CGRect(origin: origin, size: CGSize(width: 20, height: 20))
+        //let hitmarker = UIBezierPath(ovalIn: rect)
+        
+        path?.addEllipse(in: rect)
+        layer.path = path
+        
     }
 }
 

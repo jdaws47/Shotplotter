@@ -123,7 +123,6 @@ class ArrowView: UIView {
         subLayer.lineWidth = strokeWidth
         subLayer.strokeColor = activePlayer.color
         subLayer.path = path.cgPath
-        //self.layer.addSublayer(layer)
         self.setNeedsDisplay()
     }
     
