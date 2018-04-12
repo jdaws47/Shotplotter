@@ -24,22 +24,22 @@ let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 1)
 let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 1)
 let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 1)
 #else
-let Orange = UIColor.init(red: 255/255, green: 149/255, blue:   0/255, alpha: 1).cgColor
-let Blue   = UIColor.init(red:   4/255, green:  51/255, blue: 255/255, alpha: 1).cgColor
-let Brown  = UIColor.init(red: 157/255, green:  83/255, blue:   0/255, alpha: 1).cgColor
-let Pink   = UIColor.init(red: 255/255, green:  64/255, blue: 255/255, alpha: 1).cgColor
-let Red    = UIColor.init(red: 255/255, green:  38/255, blue:   0/255, alpha: 1).cgColor
-let Green  = UIColor.init(red: 141/255, green: 213/255, blue:   0/255, alpha: 1).cgColor
-let Cyan   = UIColor.init(red:   0/255, green: 151/255, blue: 255/255, alpha: 1).cgColor
-let Yellow = UIColor.init(red: 215/255, green: 207/255, blue:   0/255, alpha: 1).cgColor
-let Purple = UIColor.init(red: 148/255, green:  55/255, blue: 255/255, alpha: 1).cgColor
-let Russet = UIColor.init(red: 215/255, green:  91/255, blue:   0/255, alpha: 1).cgColor
-let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 1).cgColor
-let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 1).cgColor
-let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 1).cgColor
+let Red         = UIColor.init(red: 255/255, green:  0/255, blue:   0/255, alpha: 1).cgColor
+let Orange      = UIColor.init(red: 255/255, green:  130/255, blue: 0/255, alpha: 1).cgColor
+let YellowOrange = UIColor.init(red: 253/255, green:  196/255, blue:   46/255, alpha: 1).cgColor
+let LightGreen  = UIColor.init(red: 15/255, green:  85/255, blue: 15/255, alpha: 1).cgColor
+let Green       = UIColor.init(red: 0/255, green: 220/255, blue:   0/255, alpha: 1).cgColor
+let Teal        = UIColor.init(red: 0/255, green: 170/255, blue:   170/255, alpha: 1).cgColor
+let LightBlue   = UIColor.init(red: 0/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+let Blue        = UIColor.init(red: 0/255, green:  0/255, blue: 255/255, alpha: 1).cgColor
+let Purple      = UIColor.init(red: 98/255, green:  20/255, blue:   162/255, alpha: 1).cgColor
+let RedPurple   = UIColor.init(red: 202/255, green: 26/255, blue: 173/255, alpha: 1).cgColor
+let Pink        = UIColor.init(red: 252/255, green: 22/255, blue:   140/255, alpha: 1).cgColor
+let Maroon      = UIColor.init(red: 180/255, green: 50/255, blue:   50/255, alpha: 1).cgColor
+let Violet      = UIColor.init(red: 184/255, green:  39/255, blue: 251/255, alpha: 1).cgColor
 #endif
 
-let playerColors = [Blue, Red, Yellow, Green, Cyan, Maroon, Purple, Orange, Brown, Pink, Russet, Lime, Burnt]
+let playerColors = [Red, Orange, YellowOrange, LightGreen, Green, Teal, LightBlue, Blue, Purple, RedPurple, Pink, Maroon, Violet]
 
 let updateShotButtonsEvent = Event<Int>()
 let updateActiveEvent = Event<[Player]>()
@@ -255,13 +255,20 @@ struct Line: Codable {
 
         }
         
-        var radius1 = 20.0
+        let radius1 = 20.0
+        let radius2 = 10.0
         //var width = 20
-        var origin = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
-        let rect = CGRect(origin: origin, size: CGSize(width: 20, height: 20))
+        let origin1 = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
+        let origin2 = CGPoint(x: Double(endPos.x) - (radius2 / 2), y: Double(endPos.y) - (radius2 / 2))
+        let rect1 = CGRect(origin: origin1, size: CGSize(width: radius1, height: radius1))
+        let rect2 = CGRect(origin: origin2, size: CGSize(width: radius2, height: radius2))
         //let hitmarker = UIBezierPath(ovalIn: rect)
         
-        path?.addEllipse(in: rect)
+        
+        
+        
+        path?.addEllipse(in: rect1)
+        path?.addEllipse(in: rect2)
         layer.path = path
         
     }
@@ -329,7 +336,9 @@ class Player {
         layer.addSublayer(previewLayer)
         for i in 0 ..< shots.count {
             if shots[i].rotationID == wantedID {
-                layer.addSublayer(shots[i].convert() as CALayer)
+                let shotLayer = shots[i].convert() //as CALayer
+                shotLayer.fillColor = nil
+                layer.addSublayer(shotLayer)
             }
         }
         return layer
