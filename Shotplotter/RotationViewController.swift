@@ -22,6 +22,7 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var slideButton: UIButton!
     @IBOutlet weak var rollButton: UIButton!
     @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var scoreButton: UIButton!
     
     @IBOutlet weak var playerSpot1: PlayerSpot!
     @IBOutlet weak var playerSpot2: PlayerSpot!
@@ -98,6 +99,12 @@ class RotationViewController: UIViewController {
         checkButtons()
     }
     
+    @IBAction func ScoreButtonSelect(_ sender: Any) {
+        data?.protoLine.didScore = !(data?.protoLine.didScore)!
+        //print("Shot didScore value changed to: " + String(describing: data?.protoLine.didScore))
+        checkButtons()
+    }
+    
     @IBAction func player1(_ sender: Any) {
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
@@ -160,6 +167,11 @@ class RotationViewController: UIViewController {
             tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
             tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        if (data?.protoLine.didScore)! {
+            scoreButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/ScoreOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            scoreButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/ScoreOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
         if (data?.selected == 0) {playerSpot1.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
