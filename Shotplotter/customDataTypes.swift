@@ -255,20 +255,28 @@ struct Line: Codable {
 
         }
         
-        let radius1 = 20.0
-        let radius2 = 10.0
-        //var width = 20
-        let origin1 = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
-        let origin2 = CGPoint(x: Double(endPos.x) - (radius2 / 2), y: Double(endPos.y) - (radius2 / 2))
-        let rect1 = CGRect(origin: origin1, size: CGSize(width: radius1, height: radius1))
-        let rect2 = CGRect(origin: origin2, size: CGSize(width: radius2, height: radius2))
-        //let hitmarker = UIBezierPath(ovalIn: rect)
+        if didScore {
+            var hitmarkerLayer = CAShapeLayer()
+            var hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
+            
+            hitmarkerLayer.strokeColor = color
+            hitmarkerLayer.fillColor = nil
+            hitmarkerLayer.lineWidth = 3
+            
+            let radius1 = 20.0
+            let radius2 = 10.0
+            
+            let origin1 = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
+            let origin2 = CGPoint(x: Double(endPos.x) - (radius2 / 2), y: Double(endPos.y) - (radius2 / 2))
+            let rect1 = CGRect(origin: origin1, size: CGSize(width: radius1, height: radius1))
+            let rect2 = CGRect(origin: origin2, size: CGSize(width: radius2, height: radius2))
+            
+            hitmarkerPath?.addEllipse(in: rect1)
+            hitmarkerPath?.addEllipse(in: rect2)
+            hitmarkerLayer.path = hitmarkerPath
+            layer.addSublayer(hitmarkerLayer)
+        }
         
-        
-        
-        
-        path?.addEllipse(in: rect1)
-        path?.addEllipse(in: rect2)
         layer.path = path
         
     }
@@ -309,8 +317,6 @@ class Player {
         previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
     }
-    
-    //stupid delete this
     
     //adds a copy of a line struct
     func addLine(line: Line) {
