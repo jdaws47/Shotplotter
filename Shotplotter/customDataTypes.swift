@@ -179,21 +179,22 @@ struct Line: Codable {
         let newLayer = CAShapeLayer()
         newLayer.strokeColor = color
         newLayer.lineWidth = 3
-        //add in stuff here about types
+       
         let newPath = UIBezierPath()
         newPath.removeAllPoints()
-        //newPath.move(to: startPos)
         
         convertPath(layer: newLayer, path: newPath)
         
-        //newPath.addLine(to: endPos)
-        //newLayer.path = newPath.cgPath
         return newLayer
     }
     
     func convertPath(layer: CAShapeLayer, path: UIBezierPath) {
         let layer = layer
         var path = path.cgPath.mutableCopy()
+        
+        if endPos == CGPoint.zero {
+            return
+        }
         
         if (tip) {
             //let tipPath = path.cgPath.mutableCopy()
@@ -256,8 +257,8 @@ struct Line: Codable {
         }
         
         if didScore {
-            var hitmarkerLayer = CAShapeLayer()
-            var hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
+            let hitmarkerLayer = CAShapeLayer()
+            let hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
             
             hitmarkerLayer.strokeColor = color
             hitmarkerLayer.fillColor = nil
