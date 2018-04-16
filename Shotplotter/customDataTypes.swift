@@ -293,6 +293,7 @@ private class EventHandlerWrapper<T: AnyObject, U>
         event.eventHandlers = event.eventHandlers.filter { $0 !== self }
     }
 }
+
 protocol RotationDelegate: class {
     func passScreenCap(screenshot: UIImage, index: Int)
     func nextRotation(ID: Int, _ sender: RotationViewController)
@@ -325,4 +326,27 @@ public class Event<T> {
 
 protocol Invocable: class {
     func invoke(data: Any)
+}
+
+protocol SubstituteDelegate: class {
+    func syncActiveArray(newArray: [Player])
+    func updatePreviewPositions(_ activePlayers: [Player])
+}
+
+class SubButton : UIButton {
+    var player: Player?
+    var indexOfPlayer: Int?
+    var delegate: SubButtonDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    @objc func pressed(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.openSubstitution(self)
+    }
+}
+
+protocol SubButtonDelegate: class {
+    func openSubstitution(_ sender: SubButton)
 }

@@ -134,6 +134,10 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         return true
     }
     
+    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     @IBAction func addGame(_ sender: Any) {
         data?.addGame()
         localTableView?.reloadData()
