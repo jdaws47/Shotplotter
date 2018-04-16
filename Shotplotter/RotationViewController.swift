@@ -22,6 +22,7 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var slideButton: UIButton!
     @IBOutlet weak var rollButton: UIButton!
     @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var scoreButton: UIButton!
     
     @IBOutlet weak var playerSpot1: PlayerSpot!
     @IBOutlet weak var playerSpot2: PlayerSpot!
@@ -98,6 +99,12 @@ class RotationViewController: UIViewController {
         checkButtons()
     }
     
+    @IBAction func ScoreButtonSelect(_ sender: Any) {
+        data?.protoLine.didScore = !(data?.protoLine.didScore)!
+        //print("Shot didScore value changed to: " + String(describing: data?.protoLine.didScore))
+        checkButtons()
+    }
+    
     @IBAction func player1(_ sender: Any) {
         data?.selected = 0
         activePlayer = (data?.activePlayers[0])!
@@ -161,6 +168,11 @@ class RotationViewController: UIViewController {
         } else {
             tipButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/TipOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
+        if (data?.protoLine.didScore)! {
+            scoreButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/ScoreOn")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            scoreButton.setBackgroundImage(UIImage(named: "ShotTypeIcons/ScoreOff")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
         
         if (data?.selected == 0) {playerSpot1.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOn.png"), for: .normal)}
         else {playerSpot1.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
@@ -176,22 +188,22 @@ class RotationViewController: UIViewController {
         else {playerSpot6.setBackgroundImage(UIImage(named:"ShotTypeIcons/PlayerOff.png"), for: .normal)}
         
         playerSpot1.tintColor = UIColor.black
-        playerSpot1.backgroundColor = data?.activePlayers[0].getColor()
+        playerSpot1.backgroundColor = UIColor(cgColor: (data?.activePlayers[0].color)!)
         playerSpot1.setTitle(String(describing: data!.activePlayers[0].number), for: .normal)
         playerSpot2.tintColor = UIColor.black
-        playerSpot2.backgroundColor = data?.activePlayers[1].getColor()
+        playerSpot2.backgroundColor = UIColor(cgColor: (data?.activePlayers[1].color)!)
         playerSpot2.setTitle(String(describing: data!.activePlayers[1].number), for: .normal)
         playerSpot3.tintColor = UIColor.black
-        playerSpot3.backgroundColor = data?.activePlayers[2].getColor()
+        playerSpot3.backgroundColor = UIColor(cgColor: (data?.activePlayers[2].color)!)
         playerSpot3.setTitle(String(describing: data!.activePlayers[2].number), for: .normal)
         playerSpot4.tintColor = UIColor.black
-        playerSpot4.backgroundColor = data?.activePlayers[3].getColor()
+        playerSpot4.backgroundColor = UIColor(cgColor: (data?.activePlayers[3].color)!)
         playerSpot4.setTitle(String(describing: data!.activePlayers[3].number), for: .normal)
         playerSpot5.tintColor = UIColor.black
-        playerSpot5.backgroundColor = data?.activePlayers[4].getColor()
+        playerSpot5.backgroundColor = UIColor(cgColor: (data?.activePlayers[4].color)!)
         playerSpot5.setTitle(String(describing: data!.activePlayers[4].number), for: .normal)
         playerSpot6.tintColor = UIColor.black
-        playerSpot6.backgroundColor = data?.activePlayers[5].getColor()
+        playerSpot6.backgroundColor = UIColor(cgColor: (data?.activePlayers[5].color)!)
         playerSpot6.setTitle(String(describing: data!.activePlayers[5].number), for: .normal)
     }
     

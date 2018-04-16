@@ -27,7 +27,7 @@ class RotationView {
         selected = -1
         nextDraws = false
         activePlayers = _activePlayers
-        protoLine = Line(startPos: CGPoint.init(x:0,y:0), endPos: CGPoint.init(x:0,y:0), tip: false, slide: false, roll: false, A: false, hit: false, color: UIColor.black, didScore: false, rotationID: -1)
+        protoLine = Line(_startPos: CGPoint.init(x:0,y:0), _endPos: CGPoint.init(x:0,y:0), _tip: false, _slide: false, _roll: false, _A: false, _hit: false, _color: UIColor.black.cgColor, _didScore: false, _rotationID: -1)
         players = _players
     }
     

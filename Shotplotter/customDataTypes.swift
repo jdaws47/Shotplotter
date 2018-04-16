@@ -9,7 +9,37 @@
 import UIKit
 import Foundation
 
-let playerColors = [UIColor.blue, UIColor.red, UIColor.yellow, UIColor.green, UIColor.cyan, UIColor.magenta, UIColor.purple, UIColor.orange, UIColor.brown, UIColor.init(red: 192/255, green: 249/255, blue: 2/255, alpha: 0.5), UIColor.init(red: 249/255, green: 192/255, blue: 11/255, alpha: 0.5), UIColor.init(red:125/255,green:0,blue:255/255,alpha:0)]
+#if false
+let Orange = UIColor.init(red: 255/255, green: 149/255, blue:   0/255, alpha: 1)
+let Blue   = UIColor.init(red:   4/255, green:  51/255, blue: 255/255, alpha: 1)
+let Brown  = UIColor.init(red: 157/255, green:  83/255, blue:   0/255, alpha: 1)
+let Pink   = UIColor.init(red: 255/255, green:  64/255, blue: 255/255, alpha: 1)
+let Red    = UIColor.init(red: 255/255, green:  38/255, blue:   0/255, alpha: 1)
+let Green  = UIColor.init(red: 141/255, green: 213/255, blue:   0/255, alpha: 1)
+let Cyan   = UIColor.init(red:   0/255, green: 151/255, blue: 255/255, alpha: 1)
+let Yellow = UIColor.init(red: 215/255, green: 207/255, blue:   0/255, alpha: 1)
+let Purple = UIColor.init(red: 148/255, green:  55/255, blue: 255/255, alpha: 1)
+let Russet = UIColor.init(red: 215/255, green:  91/255, blue:   0/255, alpha: 1)
+let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 1)
+let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 1)
+let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 1)
+#else
+let Red         = UIColor.init(red: 255/255, green:  0/255, blue:   0/255, alpha: 1).cgColor
+let Orange      = UIColor.init(red: 255/255, green:  130/255, blue: 0/255, alpha: 1).cgColor
+let YellowOrange = UIColor.init(red: 253/255, green:  196/255, blue:   46/255, alpha: 1).cgColor
+let LightGreen  = UIColor.init(red: 15/255, green:  85/255, blue: 15/255, alpha: 1).cgColor
+let Green       = UIColor.init(red: 0/255, green: 220/255, blue:   0/255, alpha: 1).cgColor
+let Teal        = UIColor.init(red: 0/255, green: 170/255, blue:   170/255, alpha: 1).cgColor
+let LightBlue   = UIColor.init(red: 0/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+let Blue        = UIColor.init(red: 0/255, green:  0/255, blue: 255/255, alpha: 1).cgColor
+let Purple      = UIColor.init(red: 98/255, green:  20/255, blue:   162/255, alpha: 1).cgColor
+let RedPurple   = UIColor.init(red: 202/255, green: 26/255, blue: 173/255, alpha: 1).cgColor
+let Pink        = UIColor.init(red: 252/255, green: 22/255, blue:   140/255, alpha: 1).cgColor
+let Maroon      = UIColor.init(red: 180/255, green: 50/255, blue:   50/255, alpha: 1).cgColor
+let Violet      = UIColor.init(red: 184/255, green:  39/255, blue: 251/255, alpha: 1).cgColor
+#endif
+
+let playerColors = [Red, Orange, YellowOrange, LightGreen, Green, Teal, LightBlue, Blue, Purple, RedPurple, Pink, Maroon, Violet]
 
 let updateShotButtonsEvent = Event<Int>()
 let updateActiveEvent = Event<[Player]>()
@@ -35,7 +65,7 @@ enum SortingMode: Int {
 }
 
 //----------------------------- The Line structure. This is used to keep track of all information for each line
-struct Line {
+struct Line: Codable {
     var startPos: CGPoint
     var endPos: CGPoint
     var tip: Bool = false
@@ -43,7 +73,7 @@ struct Line {
     var roll: Bool = false
     var A: Bool = false
     var hit: Bool = false
-    var color: UIColor
+    var color: CGColor
     var didScore: Bool = false
     var rotationID: Int
     
@@ -55,9 +85,90 @@ struct Line {
         roll = false
         A = false
         hit = false
-        color = UIColor.black
+        color = UIColor.black.cgColor
         didScore = false
         rotationID = -1
+    }
+    
+    /**
+     * Archive this MeetClass object
+     * @param: fileName from which to archived this object
+     */
+    func archive(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    
+    /**
+     * blah
+     * @param: blah
+     */
+    mutating func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(Line.self, from: recoveredDataCoded)
+                print("Data successfully recovered from file.")
+                startPos = recoveredData.startPos
+                endPos = recoveredData.endPos
+                tip = recoveredData.tip
+                slide = recoveredData.slide
+                roll = recoveredData.roll
+                A = recoveredData.A
+                hit = recoveredData.hit
+                color = recoveredData.color
+                didScore = recoveredData.didScore
+                rotationID = recoveredData.rotationID
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        print("Ho")
+        startPos = CGPoint.init(x: 0, y: 0)
+        endPos = CGPoint.init(x: 0, y: 0)
+        tip = false
+        slide = false
+        roll = false
+        A = false
+        hit = false
+        color = UIColor.black.cgColor
+        didScore = false
+        rotationID = -1
+    }
+    
+    init(_startPos: CGPoint, _endPos: CGPoint, _tip: Bool, _slide: Bool, _roll: Bool, _A: Bool, _hit: Bool, _color: CGColor, _didScore: Bool, _rotationID: Int) {
+        startPos = _startPos
+        endPos = _endPos
+        tip = _tip
+        slide = _slide
+        roll = _roll
+        A = _A
+        hit = _hit
+        color = _color
+        didScore = _didScore
+        rotationID = _rotationID
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        print("Howdy")
     }
     
     func hasType() -> Bool {
@@ -66,19 +177,31 @@ struct Line {
     
     func convert() -> CAShapeLayer {
         let newLayer = CAShapeLayer()
-        newLayer.strokeColor = color.cgColor
+        newLayer.strokeColor = color
         newLayer.lineWidth = 3
-        //add in stuff here about types
+       
         let newPath = UIBezierPath()
         newPath.removeAllPoints()
-        //newPath.move(to: startPos)
+        
+        convertPath(layer: newLayer, path: newPath)
+        
+        return newLayer
+    }
+    
+    func convertPath(layer: CAShapeLayer, path: UIBezierPath) {
+        let layer = layer
+        var path = path.cgPath.mutableCopy()
+        
+        if endPos == CGPoint.zero {
+            return
+        }
         
         if (tip) {
-            let tipPath = newPath.cgPath.mutableCopy()
-            tipPath?.addLines(between: [startPos, endPos])
-            newLayer.path = tipPath
+            //let tipPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
+            
         } else if (slide) {
-            let slidePath = UIBezierPath().cgPath.mutableCopy()
+            path = UIBezierPath().cgPath.mutableCopy()
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
             let endX = CGFloat(endPos.x)
@@ -106,35 +229,57 @@ struct Line {
             var x3 = CGFloat(startX)
             var y3 = CGFloat(startY)
             for i in stride(from: 0, to: Int(length), by: segmentLength) {
-                var counter = CGFloat(i)
-                var x1 = startX - counter * (xDiff / length)
-                var y1 = startY - counter * (yDiff / length)
-                var x2 = x1 + sin(counter * period) * amplitude * cos(angle + CGFloat.pi / CGFloat(2))
-                var y2 = y1 + sin(counter * period) * amplitude * sin(angle + CGFloat.pi / CGFloat(2))
+                let counter = CGFloat(i)
+                let x1 = startX - counter * (xDiff / length)
+                let y1 = startY - counter * (yDiff / length)
+                let x2 = x1 + sin(counter * period) * amplitude * cos(angle + CGFloat.pi / CGFloat(2))
+                let y2 = y1 + sin(counter * period) * amplitude * sin(angle + CGFloat.pi / CGFloat(2))
                 
-                var firstPoint = CGPoint(x: x3,y: y3)
-                var lastPoint = CGPoint(x: x2, y: y2)
-                slidePath?.addLines(between: [firstPoint, lastPoint])
+                let firstPoint = CGPoint(x: x3,y: y3)
+                let lastPoint = CGPoint(x: x2, y: y2)
+                path?.addLines(between: [firstPoint, lastPoint])
                 
-                newLayer.path = slidePath
+                //layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
         } else if roll {
-            let rollPath = newPath.cgPath.mutableCopy()
-            rollPath?.addLines(between: [startPos, endPos])
-            newLayer.lineDashPattern = [30, 15, 15, 15]
-            newLayer.path = rollPath
+            //let rollPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
+            layer.lineDashPattern = [30, 15, 15, 15]
+            
         } else if A {
-            let aPath = newPath.cgPath.mutableCopy()
-            aPath?.addLines(between: [startPos, endPos])
-            newLayer.lineDashPattern = [7, 3, 7]
-            newLayer.path = aPath
+            //let aPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
+            layer.lineDashPattern = [7, 3, 7]
+
         }
-        //newPath.addLine(to: endPos)
-        //newLayer.path = newPath.cgPath
-        return newLayer
+        
+        if didScore {
+            let hitmarkerLayer = CAShapeLayer()
+            let hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
+            
+            hitmarkerLayer.strokeColor = color
+            hitmarkerLayer.fillColor = nil
+            hitmarkerLayer.lineWidth = 3
+            
+            let radius1 = 20.0
+            let radius2 = 10.0
+            
+            let origin1 = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
+            let origin2 = CGPoint(x: Double(endPos.x) - (radius2 / 2), y: Double(endPos.y) - (radius2 / 2))
+            let rect1 = CGRect(origin: origin1, size: CGSize(width: radius1, height: radius1))
+            let rect2 = CGRect(origin: origin2, size: CGSize(width: radius2, height: radius2))
+            
+            hitmarkerPath?.addEllipse(in: rect1)
+            hitmarkerPath?.addEllipse(in: rect2)
+            hitmarkerLayer.path = hitmarkerPath
+            layer.addSublayer(hitmarkerLayer)
+        }
+        
+        layer.path = path
+        
     }
 }
 
@@ -142,39 +287,37 @@ struct Line {
 class Player {
     var shots = [Line]()
     var layer: CAShapeLayer
-    var color: UIColor
+    var color: CGColor
     var number: Int
     var name: String
     var isActive: Bool
     var layerExists: Bool
     
-    init(_number: Int, _color: UIColor, _name: String) {
+    init(_number: Int, _color: CGColor, _name: String) {
         layer = CAShapeLayer()
         number = _number
         color = _color
         name = _name
         isActive = false
         layerExists = false
-        layer.strokeColor = color.cgColor
+        layer.strokeColor = color
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
     }
     
     init() {
         number = -1
-        color = UIColor.black
+        color = UIColor.black.cgColor
         name = ""
         isActive = false
         layer = CAShapeLayer()
         layerExists = false
-        layer.strokeColor = color.cgColor
+        layer.strokeColor = color
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
     }
-    
-    //stupid delete this
     
     //adds a copy of a line struct
     func addLine(line: Line) {
@@ -182,8 +325,8 @@ class Player {
     }
     
     //adds a line to the array directly from the raw information
-    func addLine(start:CGPoint, end:CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, didScore:Bool = false) {
-        var temp = Line(startPos: start, endPos: end, tip: tip, slide: slide, roll: roll, A: A, hit: hit, color: color, didScore: didScore, rotationID: rotation)
+    func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, color:CGColor, didScore:Bool = false) {
+        var temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
         addLine(line:temp)
     }
     
@@ -193,18 +336,16 @@ class Player {
         print("value changed")
     }
     
-    func getColor() -> UIColor {
-        return color
-    }
-    
     func initializeLayer(_ wantedID:Int) -> CAShapeLayer {
         layer.sublayers?.removeAll()
         let previewLayer = CAShapeLayer()
-        previewLayer.strokeColor = color.cgColor
+        previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
         for i in 0 ..< shots.count {
             if shots[i].rotationID == wantedID {
-                layer.addSublayer(shots[i].convert() as CALayer)
+                let shotLayer = shots[i].convert() //as CALayer
+                shotLayer.fillColor = nil
+                layer.addSublayer(shotLayer)
             }
         }
         return layer
@@ -241,7 +382,7 @@ class PlayerTextField: UITextField {
     }
 }
 
-func setColor(_ index: Int) -> UIColor {
+func setColor(_ index: Int) -> CGColor {
     if (index >= 0 && index < playerColors.count) {
         return playerColors[index]
     } else if (index < 0) {
@@ -249,7 +390,7 @@ func setColor(_ index: Int) -> UIColor {
     } else if (index >= playerColors.count) {
         return playerColors[playerColors.count-1]
     }
-    return UIColor.black
+    return UIColor.black.cgColor
 }
 
 protocol ActiveSwitchDelegate: class {

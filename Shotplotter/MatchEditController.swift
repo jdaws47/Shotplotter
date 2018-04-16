@@ -82,8 +82,8 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
             cell.number.text = String((player?.number)!)
         }
         //cell.imageView?.backgroundColor = player?.color
-        cell.color.backgroundColor = setColor(indexPath.row)
-        player?.color = cell.color.backgroundColor!
+        cell.color.backgroundColor = UIColor(cgColor: setColor(indexPath.row))
+        player?.color = cell.color.backgroundColor!.cgColor
         cell.name.delegate = self
         cell.number.delegate = self
         cell.name.index = indexPath.row
