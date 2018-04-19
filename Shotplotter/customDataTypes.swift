@@ -276,6 +276,54 @@ struct Line: Codable {
             hitmarkerPath?.addEllipse(in: rect2)
             hitmarkerLayer.path = hitmarkerPath
             layer.addSublayer(hitmarkerLayer)
+        } else {
+            let arrowLayer = CAShapeLayer()
+            let arrowPath = UIBezierPath().cgPath.mutableCopy()
+            
+            arrowLayer.strokeColor = color
+            arrowLayer.fillColor = nil
+            arrowLayer.lineWidth = 3
+            
+            //path = UIBezierPath().cgPath.mutableCopy()
+            let startX = CGFloat(startPos.x)
+            let startY = CGFloat(startPos.y)
+            let endX = CGFloat()
+            let endY = CGFloat()
+            
+            let constant1 = CGFloat(10)
+            //let constant2 = CGFloat(10)
+            
+            let amplitude = CGFloat(25)
+            
+            let xDiff = startX - endX
+            let yDiff = startY - endY
+            
+            var angle = atan2(yDiff, xDiff)
+            if angle < 0 {
+                angle += 2.0 * CGFloat.pi
+            }
+            
+            let length = sqrt(xDiff * xDiff + yDiff * yDiff)
+            var x1 = startX - constant1 * (xDiff / length)
+            var y1 = startY - constant1 * (yDiff / length)
+            
+            var x2 = x1 + amplitude * cos(angle + CGFloat.pi / CGFloat(4))
+            var y2 = y1 + amplitude * sin(angle + CGFloat.pi / CGFloat(4))
+            
+            let firstPoint = CGPoint(x: endPos.x,y: endPos.y)
+            var lastPoint = CGPoint(x: x2, y: y2)
+            arrowPath?.addLines(between: [firstPoint, lastPoint])
+            
+            x2 = x1 + amplitude * cos(angle - CGFloat.pi / CGFloat(4))
+            y2 = y1 + amplitude * sin(angle - CGFloat.pi / CGFloat(4))
+            lastPoint = CGPoint(x: x2, y: y2)
+            arrowPath?.addLines(between: [firstPoint, lastPoint])
+            
+            arrowLayer.path = arrowPath
+            layer.addSublayer(arrowLayer)
+            
+            //var meme = CGRect(origin: CGPoint(x: 150, y: 150), size: CGSize(width: 10, height: 10))
+            //path?.addEllipse(in: meme)
         }
         
         layer.path = path
