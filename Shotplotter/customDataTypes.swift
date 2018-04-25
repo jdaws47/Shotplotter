@@ -24,22 +24,22 @@ let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 1)
 let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 1)
 let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 1)
 #else
-let Orange = UIColor.init(red: 255/255, green: 149/255, blue:   0/255, alpha: 1).cgColor
-let Blue   = UIColor.init(red:   4/255, green:  51/255, blue: 255/255, alpha: 1).cgColor
-let Brown  = UIColor.init(red: 157/255, green:  83/255, blue:   0/255, alpha: 1).cgColor
-let Pink   = UIColor.init(red: 255/255, green:  64/255, blue: 255/255, alpha: 1).cgColor
-let Red    = UIColor.init(red: 255/255, green:  38/255, blue:   0/255, alpha: 1).cgColor
-let Green  = UIColor.init(red: 141/255, green: 213/255, blue:   0/255, alpha: 1).cgColor
-let Cyan   = UIColor.init(red:   0/255, green: 151/255, blue: 255/255, alpha: 1).cgColor
-let Yellow = UIColor.init(red: 215/255, green: 207/255, blue:   0/255, alpha: 1).cgColor
-let Purple = UIColor.init(red: 148/255, green:  55/255, blue: 255/255, alpha: 1).cgColor
-let Russet = UIColor.init(red: 215/255, green:  91/255, blue:   0/255, alpha: 1).cgColor
-let Maroon = UIColor.init(red: 255/255, green:  57/255, blue: 138/255, alpha: 1).cgColor
-let Lime   = UIColor.init(red:   0/255, green: 255/255, blue: 105/255, alpha: 1).cgColor
-let Burnt  = UIColor.init(red: 255/255, green:  91/255, blue:   0/255, alpha: 1).cgColor
+let Red         = UIColor.init(red: 255/255, green:  0/255, blue:   0/255, alpha: 1).cgColor
+let Orange      = UIColor.init(red: 255/255, green:  130/255, blue: 0/255, alpha: 1).cgColor
+let YellowOrange = UIColor.init(red: 253/255, green:  196/255, blue:   46/255, alpha: 1).cgColor
+let LightGreen  = UIColor.init(red: 15/255, green:  85/255, blue: 15/255, alpha: 1).cgColor
+let Green       = UIColor.init(red: 0/255, green: 220/255, blue:   0/255, alpha: 1).cgColor
+let Teal        = UIColor.init(red: 0/255, green: 170/255, blue:   170/255, alpha: 1).cgColor
+let LightBlue   = UIColor.init(red: 0/255, green: 255/255, blue: 255/255, alpha: 1).cgColor
+let Blue        = UIColor.init(red: 0/255, green:  0/255, blue: 255/255, alpha: 1).cgColor
+let Purple      = UIColor.init(red: 98/255, green:  20/255, blue:   162/255, alpha: 1).cgColor
+let RedPurple   = UIColor.init(red: 202/255, green: 26/255, blue: 173/255, alpha: 1).cgColor
+let Pink        = UIColor.init(red: 252/255, green: 22/255, blue:   140/255, alpha: 1).cgColor
+let Maroon      = UIColor.init(red: 180/255, green: 50/255, blue:   50/255, alpha: 1).cgColor
+let Violet      = UIColor.init(red: 184/255, green:  39/255, blue: 251/255, alpha: 1).cgColor
 #endif
 
-let playerColors = [Blue, Red, Yellow, Green, Cyan, Maroon, Purple, Orange, Brown, Pink, Russet, Lime, Burnt]
+let playerColors = [Red, Orange, YellowOrange, LightGreen, Green, Teal, LightBlue, Blue, Purple, RedPurple, Pink, Maroon, Violet]
 
 let updateShotButtonsEvent = Event<Int>()
 let updateActiveEvent = Event<[Player]>()
@@ -137,27 +137,29 @@ struct Line: Codable {
         let newLayer = CAShapeLayer()
         newLayer.strokeColor = color
         newLayer.lineWidth = 3
-        //add in stuff here about types
+       
         let newPath = UIBezierPath()
         newPath.removeAllPoints()
-        //newPath.move(to: startPos)
         
         convertPath(layer: newLayer, path: newPath)
         
-        //newPath.addLine(to: endPos)
-        //newLayer.path = newPath.cgPath
         return newLayer
     }
     
     func convertPath(layer: CAShapeLayer, path: UIBezierPath) {
         let layer = layer
+        var path = path.cgPath.mutableCopy()
+        
+        if endPos == CGPoint.zero {
+            return
+        }
         
         if (tip) {
-            let tipPath = path.cgPath.mutableCopy()
-            tipPath?.addLines(between: [startPos, endPos])
-            layer.path = tipPath
+            //let tipPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
+            
         } else if (slide) {
-            let slidePath = UIBezierPath().cgPath.mutableCopy()
+            path = UIBezierPath().cgPath.mutableCopy()
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
             let endX = CGFloat(endPos.x)
@@ -193,24 +195,97 @@ struct Line: Codable {
                 
                 let firstPoint = CGPoint(x: x3,y: y3)
                 let lastPoint = CGPoint(x: x2, y: y2)
-                slidePath?.addLines(between: [firstPoint, lastPoint])
+                path?.addLines(between: [firstPoint, lastPoint])
                 
-                layer.path = slidePath
+                //layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
         } else if roll {
-            let rollPath = path.cgPath.mutableCopy()
-            rollPath?.addLines(between: [startPos, endPos])
+            //let rollPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
             layer.lineDashPattern = [30, 15, 15, 15]
-            layer.path = rollPath
+            
         } else if A {
-            let aPath = path.cgPath.mutableCopy()
-            aPath?.addLines(between: [startPos, endPos])
+            //let aPath = path.cgPath.mutableCopy()
+            path?.addLines(between: [startPos, endPos])
             layer.lineDashPattern = [7, 3, 7]
-            layer.path = aPath
+
         }
+        
+        if didScore {
+            let hitmarkerLayer = CAShapeLayer()
+            let hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
+            
+            hitmarkerLayer.strokeColor = color
+            hitmarkerLayer.fillColor = nil
+            hitmarkerLayer.lineWidth = 3
+            
+            let radius1 = 20.0
+            let radius2 = 10.0
+            
+            let origin1 = CGPoint(x: Double(endPos.x) - (radius1 / 2), y: Double(endPos.y) - (radius1 / 2))
+            let origin2 = CGPoint(x: Double(endPos.x) - (radius2 / 2), y: Double(endPos.y) - (radius2 / 2))
+            let rect1 = CGRect(origin: origin1, size: CGSize(width: radius1, height: radius1))
+            let rect2 = CGRect(origin: origin2, size: CGSize(width: radius2, height: radius2))
+            
+            hitmarkerPath?.addEllipse(in: rect1)
+            hitmarkerPath?.addEllipse(in: rect2)
+            hitmarkerLayer.path = hitmarkerPath
+            layer.addSublayer(hitmarkerLayer)
+        } else {
+            let arrowLayer = CAShapeLayer()
+            let arrowPath = UIBezierPath().cgPath.mutableCopy()
+            
+            arrowLayer.strokeColor = color
+            arrowLayer.fillColor = nil
+            arrowLayer.lineWidth = 3
+            
+            //path = UIBezierPath().cgPath.mutableCopy()
+            let startX = CGFloat(startPos.x)
+            let startY = CGFloat(startPos.y)
+            let endX = CGFloat()
+            let endY = CGFloat()
+            
+            let constant1 = CGFloat(10)
+            //let constant2 = CGFloat(10)
+            
+            let amplitude = CGFloat(25)
+            
+            let xDiff = startX - endX
+            let yDiff = startY - endY
+            
+            var angle = atan2(yDiff, xDiff)
+            if angle < 0 {
+                angle += 2.0 * CGFloat.pi
+            }
+            
+            let length = sqrt(xDiff * xDiff + yDiff * yDiff)
+            var x1 = startX - constant1 * (xDiff / length)
+            var y1 = startY - constant1 * (yDiff / length)
+            
+            var x2 = x1 + amplitude * cos(angle + CGFloat.pi / CGFloat(4))
+            var y2 = y1 + amplitude * sin(angle + CGFloat.pi / CGFloat(4))
+            
+            let firstPoint = CGPoint(x: endPos.x,y: endPos.y)
+            var lastPoint = CGPoint(x: x2, y: y2)
+            arrowPath?.addLines(between: [firstPoint, lastPoint])
+            
+            x2 = x1 + amplitude * cos(angle - CGFloat.pi / CGFloat(4))
+            y2 = y1 + amplitude * sin(angle - CGFloat.pi / CGFloat(4))
+            lastPoint = CGPoint(x: x2, y: y2)
+            arrowPath?.addLines(between: [firstPoint, lastPoint])
+            
+            arrowLayer.path = arrowPath
+            layer.addSublayer(arrowLayer)
+            
+            //var meme = CGRect(origin: CGPoint(x: 150, y: 150), size: CGSize(width: 10, height: 10))
+            //path?.addEllipse(in: meme)
+        }
+        
+        layer.path = path
+        
     }
     
     mutating func archive(fileName: String) {
@@ -325,8 +400,6 @@ class Player: Codable {
         layer.addSublayer(previewLayer)
     }
     
-    //stupid delete this
-    
     //adds a copy of a line struct
     func addLine(line: Line) {
         shots.append(line)
@@ -351,7 +424,9 @@ class Player: Codable {
         layer.addSublayer(previewLayer)
         for i in 0 ..< shots.count {
             if shots[i].rotationID == wantedID {
-                layer.addSublayer(shots[i].convert() as CALayer)
+                let shotLayer = shots[i].convert() //as CALayer
+                shotLayer.fillColor = nil
+                layer.addSublayer(shotLayer)
             }
         }
         return layer
