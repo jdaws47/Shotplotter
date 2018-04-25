@@ -31,6 +31,8 @@
 		9928FB691FD70E850034A279 /* ShotplotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928FB681FD70E850034A279 /* ShotplotterUITests.swift */; };
 		99346F731FFFF02A00E76C73 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99346F721FFFF02A00E76C73 /* MatchTableViewCell.swift */; };
 		99462DBA1FED7B2500E3C8C6 /* GlobalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */; };
+		99A6B761207BD33400C79983 /* SubstituteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6B760207BD33400C79983 /* SubstituteViewController.swift */; };
+		99A6B763207BD34500C79983 /* SubstituteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6B762207BD34500C79983 /* SubstituteCell.swift */; };
 		99C19C05200FBE48003D370A /* PlayerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C19C04200FBE48003D370A /* PlayerTableCell.swift */; };
 		99CB08A31FDF0427005A5BDA /* Volleyball Court.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */; };
 		99EA9990207294720082E39C /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EA998F207294720082E39C /* OrderViewController.swift */; };
@@ -85,6 +87,8 @@
 		9928FB6A1FD70E850034A279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99346F721FFFF02A00E76C73 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		99462DB91FED7B2500E3C8C6 /* GlobalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTableViewCell.swift; sourceTree = "<group>"; };
+		99A6B760207BD33400C79983 /* SubstituteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstituteViewController.swift; sourceTree = "<group>"; };
+		99A6B762207BD34500C79983 /* SubstituteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstituteCell.swift; sourceTree = "<group>"; };
 		99C19C04200FBE48003D370A /* PlayerTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableCell.swift; sourceTree = "<group>"; };
 		99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Volleyball Court.jpg"; sourceTree = "<group>"; };
 		99EA998F207294720082E39C /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				70CC0CAD1FD85CE500909DBD /* GameViewController.swift */,
 				99EA998F207294720082E39C /* OrderViewController.swift */,
 				99EA9991207294A40082E39C /* OrderCell.swift */,
+				99A6B760207BD33400C79983 /* SubstituteViewController.swift */,
+				99A6B762207BD34500C79983 /* SubstituteCell.swift */,
 				70CD82771FDEF58C00CBEBDC /* GameEditController.swift */,
 				991821EE2018F84D0018583E /* ActivePlayerCell.swift */,
 				70CC0CAF1FD85CF700909DBD /* RotationViewController.swift */,
@@ -157,6 +163,7 @@
 				99CB08A21FDF0427005A5BDA /* Volleyball Court.jpg */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		9928FB461FD70E850034A279 /* Products */ = {
 			isa = PBXGroup;
@@ -350,6 +357,7 @@
 				99EA9992207294A40082E39C /* OrderCell.swift in Sources */,
 				70CC0CAC1FD85CD300909DBD /* MatchViewController.swift in Sources */,
 				99346F731FFFF02A00E76C73 /* MatchTableViewCell.swift in Sources */,
+				99A6B763207BD34500C79983 /* SubstituteCell.swift in Sources */,
 				99462DBA1FED7B2500E3C8C6 /* GlobalTableViewCell.swift in Sources */,
 				99C19C05200FBE48003D370A /* PlayerTableCell.swift in Sources */,
 				7077BCE71FDB03CA00CFF007 /* MatchEditController.swift in Sources */,
@@ -364,6 +372,7 @@
 				3F71B65C2022342200BBB48D /* ArrowView.swift in Sources */,
 				70CC0CB21FD8610000909DBD /* customDataTypes.swift in Sources */,
 				9928FB4B1FD70E850034A279 /* ViewController.swift in Sources */,
+				99A6B761207BD33400C79983 /* SubstituteViewController.swift in Sources */,
 				9928FB491FD70E850034A279 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,12 +475,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -517,10 +527,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -44,7 +44,9 @@ let playerColors = [Red, Orange, YellowOrange, LightGreen, Green, Teal, LightBlu
 let updateShotButtonsEvent = Event<Int>()
 let updateActiveEvent = Event<[Player]>()
 
-//----------------------------- Holds references to images
+//----------------------------------------------------------
+//----------------------------------------------------------
+//Holds references to images
 let AOff = #imageLiteral(resourceName: "AOff.png")
 let AOn = #imageLiteral(resourceName: "AOn.png")
 
@@ -57,14 +59,24 @@ let SlideOn = #imageLiteral(resourceName: "SlideOn.png")
 let TipOff = #imageLiteral(resourceName: "TipOff.png")
 let TipOn = #imageLiteral(resourceName: "TipOn.png")
 
-
-//----------------------------- Enumeration used to keep track of which Matches we should be displaying on Mainview.
-enum SortingMode: Int {
+//----------------------------------------------------------
+//----------------------------------------------------------
+//Enumeration used to keep track of which Matches we should be displaying on Mainview.
+enum SortingMode: Int, Codable {
     case alphaOpponent = 0
     case dateEdit,dateCreated,datePlayed
 }
 
-//----------------------------- The Line structure. This is used to keep track of all information for each line
+//----------------------------------------------------------
+//----------------------------------------------------------
+//Re-implementation of the Substring function
+func subs(str: String, end:Int) -> String {
+    return String(str[str.startIndex..<str.index(str.startIndex, offsetBy: end)])
+}
+
+//----------------------------------------------------------
+//----------------------------------------------------------
+//The Line structure. This is used to keep track of all information for each line
 struct Line: Codable {
     var startPos: CGPoint
     var endPos: CGPoint
@@ -74,74 +86,24 @@ struct Line: Codable {
     var A: Bool = false
     var hit: Bool = false
     var color: CGColor
+    var colorSplit = [Float]()
     var didScore: Bool = false
     var rotationID: Int
     
+    private enum CodingKeys: CodingKey { // Might also need : String?
+        case startPos
+        case endPos
+        case tip
+        case slide
+        case roll
+        case A
+        case hit
+        case didScore
+        case rotationID
+        case colorSplit
+    }
+    
     mutating func reset() {
-        startPos = CGPoint.init(x: 0, y: 0)
-        endPos = CGPoint.init(x: 0, y: 0)
-        tip = false
-        slide = false
-        roll = false
-        A = false
-        hit = false
-        color = UIColor.black.cgColor
-        didScore = false
-        rotationID = -1
-    }
-    
-    /**
-     * Archive this MeetClass object
-     * @param: fileName from which to archived this object
-     */
-    func archive(fileName: String) {
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
-        do {
-            let encodedData = try PropertyListEncoder().encode(self)
-            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
-            if isSuccessfulSave {
-                print("Data successfully saved to file.")
-            } else {
-                print("Failed to save data...")
-            }
-        } catch {
-            print("Failed to save data...")
-        }
-    }
-    
-    /**
-     * blah
-     * @param: blah
-     */
-    mutating func restore(fileName: String) {
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
-        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
-            withFile: archiveURL.path) as? Data {
-            do {
-                let recoveredData = try PropertyListDecoder().decode(Line.self, from: recoveredDataCoded)
-                print("Data successfully recovered from file.")
-                startPos = recoveredData.startPos
-                endPos = recoveredData.endPos
-                tip = recoveredData.tip
-                slide = recoveredData.slide
-                roll = recoveredData.roll
-                A = recoveredData.A
-                hit = recoveredData.hit
-                color = recoveredData.color
-                didScore = recoveredData.didScore
-                rotationID = recoveredData.rotationID
-            } catch {
-                print("Failed to recover data")
-            }
-        } else {
-            print("Failed to recover data")
-        }
-    }
-    
-    init(from decoder: Decoder) throws {
-        print("Ho")
         startPos = CGPoint.init(x: 0, y: 0)
         endPos = CGPoint.init(x: 0, y: 0)
         tip = false
@@ -165,10 +127,6 @@ struct Line: Codable {
         color = _color
         didScore = _didScore
         rotationID = _rotationID
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        print("Howdy")
     }
     
     func hasType() -> Bool {
@@ -199,10 +157,23 @@ struct Line: Codable {
         if (tip) {
             //let tipPath = path.cgPath.mutableCopy()
             path?.addLines(between: [startPos, endPos])
+			layer.lineWidth = 6
             
-        } else if (slide) {
-            path = UIBezierPath().cgPath.mutableCopy()
-            let startX = CGFloat(startPos.x)
+		} else if roll {
+			//let rollPath = path.cgPath.mutableCopy()
+			path?.addLines(between: [startPos, endPos])
+			layer.lineDashPattern = [30, 15, 15, 15]
+	
+		} else if A {
+			//let aPath = path.cgPath.mutableCopy()
+			path?.addLines(between: [startPos, endPos])
+			layer.lineDashPattern = [7, 3, 7]
+	
+		}
+		
+		if (slide) {
+			path = UIBezierPath().cgPath.mutableCopy()
+			let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
             let endX = CGFloat(endPos.x)
             let endY = CGFloat(endPos.y)
@@ -210,7 +181,7 @@ struct Line: Codable {
             let amplitude = CGFloat(5)
             var period = CGFloat(5)
             // Increase this number to increase performance
-            let segmentLength = 5
+            let segmentLength = 1
             
             let xDiff = startX - endX
             let yDiff = startY - endY
@@ -225,7 +196,23 @@ struct Line: Codable {
             var occilations = CGFloat((Int)(length / (2 * CGFloat.pi)))
             occilations = CGFloat(Int(occilations / period))
             period = (CGFloat(occilations) * ((2 * CGFloat.pi) / length))
-            
+			
+			var oscillatorLength = 0
+			var oscillating = 0
+			var pattern = [Int]()
+			var carryover = 0
+			if(roll) {
+				pattern = [2, 4]
+				layer.lineCap = ""
+				oscillatorLength = pattern.count
+			} else if(A) {
+				pattern = [15, 3]
+				oscillatorLength = pattern.count
+			} else {
+				pattern = [5]
+				oscillatorLength = pattern.count
+			}
+			
             var x3 = CGFloat(startX)
             var y3 = CGFloat(startY)
             for i in stride(from: 0, to: Int(length), by: segmentLength) {
@@ -237,25 +224,38 @@ struct Line: Codable {
                 
                 let firstPoint = CGPoint(x: x3,y: y3)
                 let lastPoint = CGPoint(x: x2, y: y2)
-                path?.addLines(between: [firstPoint, lastPoint])
+				
+				var shown: Bool
+				if(oscillating % 2 == 1 && carryover <= 0) {
+					shown = false
+					oscillating += 1
+					if(oscillating == oscillatorLength) {
+						oscillating = 0
+					}
+					carryover = pattern[oscillating]
+				} else if (oscillating % 2 == 0 && carryover <= 0){
+					shown = true
+					oscillating += 1
+					if(oscillating == oscillatorLength) {
+						oscillating = 0
+					}
+					carryover = pattern[oscillating]
+				} else {
+					carryover -= segmentLength
+					shown = (oscillating % 2 == 0)
+				}
+				
+				if(shown) {
+					path?.addLines(between: [firstPoint, lastPoint])
+				}
                 
                 //layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
-        } else if roll {
-            //let rollPath = path.cgPath.mutableCopy()
-            path?.addLines(between: [startPos, endPos])
-            layer.lineDashPattern = [30, 15, 15, 15]
-            
-        } else if A {
-            //let aPath = path.cgPath.mutableCopy()
-            path?.addLines(between: [startPos, endPos])
-            layer.lineDashPattern = [7, 3, 7]
-
-        }
-        
+		}
+		
         if didScore {
             let hitmarkerLayer = CAShapeLayer()
             let hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
@@ -333,17 +333,92 @@ struct Line: Codable {
         layer.path = path
         
     }
+    
+    mutating func archive(fileName: String) {
+        colorSplit = [0,0,0]
+        colorSplit[0] = Float(color.components![0])
+        colorSplit[1] = Float(color.components![1])
+        colorSplit[2] = Float(color.components![2])
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    mutating func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(Line.self, from: recoveredDataCoded)
+                print("Data successfully recovered from file.")
+                startPos = recoveredData.startPos
+                endPos = recoveredData.endPos
+                tip = recoveredData.tip
+                slide = recoveredData.slide
+                roll = recoveredData.roll
+                A = recoveredData.A
+                hit = recoveredData.hit
+                didScore = recoveredData.didScore
+                rotationID = recoveredData.rotationID
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        startPos = try container.decode(CGPoint.self, forKey: .startPos)
+        endPos = try container.decode(CGPoint.self, forKey: .endPos)
+        tip = try container.decode(Bool.self, forKey: .tip)
+        slide = try container.decode(Bool.self, forKey: .slide)
+        roll = try container.decode(Bool.self, forKey: .roll)
+        A = try container.decode(Bool.self, forKey: .A)
+        hit = try container.decode(Bool.self, forKey: .hit)
+        colorSplit = try container.decode([Float].self, forKey: .colorSplit)
+        didScore = try container.decode(Bool.self, forKey: .didScore)
+        rotationID = try container.decode(Int.self, forKey: .rotationID)
+        if (colorSplit.count == 3) {
+            color = UIColor.init(red: CGFloat(colorSplit[0]), green: CGFloat(colorSplit[1]), blue: CGFloat(colorSplit[2]), alpha: 1).cgColor
+        } else {
+            color = UIColor.black.cgColor
+        }
+    }
 }
 
-//----------------------------- The Player class is used to hold all data that is specific to each player
-class Player {
+//----------------------------------------------------------
+//----------------------------------------------------------
+//The Player class is used to hold all data that is specific to each player
+class Player: Codable {
     var shots = [Line]()
     var layer: CAShapeLayer
     var color: CGColor
+    var colorSplit = [Float]()
     var number: Int
     var name: String
     var isActive: Bool
     var layerExists: Bool
+    
+    private enum CodingKeys: CodingKey { // Might also need : String?
+        case shots
+        case number
+        case name
+        case isActive
+        case layerExists
+        case colorSplit
+    }
     
     init(_number: Int, _color: CGColor, _name: String) {
         layer = CAShapeLayer()
@@ -378,7 +453,7 @@ class Player {
     
     //adds a line to the array directly from the raw information
     func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, color:CGColor, didScore:Bool = false) {
-        var temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
+        let temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
         addLine(line:temp)
     }
     
@@ -402,9 +477,73 @@ class Player {
         }
         return layer
     }
+    
+    func archive(fileName: String) {
+        colorSplit = [0,0,0]
+        colorSplit[0] = Float(color.components![0])
+        colorSplit[1] = Float(color.components![1])
+        colorSplit[2] = Float(color.components![2])
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    
+    func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(Player.self, from: recoveredDataCoded)
+                print("Data successfully recovered from file.")
+                shots = recoveredData.shots
+                layer = recoveredData.layer
+                color = recoveredData.color
+                number = recoveredData.number
+                name = recoveredData.name
+                isActive = recoveredData.isActive
+                layerExists = recoveredData.layerExists
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        layer = CAShapeLayer()
+        number = try container.decode(Int.self, forKey: .number)
+        colorSplit = try container.decode([Float].self, forKey: .colorSplit)
+        if (colorSplit.count == 3) {
+            color = UIColor.init(red: CGFloat(colorSplit[0]), green: CGFloat(colorSplit[1]), blue: CGFloat(colorSplit[2]), alpha: 1).cgColor
+        } else {
+            color = UIColor.black.cgColor
+        }
+        name = try container.decode(String.self, forKey: .name)
+        isActive = try container.decode(Bool.self, forKey: .isActive)
+        layerExists = false
+        layer.strokeColor = color
+        let previewLayer = CAShapeLayer()
+        previewLayer.strokeColor = color
+        layer.addSublayer(previewLayer)
+    }
 }
 
-//----------------------------- Represents each player in the GUI
+//----------------------------------------------------------
+//----------------------------------------------------------
+//Represents each player in the GUI
 class PlayerSpot : UIButton {
     var player: Player?
     var playerIsSelected: Bool
@@ -463,7 +602,9 @@ class ActiveSwitch: UISwitch {
     }
 }
 
-//----------------------------- Event Implementation
+//----------------------------------------------------------
+//----------------------------------------------------------
+//Event Implementation
 private class EventHandlerWrapper<T: AnyObject, U>
 : Invocable, Disposable {
     weak var target: T?
@@ -486,10 +627,12 @@ private class EventHandlerWrapper<T: AnyObject, U>
         event.eventHandlers = event.eventHandlers.filter { $0 !== self }
     }
 }
+
 protocol RotationDelegate: class {
     func passScreenCap(screenshot: UIImage, index: Int)
     func nextRotation(ID: Int, _ sender: RotationViewController)
     func previousRotation(ID: Int, _ sender: RotationViewController)
+    func getData(sender: RotationViewController) -> GameView
 }
 
 public protocol Disposable {
@@ -518,4 +661,27 @@ public class Event<T> {
 
 protocol Invocable: class {
     func invoke(data: Any)
+}
+
+protocol SubstituteDelegate: class {
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player)
+    func updatePreviewPositions(_ activePlayers: [Player])
+}
+
+class SubButton : UIButton {
+    var player: Player?
+    var indexOfPlayer: Int?
+    var delegate: SubButtonDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    @objc func pressed(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.openSubstitution(self)
+    }
+}
+
+protocol SubButtonDelegate: class {
+    func openSubstitution(_ sender: SubButton)
 }

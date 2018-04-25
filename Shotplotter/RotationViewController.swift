@@ -8,7 +8,8 @@
 
 import UIKit
 
-class RotationViewController: UIViewController {
+class RotationViewController: UIViewController, SubstituteDelegate {
+  
     
     @IBOutlet weak var drawingBoard: ArrowView!
     var data: RotationView?
@@ -30,6 +31,8 @@ class RotationViewController: UIViewController {
     @IBOutlet weak var playerSpot4: PlayerSpot!
     @IBOutlet weak var playerSpot5: PlayerSpot!
     @IBOutlet weak var playerSpot6: PlayerSpot!
+    
+    var subData: GameView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +66,7 @@ class RotationViewController: UIViewController {
         activePlayer = Player()
         super.init(coder: aDecoder)
         //adlsjf
-        updateShotButtonsEvent.addHandler(target: self, handler: RotationViewController.checkButtons)
+        let _ = updateShotButtonsEvent.addHandler(target: self, handler: RotationViewController.checkButtons)
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -77,6 +80,10 @@ class RotationViewController: UIViewController {
     
     @IBAction func TipTypeSelect(_ sender: Any) {
         data?.protoLine.tip = !(data?.protoLine.tip)!
+        if (data?.protoLine.tip)! {
+            data?.protoLine.roll = false
+            data?.protoLine.A = false
+        }
         //print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
         checkButtons()
     }
@@ -89,12 +96,20 @@ class RotationViewController: UIViewController {
     
     @IBAction func RollTypeSelect(_ sender: Any) {
         data?.protoLine.roll = !(data?.protoLine.roll)!
+        if (data?.protoLine.roll)! {
+            data?.protoLine.tip = false
+            data?.protoLine.A = false
+        }
         //print("Roll shot type toggled: " + String(describing: data?.protoLine.roll))
         checkButtons()
     }
     
     @IBAction func ATypeSelect(_ sender: Any) {
         data?.protoLine.A = !(data?.protoLine.A)!
+        if (data?.protoLine.A)! {
+            data?.protoLine.roll = false
+            data?.protoLine.tip = false
+        }
         //print("A shot type toggled: " + String(describing: data?.protoLine.A))
         checkButtons()
     }
@@ -223,5 +238,33 @@ class RotationViewController: UIViewController {
         drawingBoard.data = data
         drawingBoard.clear()
         self.viewWillAppear(false)
+    }
+    
+    @IBAction func goToSubstitution(_ sender: Any) {
+        subData = delegate?.getData(sender: self)
+        self.performSegue(withIdentifier: "RotationToOrder", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "RotationToOrder") {
+            if let destination = segue.destination as? OrderViewController {
+                destination.data = subData
+                destination.data?.activePlayers = (self.data?.activePlayers)!
+                destination.passthroughDelegate1 = self
+            }
+        }
+    }
+    
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player) {
+        self.data?.activePlayers = newArray
+        print("Rotation active synced")
+        data?.players.forEach({ (i) in if(!i.isActive){ i.layerExists = false }})
+        drawingBoard.layer.sublayers?.forEach({ (j) in if(j == playerSubbedOut.layer){ j.removeFromSuperlayer() }})
+        drawingBoard.clear()
+        viewWillAppear(false)
+    }
+    
+    func updatePreviewPositions(_ activePlayers: [Player]) {
+        //wow, such empty
     }
 }

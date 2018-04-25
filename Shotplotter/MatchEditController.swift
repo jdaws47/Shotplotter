@@ -108,13 +108,15 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
      fatalError("init(coder:) has not been implemented")
      }*/
     
-    func textFieldDidBeginEditing(_ textField: PlayerTextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let textField = textField as! PlayerTextField
         let fieldIndexPath = IndexPath(row: textField.index, section: 0)
         localTableView?.scrollToRow(at: fieldIndexPath, at: .top, animated: true)
 
     }
     
-    func textFieldDidEndEditing(_ textField: PlayerTextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let textField = textField as! PlayerTextField
         if (textField.isName) {
             data?.players[textField.index].name = textField.text!
         } else {

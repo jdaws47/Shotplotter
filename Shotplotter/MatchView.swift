@@ -6,10 +6,16 @@
 //  Copyright © 2017 District196. All rights reserved.
 //
 
+//////////////////////////////////////////////////////
+///////      !!!!!! VERY IMPORTANT !!!!!!    /////////
+///////    Does not currently save dates!!!  /////////
+//////////////////////////////////////////////////////
+
+
 import Foundation
 import UIKit
 
-class MatchView {
+class MatchView: Codable {
     var games = [GameView]()
     var players = [Player]()
     var dateCreated: NSDate
@@ -18,12 +24,23 @@ class MatchView {
     var opponentName: String
     var firstView: Bool
     var numOfPlayers: Int
+    var dateString: String
+    
+    private enum CodingKeys: CodingKey { // Might also need : String?
+        case games
+        case players
+        case opponentName
+        case firstView
+        case numOfPlayers
+        case dateString
+    }
     
     init() { // TODO: Make a proper initializer with arguments
         dateCreated = NSDate.init()
         opponentName = ""
         dateEdited = NSDate.init()
         datePlayed = NSDate.init()
+        dateString = ""
         firstView = true
         numOfPlayers = 12
         for i in 0..<12 {
@@ -77,4 +94,79 @@ class MatchView {
             //add function that causes buttons to update colors
         }
     }
+    
+    func archive(fileName: String) {
+        dateString = subs(str: dateCreated.description, end:10)
+        dateString = dateString + "," + subs(str: dateEdited.description, end:10)
+        dateString = dateString + "," + subs(str: dateEdited.description, end:10)
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Game Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    
+    func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(MatchView.self, from: recoveredDataCoded)
+                print("Game Data successfully recovered from file.")
+                //positions = recoveredData.positions
+                games = recoveredData.games
+                players = recoveredData.players
+                opponentName = recoveredData.opponentName
+                firstView = recoveredData.firstView
+                numOfPlayers = recoveredData.numOfPlayers
+                dateString = recoveredData.dateString
+                let dates = dateString.components(separatedBy: ",")
+                let dater = DateFormatter()
+                dater.dateFormat = "yyyy-MM-dd"
+                dateCreated = dater.date(from: dates[0])! as NSDate
+                dateEdited = dater.date(from: dates[1])! as NSDate
+                datePlayed = dater.date(from: dates[2])! as NSDate
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        games = try container.decode([GameView].self, forKey: .games)
+        players = try container.decode([Player].self, forKey: .players)
+        opponentName = try container.decode(String.self, forKey: .opponentName)
+        firstView = try container.decode(Bool.self, forKey: .firstView)
+        numOfPlayers = try container.decode(Int.self, forKey: .numOfPlayers)
+        dateString = try container.decode(String.self, forKey: .dateString)
+        
+        let dates = dateString.components(separatedBy: ",")
+        let dater = DateFormatter()
+        dater.dateFormat = "yyyy-MM-dd"
+        print (dateString)
+        print (dates)
+        if (dates.count > 1) {
+            dateCreated = dater.date(from: dates[0])! as NSDate
+            dateEdited = dater.date(from: dates[1])! as NSDate
+            datePlayed = dater.date(from: dates[2])! as NSDate
+        } else {
+            dateCreated = NSDate.init()
+            dateEdited = NSDate.init()
+            datePlayed = NSDate.init()
+        }
+
+    }
+    
 }
