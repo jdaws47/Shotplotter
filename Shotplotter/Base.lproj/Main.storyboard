@@ -251,15 +251,28 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Atn-CL-pAN">
-                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FUD-Xt-Gzq">
-                                                <rect key="frame" x="904" y="4" width="100" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Clear"/>
-                                            </button>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" id="Atn-CL-pAN">
+                                                <inset key="largeContentSizeImageInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FUD-Xt-Gzq">
+                                                    <rect key="frame" x="904" y="4" width="100" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Clear"/>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="Tg5-7x-mKp">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wgg-l5-70X">
+                                                    <rect key="frame" x="787" y="4" width="109" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Substitute"/>
+                                                    <connections>
+                                                        <action selector="goToSubstitution:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="yU5-qo-nEp"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -281,6 +294,7 @@
                         <outlet property="scoreButton" destination="80k-q5-DZh" id="K6X-TF-at0"/>
                         <outlet property="slideButton" destination="l85-Jf-cgb" id="hZZ-Nw-Kqz"/>
                         <outlet property="tipButton" destination="CaE-Gw-o8G" id="Yot-UD-C58"/>
+                        <segue destination="JEk-e6-f6O" kind="show" identifier="RotationToOrder" id="N2R-CS-G1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FB7-1h-6Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -345,7 +359,7 @@
                                         <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRd-Zf-i5f" id="XV2-fM-jUh">
-                                            <rect key="frame" x="0.0" y="0.0" width="984" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxY-wV-TH1">
@@ -414,10 +428,10 @@
                                 <items>
                                     <navigationItem title="Match Details" id="kTy-3H-875">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nhn-jj-qCo">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
-                                                <rect key="frame" x="20" y="5" width="45" height="34"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
+                                                <rect key="frame" x="20" y="4" width="47" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
                                                     <action selector="goBack:" destination="deq-F3-NKg" eventType="touchUpInside" id="Uhb-Tz-D5m"/>
@@ -971,4 +985,7 @@
         <image name="TipOff.png" width="90" height="45"/>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="N2R-CS-G1O"/>
+    </inferredMetricsTieBreakers>
 </document>

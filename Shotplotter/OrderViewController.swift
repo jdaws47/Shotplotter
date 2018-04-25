@@ -13,6 +13,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var data: GameView?
     private var localTableView: UITableView?
     var passthroughDelegate: SubstituteDelegate?
+    var passthroughDelegate1: SubstituteDelegate?
     
     @IBOutlet weak var playerSpot1: PlayerSpot!
     @IBOutlet weak var playerSpot2: PlayerSpot!
@@ -118,13 +119,14 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let destination = segue.destination as? SubstituteViewController {
                 destination.data = self.data
                 destination.delegate = self
-                destination.delegate2 = passthroughDelegate
+                destination.delegate1 = passthroughDelegate
+                destination.delegate2 = passthroughDelegate1
                 destination.playerSubbedOutIndex = (sender as! SubButton).indexOfPlayer
             }
         }
     }
     
-    func syncActiveArray(newArray: [Player]) {
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player) {
         data?.activePlayers = newArray
         localTableView?.reloadData()
     }

@@ -14,6 +14,7 @@ class SubstituteViewController: UIViewController, UITableViewDataSource, UITable
     var playerSubbedOutIndex: Int?
     var offset: Int?
     var delegate: SubstituteDelegate?
+    var delegate1: SubstituteDelegate?
     var delegate2: SubstituteDelegate?
     var counter: Int
     
@@ -92,11 +93,14 @@ class SubstituteViewController: UIViewController, UITableViewDataSource, UITable
         data?.players[counter].isActive = true
         data?.activePlayers[playerSubbedOutIndex!].isActive = false
         data?.activePlayers.insert((data?.players[counter])!, at: playerSubbedOutIndex!)
+        let out = data?.activePlayers[playerSubbedOutIndex! + 1]
         data?.activePlayers.remove(at: playerSubbedOutIndex! + 1)
         counter = 0
-        delegate?.syncActiveArray(newArray: (data?.activePlayers)!)
-        delegate2?.syncActiveArray(newArray: (data?.activePlayers)!)
+        delegate?.syncActiveArray(newArray: (data?.activePlayers)!, playerSubbedOut: out!)
+        delegate1?.syncActiveArray(newArray: (data?.activePlayers)!, playerSubbedOut: out!)
+        delegate2?.syncActiveArray(newArray: (data?.activePlayers)!, playerSubbedOut: out!)
         delegate?.updatePreviewPositions((data?.activePlayers)!)
+        delegate1?.updatePreviewPositions((data?.activePlayers)!)
         delegate2?.updatePreviewPositions((data?.activePlayers)!)
         self.dismiss(animated: true, completion: nil)
     }

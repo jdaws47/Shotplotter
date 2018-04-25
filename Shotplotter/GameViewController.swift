@@ -9,6 +9,8 @@
 import UIKit
 
 class GameViewController: UIViewController, RotationDelegate, SubstituteDelegate {
+    
+    
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     var passedRotation = -1
@@ -194,11 +196,15 @@ class GameViewController: UIViewController, RotationDelegate, SubstituteDelegate
         self.performSegue(withIdentifier: "GameToOrder", sender: self)
     }
     
-    func syncActiveArray(newArray: [Player]) {
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player) {
         data?.activePlayers = newArray
     }
     
     func updatePreviewPositions(_ activePlayers: [Player]) {
         //wow, such nothing
+    }
+    
+    func getData(sender: RotationViewController) -> GameView {
+        return data!
     }
 }
