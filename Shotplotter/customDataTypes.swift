@@ -284,16 +284,13 @@ struct Line: Codable {
             arrowLayer.fillColor = nil
             arrowLayer.lineWidth = 3
             
-            //path = UIBezierPath().cgPath.mutableCopy()
+            
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
-            let endX = CGFloat()
-            let endY = CGFloat()
+            let endX = CGFloat(endPos.x)
+            let endY = CGFloat(endPos.y)
             
-            let constant1 = CGFloat(10)
-            //let constant2 = CGFloat(10)
-            
-            let amplitude = CGFloat(25)
+            let rLen = CGFloat(10)
             
             let xDiff = startX - endX
             let yDiff = startY - endY
@@ -303,19 +300,26 @@ struct Line: Codable {
                 angle += 2.0 * CGFloat.pi
             }
             
-            let length = sqrt(xDiff * xDiff + yDiff * yDiff)
-            var x1 = startX - constant1 * (xDiff / length)
-            var y1 = startY - constant1 * (yDiff / length)
+            let x1 = endX
+            let y1 = endY
+            var x2 = CGFloat(endX + (rLen * cos(angle)))
+            var y2 = CGFloat(endY + (rLen * sin(angle)))
             
-            var x2 = x1 + amplitude * cos(angle + CGFloat.pi / CGFloat(4))
-            var y2 = y1 + amplitude * sin(angle + CGFloat.pi / CGFloat(4))
+            print("x1: \(x1) + y1: \(y1)")
+            print("x2: \(x2) + y2: \(y2)")
             
-            let firstPoint = CGPoint(x: endPos.x,y: endPos.y)
+            x2 = x2 + CGFloat(2 * rLen * cos(angle + CGFloat.pi / CGFloat(4.0)))
+            y2 = y2 + CGFloat(2 * rLen * sin(angle + CGFloat.pi / CGFloat(4.0)))
+            
+            let firstPoint = CGPoint(x: x1,y: y1)
             var lastPoint = CGPoint(x: x2, y: y2)
             arrowPath?.addLines(between: [firstPoint, lastPoint])
             
-            x2 = x1 + amplitude * cos(angle - CGFloat.pi / CGFloat(4))
-            y2 = y1 + amplitude * sin(angle - CGFloat.pi / CGFloat(4))
+            x2 = CGFloat(endX + (rLen * cos(angle)))
+            y2 = CGFloat(endY + (rLen * sin(angle)))
+            x2 = x2 + CGFloat(2 * rLen * cos(angle - CGFloat.pi / CGFloat(4.0)))
+            y2 = y2 + CGFloat(2 * rLen * sin(angle - CGFloat.pi / CGFloat(4.0)))
+            
             lastPoint = CGPoint(x: x2, y: y2)
             arrowPath?.addLines(between: [firstPoint, lastPoint])
             
