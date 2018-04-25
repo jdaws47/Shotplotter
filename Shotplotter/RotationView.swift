@@ -8,8 +8,8 @@
 
 import UIKit
 
-class RotationView {
-    var positions = [PlayerSpot]()
+class RotationView: Codable {
+    //var positions = [PlayerSpot]()
     var activePlayers = [Player]()
     var players = [Player]()
     var rotationID: Int
@@ -52,4 +52,45 @@ class RotationView {
         activePlayers[?].addLine(startPos: start, endPos: end, tip: tip, slide: slide, A: A, roll: roll, hit: hit, didScore: didScore, rotationID: rotation)
         addLine(line:temp)
     }*/
+    
+    func archive(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        do {
+            let encodedData = try PropertyListEncoder().encode(self)
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
+            if isSuccessfulSave {
+                print("Rotation Data successfully saved to file.")
+            } else {
+                print("Failed to save data...")
+            }
+        } catch {
+            print("Failed to save data...")
+        }
+    }
+    
+    func restore(fileName: String) {
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent(fileName)
+        if let recoveredDataCoded = NSKeyedUnarchiver.unarchiveObject(
+            withFile: archiveURL.path) as? Data {
+            do {
+                let recoveredData = try PropertyListDecoder().decode(RotationView.self, from: recoveredDataCoded)
+                print("Data successfully recovered from file.")
+                //positions = recoveredData.positions
+                activePlayers = recoveredData.activePlayers
+                players = recoveredData.players
+                rotationID = recoveredData.rotationID
+                viewMode = recoveredData.viewMode
+                hasSelected = recoveredData.hasSelected
+                selected = recoveredData.selected
+                nextDraws = recoveredData.nextDraws
+                protoLine = recoveredData.protoLine
+            } catch {
+                print("Failed to recover data")
+            }
+        } else {
+            print("Failed to recover data")
+        }
+    }
 }

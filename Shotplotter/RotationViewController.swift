@@ -80,6 +80,10 @@ class RotationViewController: UIViewController, SubstituteDelegate {
     
     @IBAction func TipTypeSelect(_ sender: Any) {
         data?.protoLine.tip = !(data?.protoLine.tip)!
+        if (data?.protoLine.tip)! {
+            data?.protoLine.roll = false
+            data?.protoLine.A = false
+        }
         //print("Tip shot type toggled: " + String(describing: data?.protoLine.tip))
         checkButtons()
     }
@@ -92,12 +96,20 @@ class RotationViewController: UIViewController, SubstituteDelegate {
     
     @IBAction func RollTypeSelect(_ sender: Any) {
         data?.protoLine.roll = !(data?.protoLine.roll)!
+        if (data?.protoLine.roll)! {
+            data?.protoLine.tip = false
+            data?.protoLine.A = false
+        }
         //print("Roll shot type toggled: " + String(describing: data?.protoLine.roll))
         checkButtons()
     }
     
     @IBAction func ATypeSelect(_ sender: Any) {
         data?.protoLine.A = !(data?.protoLine.A)!
+        if (data?.protoLine.A)! {
+            data?.protoLine.roll = false
+            data?.protoLine.tip = false
+        }
         //print("A shot type toggled: " + String(describing: data?.protoLine.A))
         checkButtons()
     }
