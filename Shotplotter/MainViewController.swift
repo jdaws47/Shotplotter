@@ -74,6 +74,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (data?.matches.count)!
     }
+	
+	//deletes row when called
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			//print("Deleted")
+			
+			data?.matches.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			localTableView?.reloadData()
+		}
+	}
+	
+	//sets which rows can be "edited"
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
     
     // Runs whenever a cell is tapped. Used to segue to the relevant Match.
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

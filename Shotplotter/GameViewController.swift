@@ -8,7 +8,9 @@
 
 import UIKit
 
-class GameViewController: UIViewController, RotationDelegate {
+class GameViewController: UIViewController, RotationDelegate, SubstituteDelegate {
+    
+    
     var data: GameView?
     @IBOutlet weak var goToMatch: UIButton!
     var passedRotation = -1
@@ -21,7 +23,7 @@ class GameViewController: UIViewController, RotationDelegate {
     @IBOutlet weak var rotation4: UIButton!
     @IBOutlet weak var rotation5: UIButton!
     @IBOutlet weak var rotation6: UIButton!
-    let activePError = UIAlertController.init(title: "Not Enough Active Players", message: "There aren't six active players. Please select six active players before opening a rotation.", preferredStyle: .alert)
+    let activePError = UIAlertController.init(title: "Not Enough Active Players", message: "There aren't six active players. Please select six active players before opening a rotation or trying to set order.", preferredStyle: .alert)
     
     
     // Doesn't always run. Do not use
@@ -181,12 +183,28 @@ class GameViewController: UIViewController, RotationDelegate {
         } else if (segue.identifier == "GameToOrder") {
             if let destination = segue.destination as? OrderViewController {
                 destination.data = self.data
+                destination.passthroughDelegate = self
             }
         }
     }
     
     @IBAction func transitionToSetOrder(_ sender: Any) {
+        if((data?.activePlayers.count)! < 6) {
+            self.present(activePError, animated: true, completion: nil)
+            return
+        }
         self.performSegue(withIdentifier: "GameToOrder", sender: self)
     }
     
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player) {
+        data?.activePlayers = newArray
+    }
+    
+    func updatePreviewPositions(_ activePlayers: [Player]) {
+        //wow, such nothing
+    }
+    
+    func getData(sender: RotationViewController) -> GameView {
+        return data!
+    }
 }

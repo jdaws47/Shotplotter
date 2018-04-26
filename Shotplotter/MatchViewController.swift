@@ -126,11 +126,16 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
             addButton.isEnabled = true
         }
     }
-    
+	
+	//sets which rows can be "edited"
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row < 3 {
             return false
         }
+        return true
+    }
+    
+    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -142,7 +147,7 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func longPress() { // CURRENTLY DOES NOT ACTUALLY DELETE ITEMS FROM THE MatchView ARRAY OF GAMES
+    @objc func longPress() { // CURRENTLY DOES NOT ACTUALLY DELETE ITEMS FROM THE MatchView ARRAY OF GAMES
         localTableView?.setEditing(!(localTableView?.isEditing)!, animated: true)
     }
     

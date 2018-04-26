@@ -276,15 +276,28 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Atn-CL-pAN">
-                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FUD-Xt-Gzq">
-                                                <rect key="frame" x="904" y="4" width="100" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Clear"/>
-                                            </button>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" id="Atn-CL-pAN">
+                                                <inset key="largeContentSizeImageInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FUD-Xt-Gzq">
+                                                    <rect key="frame" x="904" y="4" width="100" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Clear"/>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="Tg5-7x-mKp">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wgg-l5-70X">
+                                                    <rect key="frame" x="787" y="4" width="109" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Substitute"/>
+                                                    <connections>
+                                                        <action selector="goToSubstitution:" destination="pIQ-8Y-aoa" eventType="touchUpInside" id="yU5-qo-nEp"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -306,6 +319,7 @@
                         <outlet property="scoreButton" destination="80k-q5-DZh" id="K6X-TF-at0"/>
                         <outlet property="slideButton" destination="l85-Jf-cgb" id="hZZ-Nw-Kqz"/>
                         <outlet property="tipButton" destination="CaE-Gw-o8G" id="Yot-UD-C58"/>
+                        <segue destination="JEk-e6-f6O" kind="show" identifier="RotationToOrder" id="N2R-CS-G1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FB7-1h-6Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,10 +453,10 @@
                                 <items>
                                     <navigationItem title="Match Details" id="kTy-3H-875">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="nhn-jj-qCo">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
-                                                <rect key="frame" x="20" y="5" width="45" height="34"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AeG-zV-DTp">
+                                                <rect key="frame" x="20" y="4" width="47" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
                                                     <action selector="goBack:" destination="deq-F3-NKg" eventType="touchUpInside" id="Uhb-Tz-D5m"/>
@@ -573,15 +587,15 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vIW-OM-3YA">
-                                <rect key="frame" x="20" y="64" width="256" height="696"/>
+                                <rect key="frame" x="20" y="72" width="362" height="680"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activeOrderPlayers" id="LQb-x2-W8y" customClass="OrderCell" customModule="Shotplotter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="256" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="362" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LQb-x2-W8y" id="tX5-bh-Z5W">
-                                            <rect key="frame" x="0.0" y="0.0" width="256" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olZ-EH-xBg">
@@ -592,17 +606,24 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDB-RE-7KG">
-                                                    <rect key="frame" x="199" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="199" y="11" width="30" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9d-MR-11o" customClass="SubButton" customModule="Shotplotter" customModuleProvider="target">
+                                                    <rect key="frame" x="237" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Sub"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="olZ-EH-xBg" id="YEZ-L4-ANF"/>
                                             <outlet property="number" destination="gDB-RE-7KG" id="JVX-MK-xwO"/>
+                                            <outlet property="subButton" destination="A9d-MR-11o" id="w5i-PP-PiE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -612,48 +633,59 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Volleyball Court.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QOy-xi-4B1">
-                                <rect key="frame" x="440" y="80" width="430" height="664"/>
+                                <rect key="frame" x="496" y="80" width="430" height="664"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYi-e2-TDM" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="631" y="182" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="2"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pQ-MW-v9k" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="631" y="329" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="5"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-Dy-NdT" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="525" y="182" width="48" height="48"/>
+                                <rect key="frame" x="581" y="182" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="1"/>
+                                <state key="normal" title="asdf"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYi-e2-TDM" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="687" y="184" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="asdf"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCi-aD-fha" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="737" y="182" width="48" height="48"/>
+                                <rect key="frame" x="793" y="182" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="3"/>
+                                <state key="normal" title="asdf"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RkZ-vD-M9s" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="737" y="329" width="48" height="48"/>
+                                <rect key="frame" x="793" y="329" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="4"/>
+                                <state key="normal" title="asdf"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pQ-MW-v9k" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
+                                <rect key="frame" x="687" y="329" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="asdf"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zin-N5-oIb" customClass="PlayerSpot" customModule="Shotplotter" customModuleProvider="target">
-                                <rect key="frame" x="525" y="329" width="48" height="48"/>
+                                <rect key="frame" x="581" y="329" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="6"/>
+                                <state key="normal" title="asdf"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="playerSpot1" destination="KAp-Dy-NdT" id="iAs-jJ-K24"/>
+                        <outlet property="playerSpot2" destination="GYi-e2-TDM" id="Rq4-TY-RFs"/>
+                        <outlet property="playerSpot3" destination="yCi-aD-fha" id="aAz-tn-J7C"/>
+                        <outlet property="playerSpot4" destination="RkZ-vD-M9s" id="NiS-K3-gJe"/>
+                        <outlet property="playerSpot5" destination="3pQ-MW-v9k" id="yL7-Ev-uQ1"/>
+                        <outlet property="playerSpot6" destination="zin-N5-oIb" id="1FH-af-A0a"/>
+                        <segue destination="ntM-VR-8Hg" kind="popoverPresentation" identifier="OrderToSubstitute" popoverAnchorView="S9m-hA-ugd" id="rpP-7o-b6Q">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF4-ei-Uhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -900,6 +932,75 @@
             </objects>
             <point key="canvasLocation" x="1426.7578125" y="1348.4375"/>
         </scene>
+        <!--Substitute Players Overlay-->
+        <scene sceneID="ZPA-rp-U9n">
+            <objects>
+                <viewController autoresizesArchivedViewToFullSize="NO" title="Substitute Players Overlay" id="ntM-VR-8Hg" customClass="SubstituteViewController" customModule="Shotplotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="roy-GE-otF"/>
+                        <viewControllerLayoutGuide type="bottom" id="0vi-rR-OEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WHN-5r-2WJ">
+                        <rect key="frame" x="0.0" y="0.0" width="416" height="312"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose New Player:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKs-ZO-qTD">
+                                <rect key="frame" x="5" y="20" width="512" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eG0-IO-qRN">
+                                <rect key="frame" x="20" y="49" width="376" height="258"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="substitutePlayer" id="YtW-eX-Mom" customClass="SubstituteCell" customModule="Shotplotter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="376" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YtW-eX-Mom" id="Xxb-7s-xmt">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGQ-oj-2ll">
+                                                    <rect key="frame" x="15" y="11" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWV-kQ-sH8">
+                                                    <rect key="frame" x="301" y="11" width="50" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="JGQ-oj-2ll" id="GGh-l4-ggb"/>
+                                            <outlet property="number" destination="sWV-kQ-sH8" id="Msh-tE-bHn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ntM-VR-8Hg" id="CF9-Hc-hZR"/>
+                                    <outlet property="delegate" destination="ntM-VR-8Hg" id="Emi-j7-bJI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="416" height="312"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="416" height="312"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cle-md-1OA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757.8125" y="1347.65625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AOff.png" width="90" height="45"/>
@@ -909,4 +1010,7 @@
         <image name="TipOff.png" width="90" height="45"/>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="N2R-CS-G1O"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -157,10 +157,23 @@ struct Line: Codable {
         if (tip) {
             //let tipPath = path.cgPath.mutableCopy()
             path?.addLines(between: [startPos, endPos])
+			layer.lineWidth = 6
             
-        } else if (slide) {
-            path = UIBezierPath().cgPath.mutableCopy()
-            let startX = CGFloat(startPos.x)
+		} else if roll {
+			//let rollPath = path.cgPath.mutableCopy()
+			path?.addLines(between: [startPos, endPos])
+			layer.lineDashPattern = [30, 15, 15, 15]
+	
+		} else if A {
+			//let aPath = path.cgPath.mutableCopy()
+			path?.addLines(between: [startPos, endPos])
+			layer.lineDashPattern = [7, 3, 7]
+	
+		}
+		
+		if (slide) {
+			path = UIBezierPath().cgPath.mutableCopy()
+			let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
             let endX = CGFloat(endPos.x)
             let endY = CGFloat(endPos.y)
@@ -168,7 +181,7 @@ struct Line: Codable {
             let amplitude = CGFloat(5)
             var period = CGFloat(5)
             // Increase this number to increase performance
-            let segmentLength = 5
+            let segmentLength = 1
             
             let xDiff = startX - endX
             let yDiff = startY - endY
@@ -183,7 +196,23 @@ struct Line: Codable {
             var occilations = CGFloat((Int)(length / (2 * CGFloat.pi)))
             occilations = CGFloat(Int(occilations / period))
             period = (CGFloat(occilations) * ((2 * CGFloat.pi) / length))
-            
+			
+			var oscillatorLength = 0
+			var oscillating = 0
+			var pattern = [Int]()
+			var carryover = 0
+			if(roll) {
+				pattern = [15, 3]
+				//layer.lineCap = ""
+				oscillatorLength = pattern.count
+			} else if(A) {
+				pattern = [2, 4]
+				oscillatorLength = pattern.count
+			} else {
+				pattern = [5]
+				oscillatorLength = pattern.count
+			}
+			
             var x3 = CGFloat(startX)
             var y3 = CGFloat(startY)
             for i in stride(from: 0, to: Int(length), by: segmentLength) {
@@ -195,25 +224,38 @@ struct Line: Codable {
                 
                 let firstPoint = CGPoint(x: x3,y: y3)
                 let lastPoint = CGPoint(x: x2, y: y2)
-                path?.addLines(between: [firstPoint, lastPoint])
+				
+				var shown: Bool
+				if(oscillating % 2 == 1 && carryover <= 0) {
+					shown = false
+					oscillating += 1
+					if(oscillating == oscillatorLength) {
+						oscillating = 0
+					}
+					carryover = pattern[oscillating]
+				} else if (oscillating % 2 == 0 && carryover <= 0){
+					shown = true
+					oscillating += 1
+					if(oscillating == oscillatorLength) {
+						oscillating = 0
+					}
+					carryover = pattern[oscillating]
+				} else {
+					carryover -= segmentLength
+					shown = (oscillating % 2 == 0)
+				}
+				
+				if(shown) {
+					path?.addLines(between: [firstPoint, lastPoint])
+				}
                 
                 //layer.path = slidePath
                 
                 x3 = x2
                 y3 = y2
             }
-        } else if roll {
-            //let rollPath = path.cgPath.mutableCopy()
-            path?.addLines(between: [startPos, endPos])
-            layer.lineDashPattern = [30, 15, 15, 15]
-            
-        } else if A {
-            //let aPath = path.cgPath.mutableCopy()
-            path?.addLines(between: [startPos, endPos])
-            layer.lineDashPattern = [7, 3, 7]
-
-        }
-        
+		}
+		
         if didScore {
             let hitmarkerLayer = CAShapeLayer()
             let hitmarkerPath = UIBezierPath().cgPath.mutableCopy()
@@ -242,16 +284,13 @@ struct Line: Codable {
             arrowLayer.fillColor = nil
             arrowLayer.lineWidth = 3
             
-            //path = UIBezierPath().cgPath.mutableCopy()
+            
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)
-            let endX = CGFloat()
-            let endY = CGFloat()
+            let endX = CGFloat(endPos.x)
+            let endY = CGFloat(endPos.y)
             
-            let constant1 = CGFloat(10)
-            //let constant2 = CGFloat(10)
-            
-            let amplitude = CGFloat(25)
+            let rLen = CGFloat(10)
             
             let xDiff = startX - endX
             let yDiff = startY - endY
@@ -261,19 +300,26 @@ struct Line: Codable {
                 angle += 2.0 * CGFloat.pi
             }
             
-            let length = sqrt(xDiff * xDiff + yDiff * yDiff)
-            var x1 = startX - constant1 * (xDiff / length)
-            var y1 = startY - constant1 * (yDiff / length)
+            let x1 = endX
+            let y1 = endY
+            var x2 = CGFloat(endX + (rLen * cos(angle)))
+            var y2 = CGFloat(endY + (rLen * sin(angle)))
             
-            var x2 = x1 + amplitude * cos(angle + CGFloat.pi / CGFloat(4))
-            var y2 = y1 + amplitude * sin(angle + CGFloat.pi / CGFloat(4))
+            print("x1: \(x1) + y1: \(y1)")
+            print("x2: \(x2) + y2: \(y2)")
             
-            let firstPoint = CGPoint(x: endPos.x,y: endPos.y)
+            x2 = x2 + CGFloat(2 * rLen * cos(angle + CGFloat.pi / CGFloat(4.0)))
+            y2 = y2 + CGFloat(2 * rLen * sin(angle + CGFloat.pi / CGFloat(4.0)))
+            
+            let firstPoint = CGPoint(x: x1,y: y1)
             var lastPoint = CGPoint(x: x2, y: y2)
             arrowPath?.addLines(between: [firstPoint, lastPoint])
             
-            x2 = x1 + amplitude * cos(angle - CGFloat.pi / CGFloat(4))
-            y2 = y1 + amplitude * sin(angle - CGFloat.pi / CGFloat(4))
+            x2 = CGFloat(endX + (rLen * cos(angle)))
+            y2 = CGFloat(endY + (rLen * sin(angle)))
+            x2 = x2 + CGFloat(2 * rLen * cos(angle - CGFloat.pi / CGFloat(4.0)))
+            y2 = y2 + CGFloat(2 * rLen * sin(angle - CGFloat.pi / CGFloat(4.0)))
+            
             lastPoint = CGPoint(x: x2, y: y2)
             arrowPath?.addLines(between: [firstPoint, lastPoint])
             
@@ -425,7 +471,7 @@ class Player: Codable {
     
     //adds a line to the array directly from the raw information
     func addLine(start:CGPoint, end: CGPoint, tip:Bool = false, rotation:Int, slide:Bool = false, A:Bool = false, roll:Bool = false, hit:Bool = false, color:CGColor, didScore:Bool = false) {
-        var temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
+        let temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
         addLine(line:temp)
     }
     
@@ -617,10 +663,12 @@ private class EventHandlerWrapper<T: AnyObject, U>
         event.eventHandlers = event.eventHandlers.filter { $0 !== self }
     }
 }
+
 protocol RotationDelegate: class {
     func passScreenCap(screenshot: UIImage, index: Int)
     func nextRotation(ID: Int, _ sender: RotationViewController)
     func previousRotation(ID: Int, _ sender: RotationViewController)
+    func getData(sender: RotationViewController) -> GameView
 }
 
 public protocol Disposable {
@@ -649,4 +697,27 @@ public class Event<T> {
 
 protocol Invocable: class {
     func invoke(data: Any)
+}
+
+protocol SubstituteDelegate: class {
+    func syncActiveArray(newArray: [Player], playerSubbedOut: Player)
+    func updatePreviewPositions(_ activePlayers: [Player])
+}
+
+class SubButton : UIButton {
+    var player: Player?
+    var indexOfPlayer: Int?
+    var delegate: SubButtonDelegate?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    @objc func pressed(_ tapGesture: UITapGestureRecognizer) {
+        delegate?.openSubstitution(self)
+    }
+}
+
+protocol SubButtonDelegate: class {
+    func openSubstitution(_ sender: SubButton)
 }
