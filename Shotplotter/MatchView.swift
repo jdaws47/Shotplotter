@@ -105,12 +105,12 @@ class MatchView: Codable {
             let encodedData = try PropertyListEncoder().encode(self)
             let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(encodedData, toFile: archiveURL.path)
             if isSuccessfulSave {
-                print("Game Data successfully saved to file.")
+                print("Match Data successfully saved to file.")
             } else {
-                print("Failed to save data...")
+                print("Failed to save Match data...")
             }
         } catch {
-            print("Failed to save data...")
+            print("Failed to save Match data...")
         }
     }
     
@@ -121,7 +121,7 @@ class MatchView: Codable {
             withFile: archiveURL.path) as? Data {
             do {
                 let recoveredData = try PropertyListDecoder().decode(MatchView.self, from: recoveredDataCoded)
-                print("Game Data successfully recovered from file.")
+                print("Match Data successfully recovered from file.")
                 //positions = recoveredData.positions
                 games = recoveredData.games
                 players = recoveredData.players
@@ -136,14 +136,15 @@ class MatchView: Codable {
                 dateEdited = dater.date(from: dates[1])! as NSDate
                 datePlayed = dater.date(from: dates[2])! as NSDate
             } catch {
-                print("Failed to recover data")
+                print("Failed to Match recover data")
             }
         } else {
-            print("Failed to recover data")
+            print("Failed to Match recover data")
         }
     }
     
     required init(from decoder: Decoder) throws {
+        print("Restoring Match data...")
         let container = try decoder.container(keyedBy: CodingKeys.self)
         games = try container.decode([GameView].self, forKey: .games)
         players = try container.decode([Player].self, forKey: .players)
@@ -166,7 +167,19 @@ class MatchView: Codable {
             dateEdited = NSDate.init()
             datePlayed = NSDate.init()
         }
+        print("Finished restoring Match data")
 
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(games, forKey: .games)
+        try container.encode(players, forKey: .players)
+        try container.encode(opponentName, forKey: .opponentName)
+        try container.encode(firstView, forKey: .firstView)
+        try container.encode(numOfPlayers, forKey: .numOfPlayers)
+        try container.encode(dateString, forKey: .dateString)
+        print("Match Data successfully saved to file.")
     }
     
 }

@@ -38,11 +38,36 @@
                                                 <state key="normal" title="Filter"/>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="6f1-9k-B0B">
-                                            <connections>
-                                                <action selector="addNewMatch:" destination="BYZ-38-t0r" id="CBJ-AQ-Ng5"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" systemItem="add" id="6f1-9k-B0B">
+                                                <connections>
+                                                    <action selector="addNewMatch:" destination="BYZ-38-t0r" id="CBJ-AQ-Ng5"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="32l-aB-STS">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Iqa-Lr-YkP">
+                                                    <rect key="frame" x="740.5" y="7" width="227" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Save"/>
+                                                    <connections>
+                                                        <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B9w-Vp-2md"/>
+                                                    </connections>
+                                                </button>
+                                                <connections>
+                                                    <action selector="save:" destination="BYZ-38-t0r" id="gGM-As-q2A"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="0ii-Yl-3Ll">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EDE-Rs-xmV">
+                                                    <rect key="frame" x="505.5" y="7" width="227" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Load"/>
+                                                    <connections>
+                                                        <action selector="load:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Avr-oV-pLx"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

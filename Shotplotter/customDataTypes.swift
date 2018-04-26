@@ -350,6 +350,25 @@ struct Line: Codable {
             color = UIColor.black.cgColor
         }
     }
+    
+    /*mutating func encode(to encoder: Encoder) throws {
+        colorSplit = [0,0,0]
+        colorSplit[0] = Float(color.components![0])
+        colorSplit[1] = Float(color.components![1])
+        colorSplit[2] = Float(color.components![2])
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(startPos, forKey: .startPos)
+        try container.encode(endPos, forKey: .endPos)
+        try container.encode(tip, forKey: .tip)
+        try container.encode(slide, forKey: .slide)
+        try container.encode(roll, forKey: .roll)
+        try container.encode(A, forKey: .A)
+        try container.encode(hit, forKey: .hit)
+        try container.encode(colorSplit, forKey: .colorSplit)
+        try container.encode(didScore, forKey: .didScore)
+        try container.encode(rotationID, forKey: .rotationID)
+        print("Line Data successfully saved to file.")
+    }*/
 }
 
 //----------------------------------------------------------
@@ -370,7 +389,6 @@ class Player: Codable {
         case number
         case name
         case isActive
-        case layerExists
         case colorSplit
     }
     
@@ -492,6 +510,24 @@ class Player: Codable {
         let previewLayer = CAShapeLayer()
         previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        print("BOOF")
+        print (color)
+        print(color.components)
+        print(color.components)
+        colorSplit = [0,0,0]
+        colorSplit[0] = Float(color.components![0])
+        colorSplit[1] = Float(color.components![1])
+        colorSplit[2] = Float(color.components![2])
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(number, forKey: .number)
+        try container.encode(shots, forKey: .shots)
+        try container.encode(colorSplit, forKey: .colorSplit)
+        try container.encode(name, forKey: .name)
+        try container.encode(isActive, forKey: .isActive)
+        print("Player Data successfully saved to file.")
     }
 }
 
