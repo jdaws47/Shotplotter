@@ -35,6 +35,8 @@ class ArrowView: UIView {
     var drawLayer: CAShapeLayer
     //var typeOfShot: Int
     var activePlayer: Player
+	
+	var deleteButton: Bool
     
     required init?(coder aDecoder: NSCoder) {
         activePlayer = Player()
@@ -46,6 +48,8 @@ class ArrowView: UIView {
         drawLayer = CAShapeLayer()
         startPoint = CGPoint()
         endPoint = CGPoint()
+		
+		deleteButton = false
         
         super.init(coder: aDecoder)
         
@@ -62,11 +66,15 @@ class ArrowView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (data?.checkDraw())! {
-            isDrawing = true
-            guard let touch = touches.first else { return }
-            startPoint = touch.location(in: self)
-            data?.protoLine.startPos = startPoint
-            data?.protoLine.color = color
+			if deleteButton {
+				
+			} else {
+				isDrawing = true
+				guard let touch = touches.first else { return }
+				startPoint = touch.location(in: self)
+				data?.protoLine.startPos = startPoint
+				data?.protoLine.color = color
+			}
         }
     }
     
@@ -134,7 +142,16 @@ class ArrowView: UIView {
             player.layerExists = true
         }
     }
-    
+	@IBAction func willDelete(_ sender: Any) {
+		deleteButton = !deleteButton
+		let button = sender as! UIButton
+		if(deleteButton) {
+			button.setTitleColor(UIColor.darkText, for: .normal)
+		} else {
+			button.setTitleColor(UIColor.init(red: 21/255, green: 126/255, blue: 251/255, alpha: 1.0), for: .normal)
+		}
+	}
+	
     func clear() {
         //layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         data?.players.forEach { _ = $0.initializeLayer((data?.rotationID)!) }
