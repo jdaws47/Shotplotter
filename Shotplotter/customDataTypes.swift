@@ -202,11 +202,11 @@ struct Line: Codable {
 			var pattern = [Int]()
 			var carryover = 0
 			if(roll) {
-				pattern = [2, 4]
-				layer.lineCap = ""
+				pattern = [15, 3]
+				//layer.lineCap = ""
 				oscillatorLength = pattern.count
 			} else if(A) {
-				pattern = [15, 3]
+				pattern = [2, 4]
 				oscillatorLength = pattern.count
 			} else {
 				pattern = [5]
