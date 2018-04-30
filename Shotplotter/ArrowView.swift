@@ -37,6 +37,7 @@ class ArrowView: UIView {
     var activePlayer: Player
 	
 	var deleteButton: Bool
+	var lastDeleted: CGPath?
     
     required init?(coder aDecoder: NSCoder) {
         activePlayer = Player()
@@ -74,20 +75,22 @@ class ArrowView: UIView {
 				guard let point = touch?.location(in: self as UIView) else { return }
 				//print("point exists")
 				
-				guard let sublayers = (self.layer.sublayers as? [CAShapeLayer]) else {return}
+				guard let sublayers = (i.sublayers as? [CAShapeLayer]) else {return}
+				var index = 0
 				//print("sublayers exists")
 				for layer in sublayers {
 					
 					//print("got here at least")
-					//if let path = layer.path {
-						//print("path exists now")
 					if(layer.path == nil) { continue }
-					let path = UIBezierPath.init(cgPath: layer.path!)
-					path.close()
-					if (path.contains(point)) {
-							print("B-9. Hit")
-						}
-					//}
+					let hitPath = layer.path?.copy(strokingWithWidth: 6.0, lineCap: .square, lineJoin: CGLineJoin.round, miterLimit: 1.0)
+					//print("closed")
+					if (hitPath?.contains(point))! {
+						print("B-9. Hit")
+						lastDeleted = layer.path
+						layer.removeFromSuperlayer()
+						j.shots.remove(at: index)
+					}
+					index += 1
 				}
 			})
 		} else if (data?.checkDraw())! {
@@ -100,6 +103,33 @@ class ArrowView: UIView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		if deleteButton {
+			//print("we are deleting")
+			let touch = touches.first
+			
+			data?.activePlayers.forEach({ (j) in
+				let i = j.layer
+				guard let point = touch?.location(in: self as UIView) else { return }
+				//print("point exists")
+				
+				guard let sublayers = (i.sublayers as? [CAShapeLayer]) else {return}
+				var index = 0
+				//print("sublayers exists")
+				for layer in sublayers {
+					//print("got here at least")
+					if(layer.path == nil) { continue }
+					let hitPath = layer.path?.copy(strokingWithWidth: 6.0, lineCap: .square, lineJoin: CGLineJoin.round, miterLimit: 1.0)
+					//print("closed")
+					if (hitPath?.contains(point))! {
+						print("B-9. Hit")
+						lastDeleted = layer.path
+						layer.removeFromSuperlayer()
+						j.shots.remove(at: index)
+					}
+					index += 1
+				}
+			})
+		}
         guard isDrawing else { return }
         guard let touch = touches.first else { return }
         let touchPoint = touch.location(in: self)
