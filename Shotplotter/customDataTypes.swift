@@ -396,6 +396,25 @@ struct Line: Codable {
             color = UIColor.black.cgColor
         }
     }
+    
+    /*mutating func encode(to encoder: Encoder) throws {
+        colorSplit = [0,0,0]
+        colorSplit[0] = Float(color.components![0])
+        colorSplit[1] = Float(color.components![1])
+        colorSplit[2] = Float(color.components![2])
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(startPos, forKey: .startPos)
+        try container.encode(endPos, forKey: .endPos)
+        try container.encode(tip, forKey: .tip)
+        try container.encode(slide, forKey: .slide)
+        try container.encode(roll, forKey: .roll)
+        try container.encode(A, forKey: .A)
+        try container.encode(hit, forKey: .hit)
+        try container.encode(colorSplit, forKey: .colorSplit)
+        try container.encode(didScore, forKey: .didScore)
+        try container.encode(rotationID, forKey: .rotationID)
+        print("Line Data successfully saved to file.")
+    }*/
 }
 
 //----------------------------------------------------------
@@ -405,7 +424,7 @@ class Player: Codable {
     var shots = [Line]()
     var layer: CAShapeLayer
     var color: CGColor
-    var colorSplit = [Float]()
+    //var colorSplit = [Float]()
     var number: Int
     var name: String
     var isActive: Bool
@@ -416,8 +435,7 @@ class Player: Codable {
         case number
         case name
         case isActive
-        case layerExists
-        case colorSplit
+        //case colorSplit
     }
     
     init(_number: Int, _color: CGColor, _name: String) {
@@ -479,10 +497,10 @@ class Player: Codable {
     }
     
     func archive(fileName: String) {
-        colorSplit = [0,0,0]
-        colorSplit[0] = Float(color.components![0])
-        colorSplit[1] = Float(color.components![1])
-        colorSplit[2] = Float(color.components![2])
+        //colorSplit = [0,0,0]
+        //colorSplit[0] = Float(color.components![0])
+        //colorSplit[1] = Float(color.components![1])
+        //colorSplit[2] = Float(color.components![2])
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveURL = documentsDirectory.appendingPathComponent(fileName)
         do {
@@ -525,19 +543,48 @@ class Player: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         layer = CAShapeLayer()
         number = try container.decode(Int.self, forKey: .number)
-        colorSplit = try container.decode([Float].self, forKey: .colorSplit)
-        if (colorSplit.count == 3) {
-            color = UIColor.init(red: CGFloat(colorSplit[0]), green: CGFloat(colorSplit[1]), blue: CGFloat(colorSplit[2]), alpha: 1).cgColor
-        } else {
-            color = UIColor.black.cgColor
-        }
+        //colorSplit = try container.decode([Float].self, forKey: .colorSplit)
+        //if (colorSplit.count == 3) {
+        //    color = UIColor.init(red: CGFloat(colorSplit[0]), green: CGFloat(colorSplit[1]), blue: CGFloat(colorSplit[2]), alpha: 1).cgColor
+        //} else {
+        //    color = UIColor.black.cgColor
+        //}
         name = try container.decode(String.self, forKey: .name)
         isActive = try container.decode(Bool.self, forKey: .isActive)
         layerExists = false
+		color = UIColor.black.cgColor
         layer.strokeColor = color
         let previewLayer = CAShapeLayer()
         previewLayer.strokeColor = color
         layer.addSublayer(previewLayer)
+    }
+	
+	func setColor(_color: UIColor) {
+		color = _color.cgColor
+		layer.strokeColor = color
+		for i in 0...shots.count-1 {
+			shots[i].color = color
+		}
+	}
+	
+	func setColor(_color: CGColor) {
+		color = _color
+		layer.strokeColor = color
+		if (shots.count > 0) { for i in 0...shots.count {
+			shots[i].color = color
+			} }
+		print ("Setting player color to:")
+		print(color)
+	}
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(number, forKey: .number)
+        try container.encode(shots, forKey: .shots)
+        //try container.encode(colorSplit, forKey: .colorSplit)
+        try container.encode(name, forKey: .name)
+        try container.encode(isActive, forKey: .isActive)
+        print("Player Data successfully saved to file.")
     }
 }
 

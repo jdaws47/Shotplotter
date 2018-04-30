@@ -60,6 +60,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     /*override func numberOfSections(in tableView: UITableView) -> Int {
      return 1
      }*/
+    @IBAction func load(_ sender: Any) {
+        data?.load()
+        localTableView?.reloadData()
+    }
+    @IBAction func save(_ sender: Any) {
+        print("Save button pressed")
+        data?.save()
+        print("Save Called")
+    }
     
     // Just a basic getter to get the number of cells that are supposed to be in the table
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
