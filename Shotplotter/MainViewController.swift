@@ -31,8 +31,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MainView()
-        data?.addMatch()
-        data?.matches[0].opponentName = "Example #1"
+//        data?.addMatch()
+//        data?.matches[0].opponentName = "Example #1"
         super.init(coder: aDecoder)
     }
     
