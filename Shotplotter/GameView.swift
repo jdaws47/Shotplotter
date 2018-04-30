@@ -59,6 +59,11 @@ class GameView: Codable {
 		for rotation in rotations {
 			rotation.updatePlayers(newPlayers: players)
 		}
+		var temp = [Player]()
+		for num in activeInt {
+			temp.append(players[num])
+		}
+		updateActive(newActive: temp)
 	}
 	
 	required init(from decoder: Decoder) throws {
@@ -70,6 +75,7 @@ class GameView: Codable {
 		gameNum = try container.decode(Int.self, forKey: .gameNum)
 		opponentName = try container.decode(String.self, forKey: .opponentName)
 		numOfPlayers = try container.decode(Int.self, forKey: .numOfPlayers)
+		
 		print("Data successfully recovered from file.")
 	}
     
