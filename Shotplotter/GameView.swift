@@ -12,6 +12,7 @@ class GameView: Codable {
     var rotations = [RotationView]()
     var players = [Player]()
     var activePlayers = [Player]()
+	var activeInt = [Int]()
     var gameNum: Int
     var opponentName: String
     var numOfPlayers: Int
@@ -32,6 +33,17 @@ class GameView: Codable {
     }
     
     func updateActive() {
+		activeInt.removeAll()
+		while (activePlayers.count > activeInt.count) {
+			var x = activeInt.count
+			var i = 0
+			for player in players {
+				if (player.number == activePlayers[x].number) {
+					activeInt.append(i)
+				}
+				i = i + 1
+			}
+		}
         rotations.forEach {
             $0.updateActive(newActive: activePlayers)
         }
@@ -41,6 +53,25 @@ class GameView: Codable {
         activePlayers = newActive
         updateActive()
     }
+	
+	func updatePlayers(newPlayers: [Player]) {
+		players = newPlayers
+		for rotation in rotations {
+			rotation.updatePlayers(newPlayers: players)
+		}
+	}
+	
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		rotations = try container.decode([RotationView].self, forKey: .rotations)
+		players = try container.decode([Player].self, forKey: .players)
+		activePlayers = try container.decode([Player].self, forKey: .activePlayers)
+		activeInt = try container.decode([Int].self, forKey: .activeInt)
+		gameNum = try container.decode(Int.self, forKey: .gameNum)
+		opponentName = try container.decode(String.self, forKey: .opponentName)
+		numOfPlayers = try container.decode(Int.self, forKey: .numOfPlayers)
+		print("Data successfully recovered from file.")
+	}
     
     func archive(fileName: String) {
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!

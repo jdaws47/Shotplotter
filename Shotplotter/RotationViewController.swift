@@ -204,6 +204,8 @@ class RotationViewController: UIViewController, SubstituteDelegate {
         
         playerSpot1.tintColor = UIColor.black
         playerSpot1.backgroundColor = UIColor(cgColor: (data?.activePlayers[0].color)!)
+		print("Playerspot 1")
+		print ((data?.activePlayers[0].color)!)
         playerSpot1.setTitle(String(describing: data!.activePlayers[0].number), for: .normal)
         playerSpot2.tintColor = UIColor.black
         playerSpot2.backgroundColor = UIColor(cgColor: (data?.activePlayers[1].color)!)

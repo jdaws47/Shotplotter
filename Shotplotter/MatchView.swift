@@ -156,8 +156,8 @@ class MatchView: Codable {
         let dates = dateString.components(separatedBy: ",")
         let dater = DateFormatter()
         dater.dateFormat = "yyyy-MM-dd"
-        print (dateString)
-        print (dates)
+        //print (dateString)
+        //print (dates)
         if (dates.count > 1) {
             dateCreated = dater.date(from: dates[0])! as NSDate
             dateEdited = dater.date(from: dates[1])! as NSDate
@@ -167,6 +167,15 @@ class MatchView: Codable {
             dateEdited = NSDate.init()
             datePlayed = NSDate.init()
         }
+		
+		for i in 0...players.count-1 {
+			players[i].setColor(_color: playerColors[i])
+		}
+		
+		for game in games {
+			game.updatePlayers(newPlayers: players)
+		}
+		
         print("Finished restoring Match data")
 
     }
