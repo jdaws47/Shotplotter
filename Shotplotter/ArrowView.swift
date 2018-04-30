@@ -65,17 +65,38 @@ class ArrowView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (data?.checkDraw())! {
-			if deleteButton {
+		if deleteButton {
+			//print("we are deleting")
+			let touch = touches.first
+			
+			data?.activePlayers.forEach({ (j) in
+				let i = j.layer
+				guard let point = touch?.location(in: self as UIView) else { return }
+				//print("point exists")
 				
-			} else {
-				isDrawing = true
-				guard let touch = touches.first else { return }
-				startPoint = touch.location(in: self)
-				data?.protoLine.startPos = startPoint
-				data?.protoLine.color = color
-			}
-        }
+				guard let sublayers = (self.layer.sublayers as? [CAShapeLayer]) else {return}
+				//print("sublayers exists")
+				for layer in sublayers {
+					
+					//print("got here at least")
+					//if let path = layer.path {
+						//print("path exists now")
+					if(layer.path == nil) { continue }
+					let path = UIBezierPath.init(cgPath: layer.path!)
+					path.close()
+					if (path.contains(point)) {
+							print("B-9. Hit")
+						}
+					//}
+				}
+			})
+		} else if (data?.checkDraw())! {
+			isDrawing = true
+			guard let touch = touches.first else { return }
+			startPoint = touch.location(in: self)
+			data?.protoLine.startPos = startPoint
+			data?.protoLine.color = color
+		}
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
