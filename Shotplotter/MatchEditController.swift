@@ -60,6 +60,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func goBack(_ sender: Any) {
         data?.datePlayed = calendarWidget.date as NSDate
         data?.dateEdited = NSDate.init()
+		saveDataEvent.raise(data: true)
         dismiss(animated: true, completion: nil)
     }
     

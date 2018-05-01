@@ -30,9 +30,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.data = MainView()
+        self.data = MainView() //Calls restore during its constructor
 //        data?.addMatch()
 //        data?.matches[0].opponentName = "Example #1"
+		saveDataEvent.addHandler(target: data!, handler: MainView.save)
         super.init(coder: aDecoder)
     }
     
@@ -55,19 +56,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         localTableView = tableView
         return cell
-    }
-    
-    /*override func numberOfSections(in tableView: UITableView) -> Int {
-     return 1
-     }*/
-    @IBAction func load(_ sender: Any) {
-        data?.load()
-        localTableView?.reloadData()
-    }
-    @IBAction func save(_ sender: Any) {
-        print("Save button pressed")
-        data?.save()
-        print("Save Called")
     }
     
     // Just a basic getter to get the number of cells that are supposed to be in the table

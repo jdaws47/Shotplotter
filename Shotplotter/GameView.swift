@@ -76,7 +76,7 @@ class GameView: Codable {
 		opponentName = try container.decode(String.self, forKey: .opponentName)
 		numOfPlayers = try container.decode(Int.self, forKey: .numOfPlayers)
 		
-		print("Data successfully recovered from file.")
+		print("Game Data successfully recovered from file.")
 	}
     
     func archive(fileName: String) {
