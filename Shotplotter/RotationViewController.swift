@@ -266,7 +266,14 @@ class RotationViewController: UIViewController, SubstituteDelegate {
         viewWillAppear(false)
     }
     
-    func updatePreviewPositions(_ activePlayers: [Player]) {
+	@IBAction func undoDelete(_ sender: Any) {
+		print("hello sdfgsdfgdfsg")
+		drawingBoard?.undo()
+		viewWillAppear(false)
+		print("bye dfgdfsgdfsg")
+	}
+	
+	func updatePreviewPositions(_ activePlayers: [Player]) {
         //wow, such empty
     }
 }
