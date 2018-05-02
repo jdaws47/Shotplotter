@@ -73,6 +73,10 @@ class MainView: Codable {
     func save() {
         archive(fileName: "Plottashot")
     }
+	
+	func save(asd: Bool) {
+		archive(fileName: "Plottashot")
+	}
     
     func load() {
         restore(fileName: "Plottashot")

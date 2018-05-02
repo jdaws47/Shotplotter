@@ -83,6 +83,7 @@ class GameViewController: UIViewController, RotationDelegate, SubstituteDelegate
     }
     
     @IBAction func goBack(_ sender: Any) {
+		saveDataEvent.raise(data: true)
         dismiss(animated: true, completion: nil)
     }
     

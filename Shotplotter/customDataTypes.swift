@@ -43,6 +43,7 @@ let playerColors = [Red, Orange, YellowOrange, LightGreen, Green, Teal, LightBlu
 
 let updateShotButtonsEvent = Event<Int>()
 let updateActiveEvent = Event<[Player]>()
+var saveDataEvent = Event<Bool>()
 
 //----------------------------------------------------------
 //----------------------------------------------------------
@@ -530,7 +531,7 @@ class Player: Codable {
                 number = recoveredData.number
                 name = recoveredData.name
                 isActive = recoveredData.isActive
-                layerExists = recoveredData.layerExists
+                layerExists = false
             } catch {
                 print("Failed to recover data")
             }
@@ -551,6 +552,7 @@ class Player: Codable {
         //}
         name = try container.decode(String.self, forKey: .name)
         isActive = try container.decode(Bool.self, forKey: .isActive)
+		shots = try container.decode([Line].self, forKey: .shots)
         layerExists = false
 		color = UIColor.black.cgColor
         layer.strokeColor = color
@@ -570,7 +572,7 @@ class Player: Codable {
 	func setColor(_color: CGColor) {
 		color = _color
 		layer.strokeColor = color
-		if (shots.count > 0) { for i in 0...shots.count {
+		if (shots.count > 0) { for i in 0...shots.count-1 {
 			shots[i].color = color
 			} }
 		print ("Setting player color to:")

@@ -44,7 +44,7 @@ class RotationViewController: UIViewController, SubstituteDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         drawingBoard.data = data
-        print("RotationView: " + String(describing: data?.activePlayers.count))
+        //print("RotationView: " + String(describing: data?.activePlayers.count))
         rotationTitle.title = "Rotation \((data?.rotationID)! % 10 + 1)"
         checkButtons()
         for i in 0 ..< (data?.activePlayers.count)! {
@@ -75,6 +75,7 @@ class RotationViewController: UIViewController, SubstituteDelegate {
         for i in 0 ..< (data?.activePlayers.count)! {
             data?.activePlayers[i].layerExists = false
         }
+		saveDataEvent.raise(data: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -204,8 +205,6 @@ class RotationViewController: UIViewController, SubstituteDelegate {
         
         playerSpot1.tintColor = UIColor.black
         playerSpot1.backgroundColor = UIColor(cgColor: (data?.activePlayers[0].color)!)
-		print("Playerspot 1")
-		print ((data?.activePlayers[0].color)!)
         playerSpot1.setTitle(String(describing: data!.activePlayers[0].number), for: .normal)
         playerSpot2.tintColor = UIColor.black
         playerSpot2.backgroundColor = UIColor(cgColor: (data?.activePlayers[1].color)!)

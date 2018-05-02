@@ -38,6 +38,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func goBack(_ sender: Any) {
+		saveDataEvent.raise(data: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -106,7 +107,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         playerSpot5.setTitle("\(activePlayers[4].number)", for: .normal)
         playerSpot6.player = activePlayers[5]
         playerSpot6.setTitle("\(activePlayers[5].number)", for: .normal)
-        print("give up already")
+        //print("give up already")
     }
     
     func openSubstitution(_ sender: SubButton) {

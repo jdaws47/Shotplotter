@@ -56,7 +56,8 @@ class MatchViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // TODO: Needs documentation
     @IBAction func goBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+		saveDataEvent.raise(data: true)
+		dismiss(animated: true, completion: nil)
     }
 
     //Runs right before a segue happens, every time a segue happens. Used to pass information to the segue destination. Uses passedGame to choose which item in the games[] array.
