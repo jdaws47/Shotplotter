@@ -37,8 +37,8 @@ class ArrowView: UIView {
     var activePlayer: Player
 	
 	var deleteButton: Bool
-	var lastDeleted: [Line]?
-	var delPlayer: [Player]?
+	var lastDeleted: Line?
+	var delPlayer: Player?
 	
 	//var undoDict: [Line: Player] = [:]
     
