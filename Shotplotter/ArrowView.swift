@@ -37,8 +37,10 @@ class ArrowView: UIView {
     var activePlayer: Player
 	
 	var deleteButton: Bool
-	var lastDeleted: Line?
-	var delPlayer: Player
+	var lastDeleted: [Line]?
+	var delPlayer: [Player]?
+	
+	//var undoDict: [Line: Player] = [:]
     
     required init?(coder aDecoder: NSCoder) {
         activePlayer = Player()
@@ -52,7 +54,6 @@ class ArrowView: UIView {
         endPoint = CGPoint()
 		
 		deleteButton = false
-		delPlayer = Player()
         
         super.init(coder: aDecoder)
         
@@ -88,6 +89,7 @@ class ArrowView: UIView {
 					//print("closed")
 					if (hitPath?.contains(point))! {
 						print("B-9. Hit")
+						delPlayer = j
 						lastDeleted = j.shots[index]
 						layer.removeFromSuperlayer()
 						j.shots.remove(at: index)
@@ -209,10 +211,12 @@ class ArrowView: UIView {
 	func undo() {
 		print("Before restore")
 		guard let restoreLine = lastDeleted else { return }
-		delPlayer.addLine(line: restoreLine)
+		delPlayer?.addLine(line: restoreLine)
 		
-		delPlayer.layer.addSublayer(delPlayer.shots[delPlayer.shots.count - 1].convert())
+		delPlayer?.layer.addSublayer(restoreLine.convert())
 		print("after sfjklgsdfljgdsfkljg")
+		
+		lastDeleted = nil
 	}
 	
     func clear() {
