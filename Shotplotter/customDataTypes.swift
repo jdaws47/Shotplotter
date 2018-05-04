@@ -79,6 +79,7 @@ func subs(str: String, end:Int) -> String {
 //----------------------------------------------------------
 //The Line structure. This is used to keep track of all information for each line
 struct Line: Codable {
+
     var startPos: CGPoint
     var endPos: CGPoint
     var tip: Bool = false
@@ -397,7 +398,8 @@ struct Line: Codable {
             color = UIColor.black.cgColor
         }
     }
-    
+	
+	
     /*mutating func encode(to encoder: Encoder) throws {
         colorSplit = [0,0,0]
         colorSplit[0] = Float(color.components![0])
