@@ -35,7 +35,7 @@ class GameView: Codable {
     func updateActive() {
 		activeInt.removeAll()
 		while (activePlayers.count > activeInt.count) {
-			var x = activeInt.count
+			let x = activeInt.count
 			var i = 0
 			for player in players {
 				if (player.number == activePlayers[x].number) {

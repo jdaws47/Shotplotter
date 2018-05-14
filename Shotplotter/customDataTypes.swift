@@ -284,8 +284,7 @@ struct Line: Codable {
             
             arrowLayer.strokeColor = color
             arrowLayer.fillColor = nil
-            arrowLayer.lineWidth = 3
-            
+            arrowLayer.lineWidth = layer.lineWidth
             
             let startX = CGFloat(startPos.x)
             let startY = CGFloat(startPos.y)

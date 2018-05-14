@@ -34,7 +34,7 @@ class MatchEditController: UIViewController, UITableViewDataSource, UITableViewD
     // Runs whenever the view starts loading. Use this instead of DidLoad.
     override func viewWillAppear(_ animated: Bool) {
         nameOfOpponent.text = data?.opponentName
-        calendarWidget.setDate(data?.datePlayed as! Date, animated: true)
+		calendarWidget.setDate(data?.datePlayed as! Date, animated: true) //circular warning
         playerStepper.value = Double((data?.numOfPlayers)!)
         numberOfPlayersLabel.text = "\(Int(playerStepper.value))"
         super.viewWillAppear(animated)

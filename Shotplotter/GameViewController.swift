@@ -30,7 +30,7 @@ class GameViewController: UIViewController, RotationDelegate, SubstituteDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         if(previews.count < 6) {
-            for _ in 0 ..< 6 {
+            for _ in (previews.count - 1) ..< 6 {
                 previews.append(#imageLiteral(resourceName: "Volleyball Court.jpg"))
             }
         }

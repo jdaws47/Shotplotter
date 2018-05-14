@@ -31,6 +31,8 @@ class RotationViewController: UIViewController, SubstituteDelegate {
     @IBOutlet weak var playerSpot4: PlayerSpot!
     @IBOutlet weak var playerSpot5: PlayerSpot!
     @IBOutlet weak var playerSpot6: PlayerSpot!
+	
+	let helpAlert = UIAlertController.init(title: "Information", message: "To draw a shot, select at least a player and a type of shot. Then drag from the desired start point to the desired end point.", preferredStyle: .alert)
     
     var subData: GameView?
     
@@ -40,6 +42,7 @@ class RotationViewController: UIViewController, SubstituteDelegate {
         
         drawingBoard.data = self.data
         //tipShot.addTarget(customDataTypes., action: #selector(ActiveSwitch.switched(_:)), for: UIControlEvents.valueChanged)
+		helpAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in print("Handle Ok logic here") }))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -273,4 +276,9 @@ class RotationViewController: UIViewController, SubstituteDelegate {
 	func updatePreviewPositions(_ activePlayers: [Player]) {
         //wow, such empty
     }
+	
+	@IBAction func info(_ sender: Any) {
+		self.present(helpAlert, animated: true, completion: nil)
+	}
+	
 }
