@@ -215,7 +215,8 @@ class ArrowView: UIView {
 		let restorePlayer = delPlayer[(delPlayer.count) - 1]
 		
 		restorePlayer.addLine(line: restoreLine)
-		restorePlayer.layer.addSublayer(restoreLine.convert())
+		//restorePlayer.layer.addSublayer(restoreLine.convert())
+		restorePlayer.initializeLayer((data?.rotationID)!)
 		
 		lastDeleted.removeLast()
 		delPlayer.removeLast()

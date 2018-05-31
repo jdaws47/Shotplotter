@@ -1003,11 +1003,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AOff.png" width="90" height="45"/>
-        <image name="RollOff.png" width="90" height="45"/>
-        <image name="ScoreOff.png" width="135" height="45"/>
-        <image name="SlideOff.png" width="90" height="45"/>
-        <image name="TipOff.png" width="90" height="45"/>
+        <image name="AOff.png" width="800" height="400"/>
+        <image name="RollOff.png" width="800" height="400"/>
+        <image name="ScoreOff.png" width="800" height="400"/>
+        <image name="SlideOff.png" width="800" height="400"/>
+        <image name="TipOff.png" width="800" height="400"/>
         <image name="Volleyball Court.jpg" width="439" height="694"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -476,13 +476,7 @@ class Player: Codable {
         let temp = Line(_startPos: start, _endPos: end, _tip: tip, _slide: slide, _roll: roll, _A: A, _hit: hit, _color: color, _didScore: didScore, _rotationID: rotation)
         addLine(line:temp)
     }
-    
-    @objc public func switchChanged(mySwitch: UISwitch) {
-        let value = mySwitch.isOn
-        //isActive = value
-        print("value changed")
-    }
-    
+        
     func initializeLayer(_ wantedID:Int) -> CAShapeLayer {
         layer.sublayers?.removeAll()
         let previewLayer = CAShapeLayer()
