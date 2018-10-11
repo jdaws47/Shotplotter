@@ -31,9 +31,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     required init?(coder aDecoder: NSCoder) {
         self.data = MainView() //Calls restore during its constructor
-        data?.addMatch()
+		if (data?.matches.count == 0)
+		{
+			data?.addMatch()
+			data?.matches[0].opponentName = "Opponent #1"
+		}
 		//data?.matches.removeLast()
-        data?.matches[0].opponentName = "Example #1"
 		saveDataEvent.addHandler(target: data!, handler: MainView.save)
         super.init(coder: aDecoder)
     }
